@@ -9,5 +9,6 @@
 #ifndef JKit_h
 #define JKit_h
 
+#import "JCategory.h"
 
 #endif /* JKit_h */
