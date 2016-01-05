@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		921E68BB1C3BC87F003E3389 /* UIColor+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E68B91C3BC87F003E3389 /* UIColor+J.m */; };
+		921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E68CE1C3BC902003E3389 /* UIColor+J.m */; };
 		92E953B71C3BB9770074912A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E953B61C3BB9770074912A /* main.m */; };
 		92E953BA1C3BB9770074912A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E953B91C3BB9770074912A /* AppDelegate.m */; };
 		92E953BD1C3BB9770074912A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E953BC1C3BB9770074912A /* ViewController.m */; };
@@ -36,10 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		921E68B71C3BC87F003E3389 /* JCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCategory.h; sourceTree = "<group>"; };
-		921E68B81C3BC87F003E3389 /* UIColor+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+J.h"; sourceTree = "<group>"; };
-		921E68B91C3BC87F003E3389 /* UIColor+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+J.m"; sourceTree = "<group>"; };
-		921E68BA1C3BC87F003E3389 /* JKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKit.h; sourceTree = "<group>"; };
+		921E68CC1C3BC902003E3389 /* JCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCategory.h; sourceTree = "<group>"; };
+		921E68CD1C3BC902003E3389 /* UIColor+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+J.h"; sourceTree = "<group>"; };
+		921E68CE1C3BC902003E3389 /* UIColor+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+J.m"; sourceTree = "<group>"; };
+		921E68CF1C3BC902003E3389 /* JKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKit.h; sourceTree = "<group>"; };
 		92E953B21C3BB9770074912A /* JKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E953B61C3BB9770074912A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		92E953B81C3BB9770074912A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,21 +83,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		921E68B51C3BC87F003E3389 /* JKit */ = {
+		921E68CA1C3BC902003E3389 /* JKit */ = {
 			isa = PBXGroup;
 			children = (
-				921E68B61C3BC87F003E3389 /* Category */,
-				921E68BA1C3BC87F003E3389 /* JKit.h */,
+				921E68CB1C3BC902003E3389 /* Category */,
+				921E68CF1C3BC902003E3389 /* JKit.h */,
 			);
 			path = JKit;
 			sourceTree = "<group>";
 		};
-		921E68B61C3BC87F003E3389 /* Category */ = {
+		921E68CB1C3BC902003E3389 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				921E68B71C3BC87F003E3389 /* JCategory.h */,
-				921E68B81C3BC87F003E3389 /* UIColor+J.h */,
-				921E68B91C3BC87F003E3389 /* UIColor+J.m */,
+				921E68CC1C3BC902003E3389 /* JCategory.h */,
+				921E68CD1C3BC902003E3389 /* UIColor+J.h */,
+				921E68CE1C3BC902003E3389 /* UIColor+J.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -105,6 +105,7 @@
 		92E953A91C3BB9770074912A = {
 			isa = PBXGroup;
 			children = (
+				921E68CA1C3BC902003E3389 /* JKit */,
 				92E953B41C3BB9770074912A /* JKitDemo */,
 				92E953CE1C3BB9770074912A /* JKitDemoTests */,
 				92E953D91C3BB9770074912A /* JKitDemoUITests */,
@@ -125,7 +126,6 @@
 		92E953B41C3BB9770074912A /* JKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				921E68B51C3BC87F003E3389 /* JKit */,
 				92E953B81C3BB9770074912A /* AppDelegate.h */,
 				92E953B91C3BB9770074912A /* AppDelegate.m */,
 				92E953BB1C3BB9770074912A /* ViewController.h */,
@@ -295,7 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				921E68BB1C3BC87F003E3389 /* UIColor+J.m in Sources */,
+				921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */,
 				92E953BD1C3BB9770074912A /* ViewController.m in Sources */,
 				92E953BA1C3BB9770074912A /* AppDelegate.m in Sources */,
 				92E953B71C3BB9770074912A /* main.m in Sources */,
