@@ -11,6 +11,6 @@ s.license      = "MIT"
 s.author       = { "陈杰" => "mr_banma@126.com" }
 s.platform     = :ios, "7.0"
 s.source       = { :git => "https://github.com/GitHubZebra/JKit.git", :tag => s.version }
-s.source_files = "JKit/*","JKit/**/*.{h,m}"
+s.source_files = "JKit/**/*.{h,m}"
 s.requires_arc = true
 end
