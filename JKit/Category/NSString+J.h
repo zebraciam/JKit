@@ -199,33 +199,33 @@
  */
 - (NSString *)j_joinSeparatedByString:(NSString *)separatedString otherStrings:(NSString *)otherStrings, ...NS_REQUIRES_NIL_TERMINATION;
 
-/**
- *  URLEncode
- *
- *  @return NSString
- */
-- (NSURL *)j_urlEncode;
-
-/**
- *  请求参数
- *
- *  @return NSDictionary
- */
-- (NSDictionary *)j_requestParams;
-
-/**
- *  Encode
- *
- *  @return NSString
- */
-- (NSString *)j_encode;
-
-/**
- *  Decode
- *
- *  @return NSString
- */
-- (NSString *)j_decode;
+///**
+// *  URLEncode
+// *
+// *  @return NSString
+// */
+//- (NSURL *)j_urlEncode;
+//
+///**
+// *  请求参数
+// *
+// *  @return NSDictionary
+// */
+//- (NSDictionary *)j_requestParams;
+//
+///**
+// *  Encode
+// *
+// *  @return NSString
+// */
+//- (NSString *)j_encode;
+//
+///**
+// *  Decode
+// *
+// *  @return NSString
+// */
+//- (NSString *)j_decode;
 
 #pragma mark - pinyin
 

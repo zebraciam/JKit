@@ -499,49 +499,6 @@
 
 #pragma mark - -.-
 
-#pragma mark URLEncode
-
-- (NSURL *)j_urlEncode
-{
-    return [NSURL URLWithString:[self stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-}
-
-#pragma mark - 请求参数
-
-- (NSDictionary *)j_requestParams
-{
-    NSArray *pairs = [self componentsSeparatedByString:@"&"];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    
-    for (NSString *pair in pairs) {
-        
-        NSArray *object = [pair componentsSeparatedByString:@"="];
-        NSString *key = [[object objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        [params setObject:key forKey:[object objectAtIndex:0]];
-    }
-    
-    return params;
-}
-
-#pragma mark Encode
-
-- (NSString *)j_encode
-{
-    NSString *encodedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, NULL, (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
-    
-    return encodedString;
-}
-
-#pragma mark Decode
-
-- (NSString *)j_decode
-{
-    NSString *decodedString  = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL, (__bridge CFStringRef)self, CFSTR(""), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-    
-    return decodedString;
-}
-
 #pragma mark - -.-
 
 #pragma mark - pinyin

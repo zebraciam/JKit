@@ -9,16 +9,6 @@
 #import "UIViewController+J.h"
 #import <objc/runtime.h>
 
-//@interface UIViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-//
-//@property (copy, nonatomic) JFinishPickingMedia finishPickingMedia;
-//
-//@property (copy, nonatomic) JCancelPickingMedia cancelPickingMedia;
-//
-//
-//@end
-//static char finishPickingMediaKey, cancelPickingMediaKey;
-
 @implementation UIViewController (J)
 
 #pragma mark 触摸自动隐藏键盘
