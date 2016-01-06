@@ -8,6 +8,15 @@
 
 #ifndef JCategory_h
 #define JCategory_h
-#import "UIColor+CJ.h"
+
+#import "UIColor+J.h"
+#import "NSArray+J.h"
+#import "NSString+J.h"
+#import "UISearchBar+J.h"
+#import "UITextField+J.h"
+#import "UITextView+J.h"
+#import "UIView+J.h"
+#import "UIViewController+J.h"
+#import "UIImage+J.h"
 
 #endif /* JCategory_h */

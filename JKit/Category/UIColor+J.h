@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+#define JColorWithHex(hex) [UIColor j_colorWithHex:hex]
+#define JColorWithHexAlpha(hex,a) [UIColor j_colorWithHex:hex alpha:a]
+#define JColorWithHexString(hexString) [UIColor j_colorWithHexString:hexString]
+#define JColorWithRGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define JColorWithRGB(r,g,b) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]
+
+#define JColorWithClear [UIColor clearColor]
+#define JColorWithBlack [UIColor blackColor]
+#define JColorWithWhite [UIColor whiteColor]
+#define JColorWithRed [UIColor redColor]
+#define JColorWithGray [UIColor grayColor]
+
+#define JRandomColor [UIColor j_colorWithRamdom]
+
+
 @interface UIColor (J)
 /**
  *  16进制转为UIColor

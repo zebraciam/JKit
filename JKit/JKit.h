@@ -10,5 +10,6 @@
 #define JKit_h
 
 #import "JCategory.h"
+#import "JMacro.h"
 
 #endif /* JKit_h */
