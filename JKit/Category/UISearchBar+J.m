@@ -8,6 +8,7 @@
 
 #import "UISearchBar+J.h"
 #import "JMacro.h"
+#import "UIColor+J.h"
 @implementation UISearchBar (J)
 
 - (void)j_backgroundColor:(UIColor *)backgroundColor
@@ -27,8 +28,9 @@
     if (backgroundColor) {
         
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.backgroundColor = UIColorFromRGB(0xda2c4e);
-        imageView.frame = CGRectMake(0, -20, SCREENWIDTH, SCREENHEIGHT + 20);
+        imageView.backgroundColor = JColorWithHex(0xda2c4e);
+
+        imageView.frame = CGRectMake(0, -20, JScreenWidth, JScreenHeight + 20);
         imageView.tag = backgroundTag;
         
         [[[self subviews] firstObject] insertSubview:imageView atIndex:1];
