@@ -9,15 +9,15 @@
 #import "UIViewController+J.h"
 #import <objc/runtime.h>
 
-@interface UIViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-
-@property (copy, nonatomic) JFinishPickingMedia finishPickingMedia;
-
-@property (copy, nonatomic) JCancelPickingMedia cancelPickingMedia;
-
-
-@end
-static char finishPickingMediaKey, cancelPickingMediaKey;
+//@interface UIViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+//
+//@property (copy, nonatomic) JFinishPickingMedia finishPickingMedia;
+//
+//@property (copy, nonatomic) JCancelPickingMedia cancelPickingMedia;
+//
+//
+//@end
+//static char finishPickingMediaKey, cancelPickingMediaKey;
 
 @implementation UIViewController (J)
 
@@ -93,52 +93,6 @@ static char finishPickingMediaKey, cancelPickingMediaKey;
     }
     
     return NO;
-}
-- (UIImagePickerController *)j_presentImagePickerControllerWithSourceType:(UIImagePickerControllerSourceType)sourceType allowsEditing:(BOOL)allowsEditing completion:(void (^)(void))completion didFinishPickingMedia:(JFinishPickingMedia)finish didCancelPickingMediaWithInfo:(JCancelPickingMedia)cancel
-{
-    if (sourceType == UIImagePickerControllerSourceTypeCamera) {
-        
-        if (![UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera]) {
-#ifdef DEBUG
-            NSLog(@"没有检测到摄像头");
-#endif
-            return nil;
-        }
-    }
-    
-    UIImagePickerController *pickController = [[UIImagePickerController alloc] init];
-    [pickController setSourceType:sourceType];
-    [pickController setDelegate:self];
-    [pickController setAllowsEditing:allowsEditing];
-    
-    [self presentViewController:pickController animated:YES completion:completion];
-    
-    self.finishPickingMedia = finish;
-    self.cancelPickingMedia = cancel;
-    
-    return pickController;
-}
-
-#pragma mark - UIImagePickerControllerDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    [picker dismissViewControllerAnimated:YES completion:^{
-        
-        if (self.finishPickingMedia) {
-            self.finishPickingMedia(info);
-        }
-    }];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
-    [picker dismissViewControllerAnimated:YES completion:^{
-        
-        if (self.cancelPickingMedia) {
-            self.cancelPickingMedia();
-        }
-    }];
 }
 
 @end
