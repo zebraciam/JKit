@@ -30,23 +30,23 @@
  *
  *  @param titleView titleView
  */
-- (void)createNavBarTitleView:(UIView *)titleView;
+- (void)j_createNavBarTitleView:(UIView *)titleView;
 /**
  *  创建navBar上的leftView
  *
  *  @param leftView leftView
  */
-- (void)createNavBarLeftView:(UIView *)leftView;
+- (void)j_createNavBarLeftView:(UIView *)leftView;
 /**
  *  创建navBar上的rightView
  *
  *  @param rightView rightView
  */
-- (void)createNavBarRightView:(UIView *)rightView;
+- (void)j_createNavBarRightView:(UIView *)rightView;
 /**
  *  创建navBar上的backView
  *
  *  @param backView backView
  */
-- (void)createNavBarBackView:(UIView *)backView;
+- (void)j_createNavBarBackView:(UIView *)backView;
 @end

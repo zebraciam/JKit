@@ -17,13 +17,14 @@
 
 #define JDelegate [[UIApplication sharedApplication] delegate]
 #define JKeyWindow [[UIApplication sharedApplication] keyWindow]
-#define JWindow [[UIApplication sharedApplication] window]
+#define JWindow [[[UIApplication sharedApplication] delegate] window]
 
 #define IOS7 [[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=7
 
 #define IOS8 [[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=8
 
 #define JFont(s) ([UIFont systemFontOfSize:s])
+#define JBoldFont(s) ([UIFont boldSystemFontOfSize:s])
 
 #ifdef DEBUG
 # define JLog(fmt, ...) NSLog((@"[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);

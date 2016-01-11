@@ -40,22 +40,22 @@
 }
 
 #pragma mark -navBar创建titleView
-- (void)createNavBarTitleView:(UIView *)titleView{
+- (void)j_createNavBarTitleView:(UIView *)titleView{
     self.navigationItem.titleView = titleView;
 }
 #pragma mark -navBar创建leftView
 
-- (void)createNavBarLeftView:(UIView *)leftView{
+- (void)j_createNavBarLeftView:(UIView *)leftView{
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftView];
 }
 #pragma mark -navBar创建rightView
 
-- (void)createNavBarRightView:(UIView *)rightView{
+- (void)j_createNavBarRightView:(UIView *)rightView{
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightView];
 }
 #pragma mark -navBar创建backView
 
-- (void)createNavBarBackView:(UIView *)backView{
+- (void)j_createNavBarBackView:(UIView *)backView{
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backView];
 }
 @end
