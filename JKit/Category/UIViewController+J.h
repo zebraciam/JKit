@@ -25,4 +25,28 @@
  *  触摸自动隐藏键盘
  */
 - (void)j_tapDismissKeyboard;
+/**
+ *  创建navBar上的titleView
+ *
+ *  @param titleView titleView
+ */
+- (void)createNavBarTitleView:(UIView *)titleView;
+/**
+ *  创建navBar上的leftView
+ *
+ *  @param leftView leftView
+ */
+- (void)createNavBarLeftView:(UIView *)leftView;
+/**
+ *  创建navBar上的rightView
+ *
+ *  @param rightView rightView
+ */
+- (void)createNavBarRightView:(UIView *)rightView;
+/**
+ *  创建navBar上的backView
+ *
+ *  @param backView backView
+ */
+- (void)createNavBarBackView:(UIView *)backView;
 @end

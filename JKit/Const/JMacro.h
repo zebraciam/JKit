@@ -17,6 +17,7 @@
 
 #define JDelegate [[UIApplication sharedApplication] delegate]
 #define JKeyWindow [[UIApplication sharedApplication] keyWindow]
+#define JWindow [[UIApplication sharedApplication] window]
 
 #define IOS7 [[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=7
 
