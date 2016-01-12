@@ -31,4 +31,54 @@
 #else
 # define JLog(...);
 #endif
+
+
+#define JSingletonInterface(className) + (instancetype)shared##className;
+
+#if __has_feature(objc_arc)
+#define JSingletonImplementation(className) \
+static id instance; \
++ (instancetype)allocWithZone:(struct _NSZone *)zone { \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+instance = [super allocWithZone:zone]; \
+}); \
+return instance; \
+} \
++ (instancetype)shared##className { \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+instance = [[self alloc] init]; \
+}); \
+return instance; \
+} \
+- (id)copyWithZone:(NSZone *)zone { \
+return instance; \
+}
+#else
+#define JSingletonImplementation(className) \
+static id instance; \
++ (instancetype)allocWithZone:(struct _NSZone *)zone { \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+instance = [super allocWithZone:zone]; \
+}); \
+return instance; \
+} \
++ (instancetype)shared##className { \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+instance = [[self alloc] init]; \
+}); \
+return instance; \
+} \
+- (id)copyWithZone:(NSZone *)zone { \
+return instance; \
+} \
+- (oneway void)release {} \
+- (instancetype)retain {return instance;} \
+- (instancetype)autorelease {return instance;} \
+- (NSUInteger)retainCount {return ULONG_MAX;}
+
+#endif
 #endif /* JMacro_h */

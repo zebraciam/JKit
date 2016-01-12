@@ -33,8 +33,8 @@
     
     return theImage;
 }
-#pragma mark 保存到相簿
 
+#pragma mark -保存到相簿
 - (void)j_writeToSavedPhotosAlbumWithSuccess:(j_WriteToSavedPhotosSuccess)success error:(j_WriteToSavedPhotosError)error
 {
     self.writeToSavedPhotosSuccess = success;
@@ -59,4 +59,44 @@
     }
 }
 
+#pragma mark -图片压缩系数
+- (float)j_pressImageWithLessThanSizeKB:(CGFloat )KB{
+    
+    NSData *data;
+    if (self) {
+        data = UIImageJPEGRepresentation(self, 1);
+    }else{
+        return 1;
+    }
+    float num = 1;
+    if ([data length] < 1024*KB) {
+        num = 1;
+    }else{
+        for (double i = 1.0; i>0; i-=0.05) {
+            if ([UIImageJPEGRepresentation(self, i) length] <= 1024*KB) {
+                num = i;
+                break;
+            }
+        }
+    }
+    return num;
+}
+#pragma mark -改变图片尺寸
+- (UIImage*)j_imageWithscaledToSize:(CGSize)newSize{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [self drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    
+    // Return the new image.
+    return newImage;
+}
 @end

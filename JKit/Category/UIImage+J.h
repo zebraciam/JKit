@@ -36,4 +36,17 @@ typedef void(^j_WriteToSavedPhotosError)(NSError *error);
  *  @param error   失败回调
  */
 - (void)j_writeToSavedPhotosAlbumWithSuccess:(j_WriteToSavedPhotosSuccess)success error:(j_WriteToSavedPhotosError)error;
+
+/**
+ *  根据图片的大小返回压缩系数
+ *
+ *  @param KB 图片最大多少KB
+ */
+- (float)j_pressImageWithLessThanSizeKB:(CGFloat )KB;
+/**
+ *  改变图片尺寸
+ *
+ *  @param newSize 尺寸
+ */
+- (UIImage*)j_imageWithscaledToSize:(CGSize)newSize;
 @end
