@@ -18,5 +18,6 @@
 #import "UIView+J.h"
 #import "UIViewController+J.h"
 #import "UIImage+J.h"
+#import "NSDictionary+J.h"
 
 #endif /* JCategory_h */
