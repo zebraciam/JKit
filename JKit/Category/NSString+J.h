@@ -29,6 +29,9 @@
 #define JEncode(string) [string j_encode]
 #define JDecode(string) [string j_decode]
 
+
+
+
 @interface NSString (J)
 
 /**

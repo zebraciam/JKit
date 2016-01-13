@@ -26,6 +26,13 @@
 #define JFont(s) ([UIFont systemFontOfSize:s])
 #define JBoldFont(s) ([UIFont boldSystemFontOfSize:s])
 
+#define JStringWithInteger(integer) [NSString stringWithFormat:@"%ld",integer]
+#define JStringWithInt(int) [NSString stringWithFormat:@"%d",int]
+#define JStringWithDouble(double) [NSString stringWithFormat:@"%lf",double]
+#define JStringWithFloat(float) [NSString stringWithFormat:@"%f",float]
+
+#define JBlock(block, ...) block ? block(__VA_ARGS__) : nil
+
 #ifdef DEBUG
 # define JLog(fmt, ...) NSLog((@"[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
