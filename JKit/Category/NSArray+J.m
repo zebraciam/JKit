@@ -20,7 +20,7 @@
 }
 - (instancetype)j_objectAtIndex:(NSInteger)index{
     if (self.count > index) {
-        return self[index];
+        return [self objectAtIndex:index];
     }
     return nil;
 }
