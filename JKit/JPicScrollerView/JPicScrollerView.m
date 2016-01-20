@@ -86,30 +86,30 @@
     }
     if(_imageUrlStrings.count == 1 ) {
         
-        if (!_img) {
-            _img = [[UIImageView alloc] initWithFrame:self.bounds];
-            [self addSubview:_img];
-            _centerImageView = _img;
-        }
-        if (!_titleView) {
-            _titleView = [self creatLabelBgView];
-            _titleLabel = (UILabel *)_titleView.subviews.firstObject;
-            [self addSubview:_titleView];
-        }
-        _isNetwork = [_imageUrlStrings.firstObject hasPrefix:@"http://"];
-        
-        if (_isNetwork) {
-            JWebImageManager *manager = [JWebImageManager shareManager];
-            
-            [manager downloadImageWithUrlString:_imageUrlStrings.firstObject];
-            
-            [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
-                _img.image = image;
-            }];
-            
-        }else {
-            _img.image = [UIImage imageNamed:_imageUrlStrings.firstObject];
-        }
+//        if (!_img) {
+//            _img = [[UIImageView alloc] initWithFrame:self.bounds];
+//            [self addSubview:_img];
+//            _centerImageView = _img;
+//        }
+//        if (!_titleView) {
+//            _titleView = [self creatLabelBgView];
+//            _titleLabel = (UILabel *)_titleView.subviews.firstObject;
+//            [self addSubview:_titleView];
+//        }
+//        _isNetwork = [_imageUrlStrings.firstObject hasPrefix:@"http://"];
+//        
+//        if (_isNetwork) {
+//            JWebImageManager *manager = [JWebImageManager shareManager];
+//            
+//            [manager downloadImageWithUrlString:_imageUrlStrings.firstObject];
+//            
+//            [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
+//                _img.image = image;
+//            }];
+//            
+//        }else {
+//            _img.image = [UIImage imageNamed:_imageUrlStrings.firstObject];
+//        }
     }
     
     _imageData = [NSMutableDictionary dictionaryWithCapacity:_imageUrlStrings.count];
@@ -345,11 +345,17 @@
 
 - (void)changeImageLeft:(NSInteger)LeftIndex center:(NSInteger)centerIndex right:(NSInteger)rightIndex {
     
-    
-    _leftImageView.image = [self setImageWithIndex:LeftIndex];
-    _centerImageView.image = [self setImageWithIndex:centerIndex];
-    _rightImageView.image = [self setImageWithIndex:rightIndex];
-    
+    if (self.imageUrlStrings.count == 1) {
+        _leftImageView.image = [self setImageWithIndex:0];
+        _centerImageView.image = [self setImageWithIndex:0];
+        _rightImageView.image = [self setImageWithIndex:0];
+        
+    }else{
+        _leftImageView.image = [self setImageWithIndex:LeftIndex];
+        _centerImageView.image = [self setImageWithIndex:centerIndex];
+        _rightImageView.image = [self setImageWithIndex:rightIndex];
+    }
+
     
     if (_hasTitle) {
         _titleLabel.text = [self.titleData objectAtIndex:centerIndex];
@@ -391,7 +397,7 @@
 }
 
 - (void)setUpTimer {
-    if (_AutoScrollDelay < 0.5||_timer != nil) return;
+    if (_AutoScrollDelay < 0.5||_timer != nil || _imageUrlStrings.count == 1) return;
     
     _timer = [NSTimer timerWithTimeInterval:_AutoScrollDelay target:self selector:@selector(scorll) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
