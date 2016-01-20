@@ -84,34 +84,6 @@
     if (_imageUrlStrings.count < 1) {
         return ;
     }
-    if(_imageUrlStrings.count == 1 ) {
-        
-//        if (!_img) {
-//            _img = [[UIImageView alloc] initWithFrame:self.bounds];
-//            [self addSubview:_img];
-//            _centerImageView = _img;
-//        }
-//        if (!_titleView) {
-//            _titleView = [self creatLabelBgView];
-//            _titleLabel = (UILabel *)_titleView.subviews.firstObject;
-//            [self addSubview:_titleView];
-//        }
-//        _isNetwork = [_imageUrlStrings.firstObject hasPrefix:@"http://"];
-//        
-//        if (_isNetwork) {
-//            JWebImageManager *manager = [JWebImageManager shareManager];
-//            
-//            [manager downloadImageWithUrlString:_imageUrlStrings.firstObject];
-//            
-//            [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
-//                _img.image = image;
-//            }];
-//            
-//        }else {
-//            _img.image = [UIImage imageNamed:_imageUrlStrings.firstObject];
-//        }
-    }
-    
     _imageData = [NSMutableDictionary dictionaryWithCapacity:_imageUrlStrings.count];
     
     _isNetwork = [imageUrlStrings.firstObject hasPrefix:@"http://"];
@@ -412,38 +384,4 @@
 -(void)dealloc {
     [self removeTimer];
 }
-
-//
-//- (void)getImage {
-//
-//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//
-//    for (NSString *urlString in _imageData) {
-//
-//        [manager downloadImageWithURL:[NSURL URLWithString:urlString] options:SDWebImageHighPriority progress:NULL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-//            if (error) {
-//                NSLog(@"%@",error);
-//            }
-//        }];
-//    }
-//
-//}
-//- (UIImage *)setImageWithIndex:(NSInteger)index {
-//
-//  UIImage *image =
-//    [[[SDWebImageManager sharedManager] imageCache] imageFromMemoryCacheForKey:_imageData[index]];
-//    if (image) {
-//        return image;
-//    }else {
-//        return _placeImage;
-//    }
-//
-//}
-
-
-
-
-
-
-
 @end
