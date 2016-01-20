@@ -18,8 +18,6 @@
 
 @property (nonatomic,strong) NSMutableDictionary *imageData;
 
-@property (nonatomic,strong) NSArray *imageUrlStrings;
-
 @end
 
 @implementation JPicScrollerView{
@@ -41,6 +39,10 @@
     BOOL _isNetwork;
 
     BOOL _hasTitle;
+    
+    UIImageView *_img;
+    
+    UIView *_titleView;
 }
 
 
@@ -65,51 +67,80 @@
 + (instancetype)j_picScrollViewWithFrame:(CGRect)frame WithImageUrls:(NSArray<NSString *> *)imageUrl {
     return  [[JPicScrollerView alloc] initWithFrame:frame WithImageNames:imageUrl];
 }
++ (instancetype)j_picScrollViewWithFrame:(CGRect)frame{
+    return [[JPicScrollerView alloc]initWithFrame:frame];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame WithImageNames:(NSArray<NSString *> *)ImageName {
-    if (ImageName.count < 1) {
-        return nil;
-    }
-    
     self = [super initWithFrame:frame];
-    
-    if(ImageName.count == 1) {
+    if (ImageName.count) {
+        [self setImageUrlStrings:ImageName];
+    }
+    return self;
+}
+
+- (void)setImageUrlStrings:(NSArray *)imageUrlStrings{
+    _imageUrlStrings = imageUrlStrings;
+    if (_imageUrlStrings.count < 1) {
+        return ;
+    }
+    if(_imageUrlStrings.count == 1 ) {
         
-        UIImageView *img = [[UIImageView alloc] initWithFrame:self.bounds];
-        [self addSubview:img];
-        _centerImageView = img;
-        
-        UIView *titleView = [self creatLabelBgView];
-        
-        _titleLabel = (UILabel *)titleView.subviews.firstObject;
-        
-        [self addSubview:titleView];
-        _isNetwork = [ImageName.firstObject hasPrefix:@"http://"];
+        if (!_img) {
+            _img = [[UIImageView alloc] initWithFrame:self.bounds];
+            [self addSubview:_img];
+            _centerImageView = _img;
+        }
+        if (!_titleView) {
+            _titleView = [self creatLabelBgView];
+            _titleLabel = (UILabel *)_titleView.subviews.firstObject;
+            [self addSubview:_titleView];
+        }
+        _isNetwork = [_imageUrlStrings.firstObject hasPrefix:@"http://"];
         
         if (_isNetwork) {
             JWebImageManager *manager = [JWebImageManager shareManager];
             
-            [manager downloadImageWithUrlString:ImageName.firstObject];
+            [manager downloadImageWithUrlString:_imageUrlStrings.firstObject];
             
             [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
-                img.image = image;
+                _img.image = image;
             }];
             
         }else {
-            img.image = [UIImage imageNamed:ImageName.firstObject];
+            _img.image = [UIImage imageNamed:_imageUrlStrings.firstObject];
+        }
+    }
+    
+    _imageData = [NSMutableDictionary dictionaryWithCapacity:_imageUrlStrings.count];
+    
+    _isNetwork = [imageUrlStrings.firstObject hasPrefix:@"http://"];
+    
+    if (_isNetwork) {
+        
+        JWebImageManager *manager = [JWebImageManager shareManager];
+        
+        [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
+            [self.imageData setObject:image forKey:url];
+            [self changeImageLeft:_currentIndex-1 center:_currentIndex right:_currentIndex+1];
+        }];
+        
+        for (NSString *urlSting in imageUrlStrings) {
+            [manager downloadImageWithUrlString:urlSting];
         }
         
-        return self;
+    }else {
+        
+        for (NSString *name in imageUrlStrings) {
+            [self.imageData setObject:[UIImage imageNamed:name] forKey:name];
+        }
+        
+        
     }
     
     [self prepareScrollView];
-    [self setImageUrlStrings:ImageName];
     [self setMaxImageCount:self.imageUrlStrings.count];
-    
-    return self;
 }
-
-
 - (void)prepareScrollView {
     
     UIScrollView *sc = [[UIScrollView alloc] initWithFrame:self.bounds];
@@ -338,8 +369,6 @@
     }
 }
 
-
-
 - (UIImage *)setImageWithIndex:(NSInteger)index {
     if (index < 0||index >= self.imageUrlStrings.count) {
         return _placeImage;
@@ -373,38 +402,6 @@
     [_timer invalidate];
     _timer = nil;
 }
-
-- (void)setImageUrlStrings:(NSArray *)imageUrlStrings {
-    _imageUrlStrings = imageUrlStrings;
-    _imageData = [NSMutableDictionary dictionaryWithCapacity:_imageUrlStrings.count];
-    
-    _isNetwork = [imageUrlStrings.firstObject hasPrefix:@"http://"];
-    
-    if (_isNetwork) {
-        
-        JWebImageManager *manager = [JWebImageManager shareManager];
-        
-        [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
-            [self.imageData setObject:image forKey:url];
-            [self changeImageLeft:_currentIndex-1 center:_currentIndex right:_currentIndex+1];
-        }];
-        
-        for (NSString *urlSting in imageUrlStrings) {
-            [manager downloadImageWithUrlString:urlSting];
-        }
-        
-    }else {
-        
-        for (NSString *name in imageUrlStrings) {
-            [self.imageData setObject:[UIImage imageNamed:name] forKey:name];
-        }
-        
-        
-    }
-    
-}
-
-
 
 -(void)dealloc {
     [self removeTimer];

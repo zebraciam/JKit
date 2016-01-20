@@ -41,13 +41,20 @@ typedef NS_ENUM(NSUInteger, PageControlStyle) {
 @property (nonatomic,copy) void(^imageViewDidTapAtIndex)(NSInteger index);
 
 /**
- *  创建轮播图
+ *  图片数据源
+ */
+@property (nonatomic,strong) NSArray *imageUrlStrings;
+/**
+ *  创建轮播图 包含image数组
  *  @param frame
  *  @param imageUrl imageUrl/imageUrlString/imageName,本地加载只需图片名字数组,网络加载urlsring必须为http:// 开头,
  */
 + (instancetype)j_picScrollViewWithFrame:(CGRect)frame WithImageUrls:(NSArray<NSString *> *)imageUrl;
-
-
+/**
+ *  创建轮播图 不包含image数组
+ *  @param frame
+ */
++ (instancetype)j_picScrollViewWithFrame:(CGRect)frame;
 
 @property (nonatomic,strong) UIColor *pageIndicatorTintColor;
 
