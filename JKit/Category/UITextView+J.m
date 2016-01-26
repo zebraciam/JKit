@@ -43,6 +43,7 @@ static char placeholderTextViewKey;
         [self addSubview:textView];
         
         [self setPlaceholderTextView:textView];
+        textView.hidden = self.text.length;
         
         NSOperationQueue *mainQuene =[NSOperationQueue mainQueue];
         

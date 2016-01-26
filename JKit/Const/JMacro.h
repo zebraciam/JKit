@@ -28,8 +28,10 @@
 
 #define JStringWithInteger(integer) [NSString stringWithFormat:@"%ld",integer]
 #define JStringWithInt(int) [NSString stringWithFormat:@"%d",int]
-#define JStringWithDouble(double) [NSString stringWithFormat:@"%lf",double]
-#define JStringWithFloat(float) [NSString stringWithFormat:@"%f",float]
+#define JStringWithDouble(double) [NSString stringWithFormat:@"%.2lf",double]
+#define JStringWithFloat(float) [NSString stringWithFormat:@"%.2f",float]
+
+#define JStringAndString(str1,str2) [NSString stringWithFormat:@"%@%@",str1,str2]
 
 #define JBlock(block, ...) block ? block(__VA_ARGS__) : nil
 
