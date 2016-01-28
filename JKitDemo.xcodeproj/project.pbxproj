@@ -12,6 +12,7 @@
 		921EE99B1C4E39D7006ADE8E /* JPicScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921EE99A1C4E39D7006ADE8E /* JPicScrollerView.m */; };
 		921EE99E1C4E3BED006ADE8E /* JWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 921EE99D1C4E3BED006ADE8E /* JWebImageManager.m */; };
 		925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 925D93AC1C45E06E0061B83B /* NSDictionary+J.m */; };
+		9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273DB731C59FE49008E33E9 /* UITabBarController+J.m */; };
 		92D3DC181C3CA2BF00DFDFE2 /* NSArray+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC171C3CA2BF00DFDFE2 /* NSArray+J.m */; };
 		92D3DC1B1C3CA2D000DFDFE2 /* NSString+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC1A1C3CA2D000DFDFE2 /* NSString+J.m */; };
 		92D3DC1F1C3CA48900DFDFE2 /* UISearchBar+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC1E1C3CA48900DFDFE2 /* UISearchBar+J.m */; };
@@ -61,6 +62,8 @@
 		921EE99D1C4E3BED006ADE8E /* JWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWebImageManager.m; sourceTree = "<group>"; };
 		925D93AB1C45E06E0061B83B /* NSDictionary+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+J.h"; sourceTree = "<group>"; };
 		925D93AC1C45E06E0061B83B /* NSDictionary+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+J.m"; sourceTree = "<group>"; };
+		9273DB721C59FE49008E33E9 /* UITabBarController+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+J.h"; sourceTree = "<group>"; };
+		9273DB731C59FE49008E33E9 /* UITabBarController+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+J.m"; sourceTree = "<group>"; };
 		92D3DC161C3CA2BF00DFDFE2 /* NSArray+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+J.h"; sourceTree = "<group>"; };
 		92D3DC171C3CA2BF00DFDFE2 /* NSArray+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+J.m"; sourceTree = "<group>"; };
 		92D3DC191C3CA2D000DFDFE2 /* NSString+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+J.h"; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				92D3DC311C3CB5C400DFDFE2 /* UIImage+J.m */,
 				925D93AB1C45E06E0061B83B /* NSDictionary+J.h */,
 				925D93AC1C45E06E0061B83B /* NSDictionary+J.m */,
+				9273DB721C59FE49008E33E9 /* UITabBarController+J.h */,
+				9273DB731C59FE49008E33E9 /* UITabBarController+J.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				921EE99E1C4E3BED006ADE8E /* JWebImageManager.m in Sources */,
 				921EE9981C4E38F2006ADE8E /* JPageControl.m in Sources */,
 				92D3DC2C1C3CB1C200DFDFE2 /* UIView+J.m in Sources */,
+				9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */,
 				92D3DC181C3CA2BF00DFDFE2 /* NSArray+J.m in Sources */,
 				921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */,
 				921EE99B1C4E39D7006ADE8E /* JPicScrollerView.m in Sources */,
