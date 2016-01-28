@@ -26,10 +26,10 @@
 #define JFont(s) ([UIFont systemFontOfSize:s])
 #define JBoldFont(s) ([UIFont boldSystemFontOfSize:s])
 
-#define JStringWithInteger(integer) [NSString stringWithFormat:@"%ld",integer]
-#define JStringWithInt(int) [NSString stringWithFormat:@"%d",int]
-#define JStringWithDouble(double) [NSString stringWithFormat:@"%.2lf",double]
-#define JStringWithFloat(float) [NSString stringWithFormat:@"%.2f",float]
+#define JStringWithInteger(integer) [NSString stringWithFormat:@"%ld",(long)integer]
+#define JStringWithInt(int) [NSString stringWithFormat:@"%d",(int)int]
+#define JStringWithDouble(double) [NSString stringWithFormat:@"%.2lf",(double)double]
+#define JStringWithFloat(float) [NSString stringWithFormat:@"%.2f",(float)float]
 
 #define JStringAndString(str1,str2) [NSString stringWithFormat:@"%@%@",str1,str2]
 
@@ -90,4 +90,60 @@ return instance; \
 - (NSUInteger)retainCount {return ULONG_MAX;}
 
 #endif
+
+
+
+static inline BOOL JIsEmpty(id objcet) {
+    
+    return objcet == nil || [objcet isEqual:[NSNull null]] || ([objcet respondsToSelector:@selector(length)] && [(NSData *)objcet length] == 0) || ([objcet respondsToSelector:@selector(count)] && [(NSArray *)objcet count] == 0);
+}
+
+static inline BOOL JIsNoEmpty(id objct) {
+    
+    return !JIsEmpty(objct);
+}
+
+static inline NSString *JStringWithObject(id object) {
+    
+    if (object == nil || [object isEqual:[NSNull null]]) {
+        
+        return @"";
+        
+    } else if ([object isKindOfClass:[NSString class]]) {
+        
+        return object;
+        
+    } else if ([object respondsToSelector:@selector(stringValue)]){
+        
+        return [object stringValue];
+        
+    } else {
+        
+        return [object description];
+    }
+}
+
+UIKIT_STATIC_INLINE UIViewController *JCurrentViewController() {
+    
+    UIViewController *topViewController = [[UIApplication sharedApplication].keyWindow rootViewController];
+    
+    if ([topViewController isKindOfClass:[UITabBarController class]]) {
+        
+        topViewController = ((UITabBarController *)topViewController).selectedViewController;
+    }
+    
+    if ([topViewController presentedViewController]) {
+        
+        topViewController = [topViewController presentedViewController];
+    }
+    
+    if ([topViewController isKindOfClass:[UINavigationController class]] && [(UINavigationController *)topViewController topViewController]) {
+        
+        return [(UINavigationController*)topViewController topViewController];
+    }
+    
+    return topViewController;
+}
+
+
 #endif /* JMacro_h */

@@ -18,4 +18,5 @@
         return [self objectForKey:key];
     }
 }
+
 @end
