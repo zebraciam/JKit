@@ -7,7 +7,7 @@
 //
 
 #import "NSDictionary+J.h"
-
+#import "JMacro.h"
 @implementation NSDictionary (J)
 
 #pragma mark -取值(防止为Null)
@@ -18,5 +18,13 @@
         return [self objectForKey:key];
     }
 }
-
+- (NSString *)j_urlValue{
+    NSString *url = @"";
+    NSArray *keyArr = [self allKeys];
+    NSArray *valueArr = [self allValues];
+    for (int i = 0; i < keyArr.count; i++) {
+        url = [NSString stringWithFormat:@"%@&%@=%@",url,JStringWithObject(keyArr[i]),JStringWithObject(valueArr[i])];
+    }
+    return url;
+}
 @end

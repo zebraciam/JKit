@@ -18,4 +18,9 @@
  *  @return nil 或者 值
  */
 - (instancetype)j_objectForKey:(NSString *)key;
+
+/**
+ *  post 提交参数转化为URL
+ */
+- (NSString *)j_urlValue;
 @end
