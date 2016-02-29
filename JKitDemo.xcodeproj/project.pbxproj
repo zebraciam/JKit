@@ -13,6 +13,7 @@
 		921EE99E1C4E3BED006ADE8E /* JWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 921EE99D1C4E3BED006ADE8E /* JWebImageManager.m */; };
 		925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 925D93AC1C45E06E0061B83B /* NSDictionary+J.m */; };
 		9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273DB731C59FE49008E33E9 /* UITabBarController+J.m */; };
+		92AE7BA21C840EA1005B614C /* JTopClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BA11C840EA1005B614C /* JTopClassification.m */; };
 		92D3DC181C3CA2BF00DFDFE2 /* NSArray+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC171C3CA2BF00DFDFE2 /* NSArray+J.m */; };
 		92D3DC1B1C3CA2D000DFDFE2 /* NSString+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC1A1C3CA2D000DFDFE2 /* NSString+J.m */; };
 		92D3DC1F1C3CA48900DFDFE2 /* UISearchBar+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC1E1C3CA48900DFDFE2 /* UISearchBar+J.m */; };
@@ -64,6 +65,8 @@
 		925D93AC1C45E06E0061B83B /* NSDictionary+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+J.m"; sourceTree = "<group>"; };
 		9273DB721C59FE49008E33E9 /* UITabBarController+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+J.h"; sourceTree = "<group>"; };
 		9273DB731C59FE49008E33E9 /* UITabBarController+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+J.m"; sourceTree = "<group>"; };
+		92AE7BA01C840EA1005B614C /* JTopClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTopClassification.h; sourceTree = "<group>"; };
+		92AE7BA11C840EA1005B614C /* JTopClassification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTopClassification.m; sourceTree = "<group>"; };
 		92D3DC161C3CA2BF00DFDFE2 /* NSArray+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+J.h"; sourceTree = "<group>"; };
 		92D3DC171C3CA2BF00DFDFE2 /* NSArray+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+J.m"; sourceTree = "<group>"; };
 		92D3DC191C3CA2D000DFDFE2 /* NSString+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+J.h"; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		921E68CA1C3BC902003E3389 /* JKit */ = {
 			isa = PBXGroup;
 			children = (
+				92AE7B9F1C840EA1005B614C /* JTopClassification */,
 				921EE9951C4E38C3006ADE8E /* JPicScrollerView */,
 				921E68CF1C3BC902003E3389 /* JKit.h */,
 				92D3DC201C3CA5C800DFDFE2 /* Const */,
@@ -178,6 +182,15 @@
 				921EE99D1C4E3BED006ADE8E /* JWebImageManager.m */,
 			);
 			path = JPicScrollerView;
+			sourceTree = "<group>";
+		};
+		92AE7B9F1C840EA1005B614C /* JTopClassification */ = {
+			isa = PBXGroup;
+			children = (
+				92AE7BA01C840EA1005B614C /* JTopClassification.h */,
+				92AE7BA11C840EA1005B614C /* JTopClassification.m */,
+			);
+			path = JTopClassification;
 			sourceTree = "<group>";
 		};
 		92D3DC201C3CA5C800DFDFE2 /* Const */ = {
@@ -387,6 +400,7 @@
 				925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */,
 				92D3DC321C3CB5C400DFDFE2 /* UIImage+J.m in Sources */,
 				92D3DC291C3CB04700DFDFE2 /* UITextView+J.m in Sources */,
+				92AE7BA21C840EA1005B614C /* JTopClassification.m in Sources */,
 				921EE99E1C4E3BED006ADE8E /* JWebImageManager.m in Sources */,
 				921EE9981C4E38F2006ADE8E /* JPageControl.m in Sources */,
 				92D3DC2C1C3CB1C200DFDFE2 /* UIView+J.m in Sources */,
