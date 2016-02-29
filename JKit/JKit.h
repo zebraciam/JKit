@@ -11,7 +11,7 @@
 
 #import "JCategory.h"
 #import "JMacro.h"
-#import "JPicScrollerView.h"
-#import "JTopClassification.h"
+#import "JView.h"
+#import "JTool.h"
 
 #endif /* JKit_h */

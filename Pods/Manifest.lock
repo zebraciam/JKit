@@ -1,0 +1,22 @@
+PODS:
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SVProgressHUD (1.1.3)
+  - VPImageCropper (0.0.4)
+
+DEPENDENCIES:
+  - ReactiveCocoa
+  - SVProgressHUD
+  - VPImageCropper
+
+SPEC CHECKSUMS:
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  VPImageCropper: f4895315460bd05fbb22dbee6b063bdd43f25797
+
+COCOAPODS: 0.39.0

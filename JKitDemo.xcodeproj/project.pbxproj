@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E68CE1C3BC902003E3389 /* UIColor+J.m */; };
-		921EE9981C4E38F2006ADE8E /* JPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 921EE9971C4E38F2006ADE8E /* JPageControl.m */; };
-		921EE99B1C4E39D7006ADE8E /* JPicScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 921EE99A1C4E39D7006ADE8E /* JPicScrollerView.m */; };
-		921EE99E1C4E3BED006ADE8E /* JWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 921EE99D1C4E3BED006ADE8E /* JWebImageManager.m */; };
 		925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 925D93AC1C45E06E0061B83B /* NSDictionary+J.m */; };
 		9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273DB731C59FE49008E33E9 /* UITabBarController+J.m */; };
-		92AE7BA21C840EA1005B614C /* JTopClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BA11C840EA1005B614C /* JTopClassification.m */; };
+		92AE7BB21C843811005B614C /* JPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BAA1C843811005B614C /* JPageControl.m */; };
+		92AE7BB31C843811005B614C /* JPicScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BAC1C843811005B614C /* JPicScrollerView.m */; };
+		92AE7BB41C843811005B614C /* JWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BAE1C843811005B614C /* JWebImageManager.m */; };
+		92AE7BB51C843811005B614C /* JTopClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BB11C843811005B614C /* JTopClassification.m */; };
+		92AE7BBE1C8438D7005B614C /* JLoadingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BBD1C8438D7005B614C /* JLoadingTool.m */; };
+		92AE7BC21C843C8E005B614C /* JCameraTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BC11C843C8E005B614C /* JCameraTool.m */; };
 		92D3DC181C3CA2BF00DFDFE2 /* NSArray+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC171C3CA2BF00DFDFE2 /* NSArray+J.m */; };
 		92D3DC1B1C3CA2D000DFDFE2 /* NSString+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC1A1C3CA2D000DFDFE2 /* NSString+J.m */; };
 		92D3DC1F1C3CA48900DFDFE2 /* UISearchBar+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D3DC1E1C3CA48900DFDFE2 /* UISearchBar+J.m */; };
@@ -31,6 +33,7 @@
 		92E953C51C3BB9770074912A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92E953C31C3BB9770074912A /* LaunchScreen.storyboard */; };
 		92E953D01C3BB9770074912A /* JKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E953CF1C3BB9770074912A /* JKitDemoTests.m */; };
 		92E953DB1C3BB9770074912A /* JKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E953DA1C3BB9770074912A /* JKitDemoUITests.m */; };
+		AABEEABD687F7A0972B0A9D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF7B77214ABB7EFB2E985AA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,22 +54,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A16DF4901E12F33B593BEEE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		726543742A2933BF5178A813 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		921E68CC1C3BC902003E3389 /* JCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCategory.h; sourceTree = "<group>"; };
 		921E68CD1C3BC902003E3389 /* UIColor+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+J.h"; sourceTree = "<group>"; };
 		921E68CE1C3BC902003E3389 /* UIColor+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+J.m"; sourceTree = "<group>"; };
 		921E68CF1C3BC902003E3389 /* JKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKit.h; sourceTree = "<group>"; };
-		921EE9961C4E38F2006ADE8E /* JPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPageControl.h; sourceTree = "<group>"; };
-		921EE9971C4E38F2006ADE8E /* JPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPageControl.m; sourceTree = "<group>"; };
-		921EE9991C4E39D7006ADE8E /* JPicScrollerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPicScrollerView.h; sourceTree = "<group>"; };
-		921EE99A1C4E39D7006ADE8E /* JPicScrollerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPicScrollerView.m; sourceTree = "<group>"; };
-		921EE99C1C4E3BED006ADE8E /* JWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWebImageManager.h; sourceTree = "<group>"; };
-		921EE99D1C4E3BED006ADE8E /* JWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWebImageManager.m; sourceTree = "<group>"; };
 		925D93AB1C45E06E0061B83B /* NSDictionary+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+J.h"; sourceTree = "<group>"; };
 		925D93AC1C45E06E0061B83B /* NSDictionary+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+J.m"; sourceTree = "<group>"; };
 		9273DB721C59FE49008E33E9 /* UITabBarController+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+J.h"; sourceTree = "<group>"; };
 		9273DB731C59FE49008E33E9 /* UITabBarController+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+J.m"; sourceTree = "<group>"; };
-		92AE7BA01C840EA1005B614C /* JTopClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTopClassification.h; sourceTree = "<group>"; };
-		92AE7BA11C840EA1005B614C /* JTopClassification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTopClassification.m; sourceTree = "<group>"; };
+		92AE7BA91C843811005B614C /* JPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPageControl.h; sourceTree = "<group>"; };
+		92AE7BAA1C843811005B614C /* JPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPageControl.m; sourceTree = "<group>"; };
+		92AE7BAB1C843811005B614C /* JPicScrollerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPicScrollerView.h; sourceTree = "<group>"; };
+		92AE7BAC1C843811005B614C /* JPicScrollerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPicScrollerView.m; sourceTree = "<group>"; };
+		92AE7BAD1C843811005B614C /* JWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWebImageManager.h; sourceTree = "<group>"; };
+		92AE7BAE1C843811005B614C /* JWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWebImageManager.m; sourceTree = "<group>"; };
+		92AE7BB01C843811005B614C /* JTopClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTopClassification.h; sourceTree = "<group>"; };
+		92AE7BB11C843811005B614C /* JTopClassification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTopClassification.m; sourceTree = "<group>"; };
+		92AE7BB61C843841005B614C /* JView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JView.h; sourceTree = "<group>"; };
+		92AE7BB71C84386C005B614C /* JTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JTool.h; sourceTree = "<group>"; };
+		92AE7BBC1C8438D7005B614C /* JLoadingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLoadingTool.h; sourceTree = "<group>"; };
+		92AE7BBD1C8438D7005B614C /* JLoadingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLoadingTool.m; sourceTree = "<group>"; };
+		92AE7BC01C843C8E005B614C /* JCameraTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCameraTool.h; sourceTree = "<group>"; };
+		92AE7BC11C843C8E005B614C /* JCameraTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCameraTool.m; sourceTree = "<group>"; };
 		92D3DC161C3CA2BF00DFDFE2 /* NSArray+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+J.h"; sourceTree = "<group>"; };
 		92D3DC171C3CA2BF00DFDFE2 /* NSArray+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+J.m"; sourceTree = "<group>"; };
 		92D3DC191C3CA2D000DFDFE2 /* NSString+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+J.h"; sourceTree = "<group>"; };
@@ -102,6 +113,7 @@
 		92E953D61C3BB9770074912A /* JKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E953DA1C3BB9770074912A /* JKitDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKitDemoUITests.m; sourceTree = "<group>"; };
 		92E953DC1C3BB9770074912A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDF7B77214ABB7EFB2E985AA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AABEEABD687F7A0972B0A9D6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,12 +142,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19114A5F8BE846F50E6DC149 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDF7B77214ABB7EFB2E985AA /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		921E68CA1C3BC902003E3389 /* JKit */ = {
 			isa = PBXGroup;
 			children = (
-				92AE7B9F1C840EA1005B614C /* JTopClassification */,
-				921EE9951C4E38C3006ADE8E /* JPicScrollerView */,
 				921E68CF1C3BC902003E3389 /* JKit.h */,
+				92AE7BA61C843811005B614C /* Tool */,
+				92AE7BA71C843811005B614C /* View */,
 				92D3DC201C3CA5C800DFDFE2 /* Const */,
 				921E68CB1C3BC902003E3389 /* Category */,
 			);
@@ -171,26 +192,64 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		921EE9951C4E38C3006ADE8E /* JPicScrollerView */ = {
+		92AE7BA61C843811005B614C /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				921EE9961C4E38F2006ADE8E /* JPageControl.h */,
-				921EE9971C4E38F2006ADE8E /* JPageControl.m */,
-				921EE9991C4E39D7006ADE8E /* JPicScrollerView.h */,
-				921EE99A1C4E39D7006ADE8E /* JPicScrollerView.m */,
-				921EE99C1C4E3BED006ADE8E /* JWebImageManager.h */,
-				921EE99D1C4E3BED006ADE8E /* JWebImageManager.m */,
+				92AE7BB71C84386C005B614C /* JTool.h */,
+				92AE7BBF1C8438F9005B614C /* JCamera */,
+				92AE7BBB1C8438D7005B614C /* JLoading */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		92AE7BA71C843811005B614C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				92AE7BB61C843841005B614C /* JView.h */,
+				92AE7BA81C843811005B614C /* JPicScrollerView */,
+				92AE7BAF1C843811005B614C /* JTopClassification */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		92AE7BA81C843811005B614C /* JPicScrollerView */ = {
+			isa = PBXGroup;
+			children = (
+				92AE7BA91C843811005B614C /* JPageControl.h */,
+				92AE7BAA1C843811005B614C /* JPageControl.m */,
+				92AE7BAB1C843811005B614C /* JPicScrollerView.h */,
+				92AE7BAC1C843811005B614C /* JPicScrollerView.m */,
+				92AE7BAD1C843811005B614C /* JWebImageManager.h */,
+				92AE7BAE1C843811005B614C /* JWebImageManager.m */,
 			);
 			path = JPicScrollerView;
 			sourceTree = "<group>";
 		};
-		92AE7B9F1C840EA1005B614C /* JTopClassification */ = {
+		92AE7BAF1C843811005B614C /* JTopClassification */ = {
 			isa = PBXGroup;
 			children = (
-				92AE7BA01C840EA1005B614C /* JTopClassification.h */,
-				92AE7BA11C840EA1005B614C /* JTopClassification.m */,
+				92AE7BB01C843811005B614C /* JTopClassification.h */,
+				92AE7BB11C843811005B614C /* JTopClassification.m */,
 			);
 			path = JTopClassification;
+			sourceTree = "<group>";
+		};
+		92AE7BBB1C8438D7005B614C /* JLoading */ = {
+			isa = PBXGroup;
+			children = (
+				92AE7BBC1C8438D7005B614C /* JLoadingTool.h */,
+				92AE7BBD1C8438D7005B614C /* JLoadingTool.m */,
+			);
+			path = JLoading;
+			sourceTree = "<group>";
+		};
+		92AE7BBF1C8438F9005B614C /* JCamera */ = {
+			isa = PBXGroup;
+			children = (
+				92AE7BC01C843C8E005B614C /* JCameraTool.h */,
+				92AE7BC11C843C8E005B614C /* JCameraTool.m */,
+			);
+			path = JCamera;
 			sourceTree = "<group>";
 		};
 		92D3DC201C3CA5C800DFDFE2 /* Const */ = {
@@ -210,6 +269,8 @@
 				92E953CE1C3BB9770074912A /* JKitDemoTests */,
 				92E953D91C3BB9770074912A /* JKitDemoUITests */,
 				92E953B31C3BB9770074912A /* Products */,
+				C5DAB4E8E4BD31CAF9CC1D82 /* Pods */,
+				19114A5F8BE846F50E6DC149 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,6 +327,15 @@
 			path = JKitDemoUITests;
 			sourceTree = "<group>";
 		};
+		C5DAB4E8E4BD31CAF9CC1D82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A16DF4901E12F33B593BEEE /* Pods.debug.xcconfig */,
+				726543742A2933BF5178A813 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -273,9 +343,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92E953DF1C3BB9770074912A /* Build configuration list for PBXNativeTarget "JKitDemo" */;
 			buildPhases = (
+				AB8563943F122C48363A2FE6 /* Check Pods Manifest.lock */,
 				92E953AE1C3BB9770074912A /* Sources */,
 				92E953AF1C3BB9770074912A /* Frameworks */,
 				92E953B01C3BB9770074912A /* Resources */,
+				1B7C13973D1359C27E9A7796 /* Embed Pods Frameworks */,
+				B2DDC6F9773161AE699B86DC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -392,26 +465,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B7C13973D1359C27E9A7796 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB8563943F122C48363A2FE6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B2DDC6F9773161AE699B86DC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		92E953AE1C3BB9770074912A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */,
+				92AE7BBE1C8438D7005B614C /* JLoadingTool.m in Sources */,
 				92D3DC321C3CB5C400DFDFE2 /* UIImage+J.m in Sources */,
 				92D3DC291C3CB04700DFDFE2 /* UITextView+J.m in Sources */,
-				92AE7BA21C840EA1005B614C /* JTopClassification.m in Sources */,
-				921EE99E1C4E3BED006ADE8E /* JWebImageManager.m in Sources */,
-				921EE9981C4E38F2006ADE8E /* JPageControl.m in Sources */,
 				92D3DC2C1C3CB1C200DFDFE2 /* UIView+J.m in Sources */,
+				92AE7BB31C843811005B614C /* JPicScrollerView.m in Sources */,
 				9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */,
 				92D3DC181C3CA2BF00DFDFE2 /* NSArray+J.m in Sources */,
 				921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */,
-				921EE99B1C4E39D7006ADE8E /* JPicScrollerView.m in Sources */,
 				92E953BD1C3BB9770074912A /* ViewController.m in Sources */,
 				92E953BA1C3BB9770074912A /* AppDelegate.m in Sources */,
 				92D3DC2F1C3CB32C00DFDFE2 /* UIViewController+J.m in Sources */,
+				92AE7BB41C843811005B614C /* JWebImageManager.m in Sources */,
+				92AE7BB51C843811005B614C /* JTopClassification.m in Sources */,
+				92AE7BC21C843C8E005B614C /* JCameraTool.m in Sources */,
 				92D3DC1B1C3CA2D000DFDFE2 /* NSString+J.m in Sources */,
+				92AE7BB21C843811005B614C /* JPageControl.m in Sources */,
 				92E953B71C3BB9770074912A /* main.m in Sources */,
 				92D3DC261C3CB00500DFDFE2 /* UITextField+J.m in Sources */,
 				92D3DC1F1C3CA48900DFDFE2 /* UISearchBar+J.m in Sources */,
@@ -553,6 +676,7 @@
 		};
 		92E953E01C3BB9770074912A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A16DF4901E12F33B593BEEE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JKitDemo/PrefixHeader.pch";
@@ -565,6 +689,7 @@
 		};
 		92E953E11C3BB9770074912A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 726543742A2933BF5178A813 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JKitDemo/PrefixHeader.pch";
