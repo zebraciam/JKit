@@ -11,5 +11,6 @@
 
 #import "JPicScrollerView.h"
 #import "JTopClassification.h"
+#import "JPickView.h"
 
 #endif /* JView_h */

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E05FE91C903DC8006AF100 /* JPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E05FE81C903DC8006AF100 /* JPickView.m */; };
 		921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E68CE1C3BC902003E3389 /* UIColor+J.m */; };
 		925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 925D93AC1C45E06E0061B83B /* NSDictionary+J.m */; };
 		9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273DB731C59FE49008E33E9 /* UITabBarController+J.m */; };
@@ -54,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15E05FE71C903DC8006AF100 /* JPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPickView.h; sourceTree = "<group>"; };
+		15E05FE81C903DC8006AF100 /* JPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPickView.m; sourceTree = "<group>"; };
 		4A16DF4901E12F33B593BEEE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		726543742A2933BF5178A813 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		921E68CC1C3BC902003E3389 /* JCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCategory.h; sourceTree = "<group>"; };
@@ -142,6 +145,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15E05FE61C903DA1006AF100 /* JPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				15E05FE71C903DC8006AF100 /* JPickView.h */,
+				15E05FE81C903DC8006AF100 /* JPickView.m */,
+			);
+			path = JPickerView;
+			sourceTree = "<group>";
+		};
 		19114A5F8BE846F50E6DC149 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				92AE7BB61C843841005B614C /* JView.h */,
+				15E05FE61C903DA1006AF100 /* JPickerView */,
 				92AE7BA81C843811005B614C /* JPicScrollerView */,
 				92AE7BAF1C843811005B614C /* JTopClassification */,
 			);
@@ -535,6 +548,7 @@
 				92AE7BC21C843C8E005B614C /* JCameraTool.m in Sources */,
 				92D3DC1B1C3CA2D000DFDFE2 /* NSString+J.m in Sources */,
 				92AE7BB21C843811005B614C /* JPageControl.m in Sources */,
+				15E05FE91C903DC8006AF100 /* JPickView.m in Sources */,
 				92E953B71C3BB9770074912A /* main.m in Sources */,
 				92D3DC261C3CB00500DFDFE2 /* UITextField+J.m in Sources */,
 				92D3DC1F1C3CA48900DFDFE2 /* UISearchBar+J.m in Sources */,
