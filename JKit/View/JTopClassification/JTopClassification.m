@@ -57,6 +57,7 @@
             btn.titleLabel.font = JFont(14);
             btn.titleLabel.textAlignment = NSTextAlignmentCenter;
             btn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            btn.adjustsImageWhenHighlighted = NO;
             if (i == 0) {
                 btn.selected = YES;
             }else{
@@ -75,6 +76,8 @@
             btn.titleLabel.font = JFont(14);
             btn.titleLabel.textAlignment = NSTextAlignmentCenter;
             btn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            btn.adjustsImageWhenHighlighted = NO;
+
             if (i == 0) {
                 btn.selected = YES;
             }else{
