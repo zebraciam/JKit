@@ -28,14 +28,14 @@ typedef void (^JPickViewSubmit)(NSString*selectStr);
  *
  *  @param title title
  */
-+ (void)j_createDatePickerWithTitle:(NSString *)title showPickView:(UIViewController *)vc andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block;
++ (void)j_createDatePickerWithTitle:(NSString *)title andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block;
 /**
  *  PickerView
  *
  *  @param items 一维数组
  *  @param title title
  */
-+ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title showPickView:(UIViewController *)vc andCallBack:(JPickViewSubmit)block;;
++ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title andCallBack:(JPickViewSubmit)block;;
 
 @property(nonatomic,copy)JPickViewSubmit block;
 @end

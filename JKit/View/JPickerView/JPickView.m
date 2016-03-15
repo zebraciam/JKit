@@ -16,17 +16,17 @@
     self.isDate = NO;
     return self;
 }
-- (void)showPickView:(UIViewController *)vc
+- (void)showPickView
 {
     self.bgView = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.bgView.backgroundColor = [UIColor blackColor];
     self.bgView.alpha = 0.3f;
-    [vc.view addSubview:self.bgView];
+    [JKeyWindow addSubview:self.bgView];
     
     CGRect frame = self.frame ;
     self.frame = CGRectMake(0,SCREENSIZE.height + frame.size.height, SCREENSIZE.width, frame.size.height);
-    [vc.view addSubview:self];
-    [UIView animateWithDuration:0.5f
+    [JKeyWindow addSubview:self];
+    [UIView animateWithDuration:0.3f
                      animations:^{
                          
                          self.frame = frame;
@@ -37,7 +37,7 @@
     [self.bgView removeFromSuperview];
     [self removeFromSuperview];
 }
-+ (void)j_createDatePickerWithTitle:(NSString *)title showPickView:(UIViewController *)vc andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block{
++ (void)j_createDatePickerWithTitle:(NSString *)title andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block{
     
     JPickView *pickView = [[JPickView alloc] init];
 
@@ -110,9 +110,9 @@
     
     float height = 300;
     pickView.frame = CGRectMake(0, SCREENSIZE.height - height, SCREENSIZE.width, height);
-    [pickView showPickView:vc];
+    [pickView showPickView];
 }
-+ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title showPickView:(UIViewController *)vc andCallBack:(JPickViewSubmit)block
++ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title andCallBack:(JPickViewSubmit)block
 {
     JPickView *pickView = [[JPickView alloc] init];
     pickView.block = block;
@@ -156,7 +156,7 @@
     
     float height = 300;
     pickView.frame = CGRectMake(0, SCREENSIZE.height - height, SCREENSIZE.width, height);
-    [pickView showPickView:vc];
+    [pickView showPickView];
 
 }
 #pragma mark DatePicker监听方法
