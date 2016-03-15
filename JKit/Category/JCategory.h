@@ -20,5 +20,6 @@
 #import "UIImage+J.h"
 #import "NSDictionary+J.h"
 #import "UITabBarController+J.h"
+#import "NSDate+J.h"
 
 #endif /* JCategory_h */
