@@ -28,7 +28,7 @@ typedef void (^JPickViewSubmit)(NSString*selectStr);
  *
  *  @param title title
  */
-+ (void)j_createDatePickerWithTitle:(NSString *)title showPickView:(UIViewController *)vc andDatePickerMode:(UIDatePickerMode)mode andCallBack:(JPickViewSubmit)block;
++ (void)j_createDatePickerWithTitle:(NSString *)title showPickView:(UIViewController *)vc andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block;
 /**
  *  PickerView
  *

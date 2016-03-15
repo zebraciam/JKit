@@ -37,7 +37,7 @@
     [self.bgView removeFromSuperview];
     [self removeFromSuperview];
 }
-+ (void)j_createDatePickerWithTitle:(NSString *)title showPickView:(UIViewController *)vc andDatePickerMode:(UIDatePickerMode)mode andCallBack:(JPickViewSubmit)block{
++ (void)j_createDatePickerWithTitle:(NSString *)title showPickView:(UIViewController *)vc andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block{
     
     JPickView *pickView = [[JPickView alloc] init];
 
@@ -76,6 +76,15 @@
     // 1.日期Picker
     UIDatePicker *datePickr = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, SCREENSIZE.width, 270)];
     datePickr.backgroundColor = [UIColor whiteColor];
+    if(defaultDate){
+        [datePickr setDate:defaultDate animated:YES];
+    }
+    if(maxDate){
+        datePickr.maximumDate = maxDate;
+    }
+    if(minDate){
+        datePickr.minimumDate = minDate;
+    }
     // 1.1选择datePickr的显示风格
     if (mode) {
         [datePickr setDatePickerMode:mode];
