@@ -21,6 +21,9 @@
     self.bgView = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.bgView.backgroundColor = [UIColor blackColor];
     self.bgView.alpha = 0.3f;
+    [self.bgView j_addTapGesture:^(UITapGestureRecognizer *gestureRecognizer) {
+        [self hide];
+    }];
     [JKeyWindow addSubview:self.bgView];
     
     CGRect frame = self.frame ;

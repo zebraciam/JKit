@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JMacro.h"
+#import "UIView+J.h"
 @class JPickView;
 typedef void (^JPickViewSubmit)(NSString*selectStr);
 
