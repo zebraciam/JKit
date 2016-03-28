@@ -41,11 +41,13 @@
     CGFloat height = self.frame.size.height;
     _titleArr = titleArr;
     if (isSliding) {
-        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, height)];
+        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, height - 1)];
         _scrollView.backgroundColor = [UIColor whiteColor];
         _scrollView.showsVerticalScrollIndicator = NO; //垂直方向的滚动指示
+        _scrollView.alwaysBounceVertical = NO;
+        
         _scrollView.showsHorizontalScrollIndicator = NO;
-        _scrollView.contentSize = CGSizeMake(_titleArr.count * width, 0);
+        _scrollView.contentSize = CGSizeMake(_titleArr.count * width, -10);
         [self addSubview:_scrollView];
         for (int i = 0; i < _titleArr.count; i++) {
             
