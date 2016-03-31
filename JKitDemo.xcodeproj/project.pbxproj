@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		15AD79F41C982DDA00BA5529 /* NSDate+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD79F31C982DDA00BA5529 /* NSDate+J.m */; };
+		15B21BC11CAD2DE2003BD8DF /* JPagerTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC01CAD2DE2003BD8DF /* JPagerTopTabView.m */; };
+		15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC31CAD2E39003BD8DF /* JPagerViewController.m */; };
+		15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC61CAD2F20003BD8DF /* JPagerBaseViewController.m */; };
 		15E05FE91C903DC8006AF100 /* JPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E05FE81C903DC8006AF100 /* JPickView.m */; };
 		921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E68CE1C3BC902003E3389 /* UIColor+J.m */; };
 		925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 925D93AC1C45E06E0061B83B /* NSDictionary+J.m */; };
@@ -58,6 +61,13 @@
 /* Begin PBXFileReference section */
 		15AD79F21C982DDA00BA5529 /* NSDate+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+J.h"; sourceTree = "<group>"; };
 		15AD79F31C982DDA00BA5529 /* NSDate+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+J.m"; sourceTree = "<group>"; };
+		15B21BBE1CAD2D82003BD8DF /* JPagerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPagerMacro.h; sourceTree = "<group>"; };
+		15B21BBF1CAD2DE2003BD8DF /* JPagerTopTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPagerTopTabView.h; sourceTree = "<group>"; };
+		15B21BC01CAD2DE2003BD8DF /* JPagerTopTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPagerTopTabView.m; sourceTree = "<group>"; };
+		15B21BC21CAD2E39003BD8DF /* JPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPagerViewController.h; sourceTree = "<group>"; };
+		15B21BC31CAD2E39003BD8DF /* JPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPagerViewController.m; sourceTree = "<group>"; };
+		15B21BC51CAD2F20003BD8DF /* JPagerBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPagerBaseViewController.h; sourceTree = "<group>"; };
+		15B21BC61CAD2F20003BD8DF /* JPagerBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPagerBaseViewController.m; sourceTree = "<group>"; };
 		15E05FE71C903DC8006AF100 /* JPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPickView.h; sourceTree = "<group>"; };
 		15E05FE81C903DC8006AF100 /* JPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPickView.m; sourceTree = "<group>"; };
 		4A16DF4901E12F33B593BEEE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +158,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15B21BBD1CAD2B02003BD8DF /* JPagerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				15B21BBE1CAD2D82003BD8DF /* JPagerMacro.h */,
+				15B21BBF1CAD2DE2003BD8DF /* JPagerTopTabView.h */,
+				15B21BC01CAD2DE2003BD8DF /* JPagerTopTabView.m */,
+				15B21BC51CAD2F20003BD8DF /* JPagerBaseViewController.h */,
+				15B21BC61CAD2F20003BD8DF /* JPagerBaseViewController.m */,
+				15B21BC21CAD2E39003BD8DF /* JPagerViewController.h */,
+				15B21BC31CAD2E39003BD8DF /* JPagerViewController.m */,
+			);
+			path = JPagerViewController;
+			sourceTree = "<group>";
+		};
 		15E05FE61C903DA1006AF100 /* JPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				92AE7BB61C843841005B614C /* JView.h */,
+				15B21BBD1CAD2B02003BD8DF /* JPagerViewController */,
 				15E05FE61C903DA1006AF100 /* JPickerView */,
 				92AE7BA81C843811005B614C /* JPicScrollerView */,
 				92AE7BAF1C843811005B614C /* JTopClassification */,
@@ -537,6 +562,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */,
+				15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */,
+				15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */,
 				92AE7BBE1C8438D7005B614C /* JLoadingTool.m in Sources */,
 				92D3DC321C3CB5C400DFDFE2 /* UIImage+J.m in Sources */,
 				92D3DC291C3CB04700DFDFE2 /* UITextView+J.m in Sources */,
@@ -554,6 +581,7 @@
 				92AE7BC21C843C8E005B614C /* JCameraTool.m in Sources */,
 				92D3DC1B1C3CA2D000DFDFE2 /* NSString+J.m in Sources */,
 				92AE7BB21C843811005B614C /* JPageControl.m in Sources */,
+				15B21BC11CAD2DE2003BD8DF /* JPagerTopTabView.m in Sources */,
 				15E05FE91C903DC8006AF100 /* JPickView.m in Sources */,
 				92E953B71C3BB9770074912A /* main.m in Sources */,
 				92D3DC261C3CB00500DFDFE2 /* UITextField+J.m in Sources */,
