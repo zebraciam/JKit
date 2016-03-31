@@ -10,7 +10,6 @@
 #define SCREENSIZE UIScreen.mainScreen.bounds.size
 @implementation JPickView
 
-@synthesize block;
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     self.isDate = NO;
@@ -79,15 +78,9 @@
     // 1.日期Picker
     UIDatePicker *datePickr = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, SCREENSIZE.width, 270)];
     datePickr.backgroundColor = [UIColor whiteColor];
-    if(defaultDate){
-        [datePickr setDate:defaultDate animated:YES];
-    }
-    if(maxDate){
-        datePickr.maximumDate = maxDate;
-    }
-    if(minDate){
-        datePickr.minimumDate = minDate;
-    }
+    [datePickr setDate:defaultDate animated:YES];
+    datePickr.maximumDate = maxDate;
+    datePickr.minimumDate = minDate;
     // 1.1选择datePickr的显示风格
     if (mode) {
         [datePickr setDatePickerMode:mode];
@@ -198,7 +191,7 @@
        
 
     }
-    JBlock(block, self.selectedStr);
+    JBlock(_block, self.selectedStr);
     [self hide];
    
     
@@ -250,15 +243,6 @@
     [[NSScanner scannerWithString:[hexColor substringWithRange:range]]scanHexInt:&blue];
     return [UIColor colorWithRed:(float)(red/255.0f)green:(float)(green / 255.0f) blue:(float)(blue / 255.0f)alpha:1.0f];
     
-}
-
-- (CGSize)workOutSizeWithStr:(NSString *)str andFont:(NSInteger)fontSize value:(NSValue *)value{
-    CGSize size;
-    if (str) {
-        NSDictionary *attribute = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:fontSize],NSFontAttributeName, nil];
-        size=[str boundingRectWithSize:[value CGSizeValue] options:NSStringDrawingUsesFontLeading |NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingTruncatesLastVisibleLine attributes:attribute context:nil].size;
-    }
-    return size;
 }
 @end
 

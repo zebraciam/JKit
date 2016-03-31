@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "JMacro.h"
 #import "UIView+J.h"
-@class JPickView;
 typedef void (^JPickViewSubmit)(NSString*selectStr);
 
 @interface JPickView : UIView<UIPickerViewDelegate>
@@ -36,7 +35,7 @@ typedef void (^JPickViewSubmit)(NSString*selectStr);
  *  @param items 一维数组
  *  @param title title
  */
-+ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title andCallBack:(JPickViewSubmit)block;;
++ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title andCallBack:(JPickViewSubmit)block;
 
 @property(nonatomic,copy)JPickViewSubmit block;
 @end
