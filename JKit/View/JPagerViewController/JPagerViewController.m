@@ -94,8 +94,10 @@
                 viewAlloc[0] = YES;
                 [vcsArray addObject:ctrl];
                 [vcsTagArray addObject:@"0"];
-                NSLog(@"现在是控制器1");
-                self.PageIndex = @"1";
+                NSLog(@"现在是控制器0");
+                self.PageIndex = @"0";
+                [[NSNotificationCenter defaultCenter] postNotificationName:_classArray[0] object:[NSNumber numberWithInteger:0]];
+
                 /**< 利用NSCache对内存进行管理测试 **/
                 //                [self.limitControllerCache setObject:ctrl forKey:@(0)];
                 //                NSLog(@"%@", [self.limitControllerCache objectForKey:@(0)]);
@@ -114,8 +116,11 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"currentPage"]) {
         NSInteger page = [change[@"new"] integerValue];
-        NSLog(@"现在是控制器%li",(long)page + 1);
-        self.PageIndex = @(page + 1).stringValue;
+        NSLog(@"现在是控制器%li",(long)page);
+        self.PageIndex = @(page).stringValue;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:_classArray[page] object:[NSNumber numberWithInteger:page]];
+        
         if (_myArray.count > 5) {
             CGFloat topTabOffsetX = 0;
             if (page >= 2) {
@@ -195,6 +200,7 @@
 
 - (void)dealloc {
     [pagerView removeObserver:self forKeyPath:@"currentPage"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /**

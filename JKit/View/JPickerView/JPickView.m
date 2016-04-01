@@ -78,7 +78,9 @@
     // 1.日期Picker
     UIDatePicker *datePickr = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, SCREENSIZE.width, 270)];
     datePickr.backgroundColor = [UIColor whiteColor];
-    [datePickr setDate:defaultDate animated:YES];
+    if (defaultDate) {
+        [datePickr setDate:defaultDate animated:YES];
+    }
     datePickr.maximumDate = maxDate;
     datePickr.minimumDate = minDate;
     // 1.1选择datePickr的显示风格
