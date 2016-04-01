@@ -53,7 +53,7 @@
     titlesArray = titleArray;
     arrayCount = titleArray.count;
     self.topTab.frame = CGRectMake(0, 0, FUll_VIEW_WIDTH, PageBtn);
-    self.scrollView.frame = CGRectMake(0, PageBtn, FUll_VIEW_WIDTH, FUll_VIEW_HEIGHT - PageBtn - TabbarHeight);
+    self.scrollView.frame = CGRectMake(0, PageBtn, FUll_VIEW_WIDTH, self.frame.size.height - PageBtn);
     [self addSubview:self.topTab];
     [self addSubview:self.scrollView];
 }

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^JPagerViewControllerBlock)(NSInteger index);
 @interface JPagerViewController : UIView
+
+@property (nonatomic, strong) JPagerViewControllerBlock block;
 
 /**
  *  创建总控制器
@@ -23,12 +25,14 @@
  */
 
 + (void)j_createPagerViewControllerWithFrame:(CGRect)frame
+                                  andSuperClass:(UIViewController *)superClass
                                    andTitles:(NSArray *)titles
                                  andchildVCs:(NSArray *)childVCs
                               andSelectColor:(UIColor *)selectColor
                             andUnselectColor:(UIColor *)unselectColor
                            andUnderlineColor:(UIColor *)underlineColor
                             andTopTabBgColor:(UIColor *)topTabColor
-                  andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary;
+                  andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary
+                           andSelectCallBack:(JPagerViewControllerBlock)block;
 
 @end

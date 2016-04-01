@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong)  NSArray *classArray;
 
+@property (nonatomic, strong) UIViewController *superClass;
+
 @end
 
 @implementation JPagerViewController
@@ -40,15 +42,18 @@
 }
 
 + (void)j_createPagerViewControllerWithFrame:(CGRect)frame
+                               andSuperClass:(UIViewController *)superClass
                                    andTitles:(NSArray *)titles
                                  andchildVCs:(NSArray *)childVCs
                               andSelectColor:(UIColor *)selectColor
                             andUnselectColor:(UIColor *)unselectColor
                            andUnderlineColor:(UIColor *)underlineColor
                             andTopTabBgColor:(UIColor *)topTabColor
-                  andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary{
+                  andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary
+                           andSelectCallBack:(JPagerViewControllerBlock)block{
     
     JPagerViewController *ninaPagerView = [[JPagerViewController alloc] initWithFrame:frame];
+    ninaPagerView.superClass = superClass;
     ninaPagerView.myArray = titles;
     ninaPagerView.classArray = childVCs;
     ninaPagerView.selectColor = selectColor;
@@ -56,8 +61,10 @@
     ninaPagerView.topTabColor = topTabColor;
     ninaPagerView.underlineColor = underlineColor;
     ninaPagerView.isUnnecessary = isUnnecessary;
-    [ninaPagerView createPagerView];
-    [[[UIApplication sharedApplication] keyWindow] addSubview:ninaPagerView];
+    ninaPagerView.block = block;
+    [superClass.view addSubview:ninaPagerView];
+    
+    [ninaPagerView createPagerViewWithFrame:frame];
     
 }
 
@@ -73,13 +80,13 @@
 }
 
 #pragma mark - CreateView
-- (void)createPagerView {
+- (void)createPagerViewWithFrame:(CGRect)frame{
     viewNumArray = [NSMutableArray array];
     vcsArray = [NSMutableArray array];
     vcsTagArray = [NSMutableArray array];
     
     if (_myArray.count > 0 && _classArray.count > 0) {
-        pagerView = [[JPagerBaseViewController alloc] initWithFrame:CGRectMake(0, 0, FUll_VIEW_WIDTH, FUll_CONTENT_HEIGHT) WithSelectColor:_selectColor WithUnselectorColor:_unselectColor WithUnderLineColor:_underlineColor WithtopTabColor:_topTabColor];
+        pagerView = [[JPagerBaseViewController alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) WithSelectColor:_selectColor WithUnselectorColor:_unselectColor WithUnderLineColor:_underlineColor WithtopTabColor:_topTabColor];
         pagerView.titleArray = _myArray;
         [pagerView addObserver:self forKeyPath:@"currentPage" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
         [self addSubview:pagerView];
@@ -96,8 +103,7 @@
                 [vcsTagArray addObject:@"0"];
                 NSLog(@"现在是控制器0");
                 self.PageIndex = @"0";
-                [[NSNotificationCenter defaultCenter] postNotificationName:_classArray[0] object:[NSNumber numberWithInteger:0]];
-
+                _block(0);
                 /**< 利用NSCache对内存进行管理测试 **/
                 //                [self.limitControllerCache setObject:ctrl forKey:@(0)];
                 //                NSLog(@"%@", [self.limitControllerCache objectForKey:@(0)]);
@@ -118,9 +124,7 @@
         NSInteger page = [change[@"new"] integerValue];
         NSLog(@"现在是控制器%li",(long)page);
         self.PageIndex = @(page).stringValue;
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:_classArray[page] object:[NSNumber numberWithInteger:page]];
-        
+        _block(page);
         if (_myArray.count > 5) {
             CGFloat topTabOffsetX = 0;
             if (page >= 2) {

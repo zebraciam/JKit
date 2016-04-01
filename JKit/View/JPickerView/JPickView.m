@@ -46,6 +46,7 @@
     pickView.block = block;
     
     pickView.isDate = YES;
+    pickView.mode = mode;
     pickView.proTitleList = @[];
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENSIZE.width, 39.5)];
     header.backgroundColor = [UIColor whiteColor];
@@ -164,7 +165,11 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
     // 1.1 先设置日期的格式字符串
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    if (self.mode == UIDatePickerModeDateAndTime) {
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    }else{
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+    }
     
     // 1.2 使用格式字符串, 将日期转换成字符串
     self.selectedStr = [formatter stringFromDate:datePicker.date];
@@ -181,7 +186,11 @@
     if (!pickStr || pickStr.length == 0) {
         if(self.isDate) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
+            if (self.mode == UIDatePickerModeDateAndTime) {
+                [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+            }else{
+                [formatter setDateFormat:@"yyyy-MM-dd"];
+            }
             self.selectedStr = [formatter stringFromDate:[NSDate date]];
         } else {
             if([self.proTitleList count] > 0) {
