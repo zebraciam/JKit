@@ -21,7 +21,7 @@ typedef void (^JPickViewSubmit)(NSString*selectStr);
 
 @property (nonatomic, assign) BOOL isDate;
 
-@property (nonatomic, assign) UIDatePickerMode *mode;
+@property (nonatomic, assign) UIDatePickerMode mode;
 
 
 /**
