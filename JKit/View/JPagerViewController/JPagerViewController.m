@@ -171,6 +171,16 @@
                         viewAlloc[deallocTag] = NO;
                         NSLog(@"控制器%li被清除了",(long)deallocTag + 1);
                         [vcsTagArray removeObjectAtIndex:0];
+                    }else if (vcsArray.count && !_isUnnecessary){
+                        UIViewController *deallocVC = [vcsArray firstObject];
+                        [deallocVC.view removeFromSuperview];
+                        deallocVC.view = nil;
+                        deallocVC = nil;
+                        [vcsArray removeObjectAtIndex:0];
+                        NSInteger deallocTag = [[vcsTagArray firstObject] integerValue];
+                        viewAlloc[deallocTag] = NO;
+                        NSLog(@"控制器%li被清除了",(long)deallocTag + 1);
+                        [vcsTagArray removeObjectAtIndex:0];
                     }
                     ctrl.view.frame = CGRectMake(FUll_VIEW_WIDTH * i, 0, FUll_VIEW_WIDTH, FUll_CONTENT_HEIGHT - PageBtn);
                     [pagerView.scrollView addSubview:ctrl.view];
@@ -194,6 +204,16 @@
                     [vcsArray removeObjectAtIndex:0];
                     NSInteger deallocTag = [[vcsTagArray firstObject] integerValue];
                     viewAlloc[deallocTag] = NO;
+                    [vcsTagArray removeObjectAtIndex:0];
+                }else if (vcsArray.count && !_isUnnecessary){
+                    UIViewController *deallocVC = [vcsArray firstObject];
+                    [deallocVC.view removeFromSuperview];
+                    deallocVC.view = nil;
+                    deallocVC = nil;
+                    [vcsArray removeObjectAtIndex:0];
+                    NSInteger deallocTag = [[vcsTagArray firstObject] integerValue];
+                    viewAlloc[deallocTag] = NO;
+                    NSLog(@"控制器%li被清除了",(long)deallocTag + 1);
                     [vcsTagArray removeObjectAtIndex:0];
                 }
                 
