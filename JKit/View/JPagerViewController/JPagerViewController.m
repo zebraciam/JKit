@@ -68,6 +68,33 @@
     
 }
 
+- (instancetype)initWithFrame:(CGRect)frame
+                andSuperClass:(UIViewController *)superClass
+                    andTitles:(NSArray *)titles
+                  andchildVCs:(NSArray *)childVCs
+               andSelectColor:(UIColor *)selectColor
+             andUnselectColor:(UIColor *)unselectColor
+            andUnderlineColor:(UIColor *)underlineColor
+             andTopTabBgColor:(UIColor *)topTabColor
+   andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary
+            andSelectCallBack:(JPagerViewControllerBlock)block{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.superClass = superClass;
+        self.myArray = titles;
+        self.classArray = childVCs;
+        self.selectColor = selectColor;
+        self.unselectColor = unselectColor;
+        self.topTabColor = topTabColor;
+        self.underlineColor = underlineColor;
+        self.isUnnecessary = isUnnecessary;
+        self.block = block;
+        
+        [self createPagerViewWithFrame:frame];
+    }
+    return self;
+}
+
 #pragma mark - NSCache
 - (NSCache *)limitControllerCache {
     if (!_limitControllerCache) {
