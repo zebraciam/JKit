@@ -171,7 +171,7 @@
                         viewAlloc[deallocTag] = NO;
                         NSLog(@"控制器%li被清除了",(long)deallocTag + 1);
                         [vcsTagArray removeObjectAtIndex:0];
-                    }else if (vcsArray.count && !_isUnnecessary){
+                    }else if (vcsArray.count > 1 && !_isUnnecessary){
                         UIViewController *deallocVC = [vcsArray firstObject];
                         [deallocVC.view removeFromSuperview];
                         deallocVC.view = nil;
@@ -205,7 +205,7 @@
                     NSInteger deallocTag = [[vcsTagArray firstObject] integerValue];
                     viewAlloc[deallocTag] = NO;
                     [vcsTagArray removeObjectAtIndex:0];
-                }else if (vcsArray.count && !_isUnnecessary){
+                }else if (vcsArray.count > 1 && !_isUnnecessary){
                     UIViewController *deallocVC = [vcsArray firstObject];
                     [deallocVC.view removeFromSuperview];
                     deallocVC.view = nil;
