@@ -65,7 +65,7 @@
         _scrollView.delegate = self;
         _scrollView.tag = 318;
         _scrollView.backgroundColor = UIColorFromRGB(0xfafafa);
-        _scrollView.contentSize = CGSizeMake(FUll_VIEW_WIDTH * titlesArray.count, 0);
+        _scrollView.contentSize = CGSizeMake(FUll_VIEW_WIDTH * titlesArray.count, -10);
         _scrollView.pagingEnabled = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.alwaysBounceHorizontal = YES;
