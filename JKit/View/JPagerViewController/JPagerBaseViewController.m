@@ -65,7 +65,7 @@
         _scrollView.delegate = self;
         _scrollView.tag = 318;
         _scrollView.backgroundColor = UIColorFromRGB(0xfafafa);
-        _scrollView.contentSize = CGSizeMake(FUll_VIEW_WIDTH * titlesArray.count, -10);
+        _scrollView.contentSize = CGSizeMake(FUll_VIEW_WIDTH * titlesArray.count, -1);
         _scrollView.pagingEnabled = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.alwaysBounceHorizontal = YES;
@@ -90,7 +90,7 @@
         if (arrayCount > 5) {
             additionCount = (arrayCount - 5.0) / 5.0;
         }
-        _topTab.contentSize = CGSizeMake((1 + additionCount) * FUll_VIEW_WIDTH, 0);
+        _topTab.contentSize = CGSizeMake((1 + additionCount) * FUll_VIEW_WIDTH, -10);
         btnArray = [NSMutableArray array];
         for (NSInteger i = 0; i < titlesArray.count; i++) {
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
