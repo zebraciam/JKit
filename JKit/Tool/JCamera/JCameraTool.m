@@ -39,35 +39,49 @@ JSingletonImplementation(JCameraTool);
     SELF.scale = scale;
     
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    UIAlertController * sheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction * canle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    UIAlertAction * camera = [UIAlertAction actionWithTitle:@"打开照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSString *mediaType = AVMediaTypeVideo;
-        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
-        if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
-            [JLoadingTool j_showInfoWithStatus:@"相机权限受限"];
-        }
-        else{
-            BOOL isCamera = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
-            if (!isCamera) {
-                JLog(@"没有摄像头");
-                [JLoadingTool j_showInfoWithStatus:@"抱歉,您的设备不具备拍照功能!"];
-                return ;
-            }
-            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    if(IOS8){
+        UIAlertController * sheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction * canle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        UIAlertAction * camera = [UIAlertAction actionWithTitle:@"打开照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    }];
+        UIAlertAction * pics = [UIAlertAction actionWithTitle:@"从手机相册获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [SELF imagePickerDelegate:imagePicker];
-        }
-    }];
-    UIAlertAction * pics = [UIAlertAction actionWithTitle:@"从手机相册获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [SELF imagePickerDelegate:imagePicker];
+            
+        }];
+        [sheet addAction:canle];
+        [sheet addAction:camera];
+        [sheet addAction:pics];
+        [SELF.viewC presentViewController:sheet animated:YES completion:nil];
+    }else{
+        UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"打开照相机",@"从手机相册获取", nil];
         
-    }];
-    [sheet addAction:canle];
-    [sheet addAction:camera];
-    [sheet addAction:pics];
-    [SELF.viewC presentViewController:sheet animated:YES completion:nil];
+        [[sheet rac_buttonClickedSignal] subscribeNext:^(id x) {
+            if ([x integerValue] == 1) {
+                NSString *mediaType = AVMediaTypeVideo;
+                AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+                if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
+                    [JLoadingTool j_showInfoWithStatus:@"相机权限受限"];
+                }
+                else{
+                    BOOL isCamera = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+                    if (!isCamera) {
+                        JLog(@"没有摄像头");
+                        [JLoadingTool j_showInfoWithStatus:@"抱歉,您的设备不具备拍照功能!"];
+                        return ;
+                    }
+                    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                    [SELF imagePickerDelegate:imagePicker];
+                }
+
+            }else if([x integerValue] == 2){
+                imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                [SELF imagePickerDelegate:imagePicker];
+            }
+        }];
+        [sheet showInView:SELF.viewC.view];
+    }
 }
 #pragma mark -UIImagePickerControllerDelegate
 - (void)imagePickerDelegate:(UIImagePickerController *)imagePicker{
