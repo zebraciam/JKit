@@ -13,5 +13,8 @@
 #import "JTopClassification.h"
 #import "JPickView.h"
 #import "JPagerViewController.h"
+#import "JGuideViewController.h"
+#import "JCustomPickerView.h"
+#import "JPlaceholderView.h"
 
 #endif /* JView_h */

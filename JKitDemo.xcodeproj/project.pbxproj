@@ -12,6 +12,10 @@
 		15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC31CAD2E39003BD8DF /* JPagerViewController.m */; };
 		15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC61CAD2F20003BD8DF /* JPagerBaseViewController.m */; };
 		15E05FE91C903DC8006AF100 /* JPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E05FE81C903DC8006AF100 /* JPickView.m */; };
+		15EE6ABC1CBB7B5C000D8DA5 /* JGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6ABB1CBB7B5C000D8DA5 /* JGuideViewController.m */; };
+		15EE6ABF1CBB8996000D8DA5 /* JCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6ABE1CBB8996000D8DA5 /* JCustomPickerView.m */; };
+		15EE6AC31CBB8B39000D8DA5 /* JPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6AC21CBB8B39000D8DA5 /* JPlaceholderView.m */; };
+		15EE6AC61CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6AC51CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m */; };
 		921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E68CE1C3BC902003E3389 /* UIColor+J.m */; };
 		925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 925D93AC1C45E06E0061B83B /* NSDictionary+J.m */; };
 		9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273DB731C59FE49008E33E9 /* UITabBarController+J.m */; };
@@ -70,6 +74,14 @@
 		15B21BC61CAD2F20003BD8DF /* JPagerBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPagerBaseViewController.m; sourceTree = "<group>"; };
 		15E05FE71C903DC8006AF100 /* JPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPickView.h; sourceTree = "<group>"; };
 		15E05FE81C903DC8006AF100 /* JPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPickView.m; sourceTree = "<group>"; };
+		15EE6ABA1CBB7B5C000D8DA5 /* JGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGuideViewController.h; sourceTree = "<group>"; };
+		15EE6ABB1CBB7B5C000D8DA5 /* JGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGuideViewController.m; sourceTree = "<group>"; };
+		15EE6ABD1CBB8996000D8DA5 /* JCustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCustomPickerView.h; sourceTree = "<group>"; };
+		15EE6ABE1CBB8996000D8DA5 /* JCustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCustomPickerView.m; sourceTree = "<group>"; };
+		15EE6AC11CBB8B39000D8DA5 /* JPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPlaceholderView.h; sourceTree = "<group>"; };
+		15EE6AC21CBB8B39000D8DA5 /* JPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPlaceholderView.m; sourceTree = "<group>"; };
+		15EE6AC41CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JPlaceholderView.h"; sourceTree = "<group>"; };
+		15EE6AC51CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JPlaceholderView.m"; sourceTree = "<group>"; };
 		4A16DF4901E12F33B593BEEE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		726543742A2933BF5178A813 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		921E68CC1C3BC902003E3389 /* JCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCategory.h; sourceTree = "<group>"; };
@@ -177,8 +189,28 @@
 			children = (
 				15E05FE71C903DC8006AF100 /* JPickView.h */,
 				15E05FE81C903DC8006AF100 /* JPickView.m */,
+				15EE6ABD1CBB8996000D8DA5 /* JCustomPickerView.h */,
+				15EE6ABE1CBB8996000D8DA5 /* JCustomPickerView.m */,
 			);
 			path = JPickerView;
+			sourceTree = "<group>";
+		};
+		15EE6AB91CBB7AA5000D8DA5 /* JGuideView */ = {
+			isa = PBXGroup;
+			children = (
+				15EE6ABA1CBB7B5C000D8DA5 /* JGuideViewController.h */,
+				15EE6ABB1CBB7B5C000D8DA5 /* JGuideViewController.m */,
+			);
+			path = JGuideView;
+			sourceTree = "<group>";
+		};
+		15EE6AC01CBB8B2C000D8DA5 /* JPlaceholderView */ = {
+			isa = PBXGroup;
+			children = (
+				15EE6AC11CBB8B39000D8DA5 /* JPlaceholderView.h */,
+				15EE6AC21CBB8B39000D8DA5 /* JPlaceholderView.m */,
+			);
+			path = JPlaceholderView;
 			sourceTree = "<group>";
 		};
 		19114A5F8BE846F50E6DC149 /* Frameworks */ = {
@@ -229,6 +261,8 @@
 				9273DB731C59FE49008E33E9 /* UITabBarController+J.m */,
 				15AD79F21C982DDA00BA5529 /* NSDate+J.h */,
 				15AD79F31C982DDA00BA5529 /* NSDate+J.m */,
+				15EE6AC41CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.h */,
+				15EE6AC51CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -247,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				92AE7BB61C843841005B614C /* JView.h */,
+				15EE6AC01CBB8B2C000D8DA5 /* JPlaceholderView */,
+				15EE6AB91CBB7AA5000D8DA5 /* JGuideView */,
 				15B21BBD1CAD2B02003BD8DF /* JPagerViewController */,
 				15E05FE61C903DA1006AF100 /* JPickerView */,
 				92AE7BA81C843811005B614C /* JPicScrollerView */,
@@ -562,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */,
+				15EE6AC31CBB8B39000D8DA5 /* JPlaceholderView.m in Sources */,
 				15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */,
 				15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */,
 				92AE7BBE1C8438D7005B614C /* JLoadingTool.m in Sources */,
@@ -581,11 +618,14 @@
 				92AE7BC21C843C8E005B614C /* JCameraTool.m in Sources */,
 				92D3DC1B1C3CA2D000DFDFE2 /* NSString+J.m in Sources */,
 				92AE7BB21C843811005B614C /* JPageControl.m in Sources */,
+				15EE6ABF1CBB8996000D8DA5 /* JCustomPickerView.m in Sources */,
 				15B21BC11CAD2DE2003BD8DF /* JPagerTopTabView.m in Sources */,
 				15E05FE91C903DC8006AF100 /* JPickView.m in Sources */,
 				92E953B71C3BB9770074912A /* main.m in Sources */,
 				92D3DC261C3CB00500DFDFE2 /* UITextField+J.m in Sources */,
+				15EE6ABC1CBB7B5C000D8DA5 /* JGuideViewController.m in Sources */,
 				92D3DC1F1C3CA48900DFDFE2 /* UISearchBar+J.m in Sources */,
+				15EE6AC61CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
