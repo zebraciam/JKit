@@ -63,7 +63,7 @@
     _descriptionTextView = [[UITextView alloc] init];
     [_descriptionTextView setFont:[UIFont boldSystemFontOfSize:18.0f]];
     [_descriptionTextView setUserInteractionEnabled:NO];
-    [_descriptionTextView setBackgroundColor:[UIColor clearColor]];
+    [_descriptionTextView setBackgroundColor:JColorWithHex(0x444444)];
     [_descriptionTextView setTextAlignment:NSTextAlignmentCenter];
     [_descriptionTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
@@ -76,17 +76,17 @@
 {
     _imageView.image = [UIImage imageNamed:imageName];
     _imageView.frame = CGRectMake(0, 0, 100, 100);
-    _imageView.center = self.center;
+    _imageView.center = CGPointMake(JScreenWidth /2, JScreenHeight /2 - 100);
     
     _descriptionTextView.text = title;
     _descriptionTextView.frame = CGRectMake(20, _imageView.frame.size.height + _imageView.frame.origin.y + 25, self.frame.size.width - 40, 10);
     _descriptionTextView.textColor = JColorWithHex(0xd4d4d4);
-    CGFloat fixedWidth = _descriptionTextView.frame.size.width;
-    CGSize newSize = [_descriptionTextView sizeThatFits:CGSizeMake(fixedWidth, 20)];
-    CGRect newFrame = _descriptionTextView.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    _descriptionTextView.frame = newFrame;
-    
+    //    CGFloat fixedWidth = _descriptionTextView.frame.size.width;
+    //    CGSize newSize = [_descriptionTextView sizeThatFits:CGSizeMake(fixedWidth, 20)];
+    //    CGRect newFrame = _descriptionTextView.frame;
+    //    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    //    _descriptionTextView.frame = newFrame;
+    //
     [UIView animateWithDuration:0.3f animations:^{
         
         self.alpha = 1.0f;
@@ -111,14 +111,15 @@
     CGSize newSize = [_descriptionTextView sizeThatFits:CGSizeMake(fixedWidth, 20)];
     CGRect newFrame = _descriptionTextView.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    newFrame.origin = CGPointMake(newFrame.origin.x, newFrame.origin.y + 30);
     _descriptionTextView.frame = newFrame;
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

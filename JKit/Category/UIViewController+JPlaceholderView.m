@@ -66,13 +66,13 @@ static char const JPlaceholderViewKey, JRefreshKey;
         
         self.j_placeholderView = [[JPlaceholderView alloc] initWithFrame:frame];
         
-        if ([self respondsToSelector:@selector(setTableView:)]) {
-            
-            if ([((UITableViewController *)self).tableView respondsToSelector:@selector(setScrollEnabled:)]) {
-                
-                self.j_placeholderView.j_top = self.j_placeholderView.j_top - 30;
-            }
-        }
+//        if ([self respondsToSelector:@selector(setTableView:)]) {
+//            
+//            if ([((UITableViewController *)self).tableView respondsToSelector:@selector(setScrollEnabled:)]) {
+//                
+//                self.j_placeholderView.j_top = self.j_placeholderView.j_top - 30;
+//            }
+//        }
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refreshAction)];
         [self.j_placeholderView addGestureRecognizer:tap];
