@@ -89,7 +89,7 @@ static char const JPlaceholderViewKey, JRefreshKey;
 {
     if (self.refreshBlock) {
         
-        [self j_hidePlaceholder];
+//        [self j_hidePlaceholder];
         
         self.refreshBlock();
     }

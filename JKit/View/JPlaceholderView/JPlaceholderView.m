@@ -63,7 +63,7 @@
     _descriptionTextView = [[UITextView alloc] init];
     [_descriptionTextView setFont:[UIFont boldSystemFontOfSize:18.0f]];
     [_descriptionTextView setUserInteractionEnabled:NO];
-    [_descriptionTextView setBackgroundColor:JColorWithHex(0x444444)];
+    [_descriptionTextView setBackgroundColor:JColorWithClear];
     [_descriptionTextView setTextAlignment:NSTextAlignmentCenter];
     [_descriptionTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
@@ -80,7 +80,7 @@
     
     _descriptionTextView.text = title;
     _descriptionTextView.frame = CGRectMake(20, _imageView.frame.size.height + _imageView.frame.origin.y + 25, self.frame.size.width - 40, 10);
-    _descriptionTextView.textColor = JColorWithHex(0xd4d4d4);
+    _descriptionTextView.textColor = JColorWithHex(0x444444);
     //    CGFloat fixedWidth = _descriptionTextView.frame.size.width;
     //    CGSize newSize = [_descriptionTextView sizeThatFits:CGSizeMake(fixedWidth, 20)];
     //    CGRect newFrame = _descriptionTextView.frame;
