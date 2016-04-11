@@ -57,4 +57,12 @@ typedef void (^DidSelectedEnter)();
  */
 - (void)j_guideViewControllerDidSelectedEnter:(DidSelectedEnter)didSelectedEnter;
 
+/**
+ *  设置pageController 颜色
+ *
+ *  @param selectColor 选中颜色
+ *  @param normalColor 默认颜色
+ */
+- (void)j_pageControlSelectColor:(UIColor *)selectColor andNormalColor:(UIColor *)normalColor;
+
 @end

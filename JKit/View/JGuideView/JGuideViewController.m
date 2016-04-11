@@ -72,7 +72,10 @@
     self.coverImageNames = coverNames;
     self.backgroundImageNames = bgNames;
 }
-
+- (void)j_pageControlSelectColor:(UIColor *)selectColor andNormalColor:(UIColor *)normalColor{
+    self.pageControl.pageIndicatorTintColor = normalColor;
+    self.pageControl.currentPageIndicatorTintColor = selectColor;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -82,6 +85,7 @@
     self.pagingScrollView.delegate = self;
     self.pagingScrollView.pagingEnabled = YES;
     self.pagingScrollView.showsHorizontalScrollIndicator = NO;
+    self.pagingScrollView.bounces = NO;
     
     [self.view addSubview:self.pagingScrollView];
     
