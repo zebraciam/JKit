@@ -23,10 +23,16 @@
 
 #define IOS8 [[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=8
 
-#define JiPhone4 (LMiPhone && LMScreenMax == 480.0)
-#define JiPhone5 (LMiPhone && LMScreenMax == 568.0)
-#define JiPhone6 (LMiPhone && LMScreenMax == 667.0)
-#define JiPhone6Plus (LMiPhone && LMScreenMax == 736.0)
+#define JiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define JiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+#define JScreenMax (MAX(JScreenWidth, JScreenHeight))
+#define JScreenMin (MIN(JScreenWidth, JScreenHeight))
+
+#define JiPhone4 (JiPhone && JScreenMax == 480.0)
+#define JiPhone5 (JiPhone && JScreenMax == 568.0)
+#define JiPhone6 (JiPhone && JScreenMax == 667.0)
+#define JiPhone6Plus (JiPhone && JScreenMax == 736.0)
 
 #define JFont(s) ([UIFont systemFontOfSize:s])
 #define JBoldFont(s) ([UIFont boldSystemFontOfSize:s])
