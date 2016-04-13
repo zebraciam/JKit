@@ -7,7 +7,6 @@
 //
 
 #import "JLoadingTool.h"
-#import "SVProgressHUD.h"
 #import "JMacro.h"
 #import "UIColor+J.h"
 #import "UIView+J.h"
@@ -32,10 +31,18 @@ JSingletonImplementation(LoadingTool)
 }
 + (void)j_startLoading
 {
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
     
 }
 
++ (void)j_startLoadingWithNoSelect
+{
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+}
++ (void)j_startLoadingWithSVProgressHUDMaskType:(SVProgressHUDMaskType)type
+{
+    [SVProgressHUD showWithMaskType:type];
+}
 + (void)j_stopLoading
 {
     [[JLoadingTool sharedLoadingTool].view removeFromSuperview];

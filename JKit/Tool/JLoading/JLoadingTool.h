@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SVProgressHUD.h"
 
 @interface JLoadingTool : NSObject
 
@@ -14,6 +15,18 @@
  *  显示
  */
 + (void)j_startLoading;
+
+/**
+ *  显示 结束全不可点击
+ */
++ (void)j_startLoadingWithNoSelect;
+
+/**
+ *  显示
+ *
+ *  @param type 自定义type
+ */
++ (void)j_startLoadingWithSVProgressHUDMaskType:(SVProgressHUDMaskType)type;
 
 /**
  *  消失
