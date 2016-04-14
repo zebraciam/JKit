@@ -44,7 +44,23 @@ JSingletonImplementation(JCameraTool);
         UIAlertAction * canle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         }];
         UIAlertAction * camera = [UIAlertAction actionWithTitle:@"打开照相机" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    }];
+            NSString *mediaType = AVMediaTypeVideo;
+            AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+            if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
+                [JLoadingTool j_showInfoWithStatus:@"相机权限受限"];
+            }
+            else{
+                BOOL isCamera = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+                if (!isCamera) {
+                    JLog(@"没有摄像头");
+                    [JLoadingTool j_showInfoWithStatus:@"抱歉,您的设备不具备拍照功能!"];
+                    return ;
+                }
+                imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [SELF imagePickerDelegate:imagePicker];
+            }
+
+        }];
         UIAlertAction * pics = [UIAlertAction actionWithTitle:@"从手机相册获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [SELF imagePickerDelegate:imagePicker];
