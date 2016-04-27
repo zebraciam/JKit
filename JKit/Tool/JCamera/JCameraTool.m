@@ -126,27 +126,25 @@ JSingletonImplementation(JCameraTool);
     VPImageCropperViewController *imgCropperVC = [[VPImageCropperViewController alloc] initWithImage:portraitImg cropFrame:CGRectMake(0, 100.0f, self.viewC.view.j_width, self.viewC.view.j_width * self.scale) limitScaleRatio:3.0];
     imgCropperVC.confirmTitle = @"确定";
     imgCropperVC.confirmBtnFont = [UIFont systemFontOfSize:15];
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        imgCropperVC.cancelTitle = @"重拍";
-    }else{
-        imgCropperVC.cancelTitle = @"取消";
-    }
+    imgCropperVC.cancelTitle = @"取消";
+    
     imgCropperVC.cancelBtnFont = [UIFont systemFontOfSize:15];
     imgCropperVC.cropRectColor = [UIColor whiteColor];
     [picker pushViewController:imgCropperVC animated:YES];
-    [imgCropperVC.navigationController setNavigationBarHidden:YES];
+    [imgCropperVC.navigationController setNavigationBarHidden:YES animated:YES];
 
     @weakify(self);
     RACDelegateProxy * delegateProxy = [[RACDelegateProxy alloc]initWithProtocol:@protocol(VPImageCropperDelegate)];
     [[delegateProxy rac_signalForSelector:@selector(imageCropper:didFinished:)] subscribeNext:^(RACTuple *arg) {
         @strongify(self);
+        [imgCropperVC.navigationController setNavigationBarHidden:NO animated:YES];
         UIImage * image = [arg second];
         JBlock(self.block, image);
         [picker dismissViewControllerAnimated:YES completion:nil];
     }];
     [[delegateProxy rac_signalForSelector:@selector(imageCropperDidCancel:)] subscribeNext:^(RACTuple *arg) {
-        imgCropperVC.navigationController.navigationBarHidden = NO;
-        [imgCropperVC.navigationController popViewControllerAnimated:YES];
+        [imgCropperVC.navigationController setNavigationBarHidden:NO animated:YES];
+        [picker dismissViewControllerAnimated:YES completion:nil];
     }];
     
     imgCropperVC.delegate = (id<VPImageCropperDelegate>)delegateProxy;
