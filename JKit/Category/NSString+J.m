@@ -13,6 +13,8 @@
 
 //空字符串
 #define     LocalStr_None           @""
+#define myDotNumbers     @"0123456789.\n"
+#define myNumbers          @"0123456789\n"
 
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 @implementation NSString (J)
@@ -302,6 +304,14 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     
     return true;
 }
+
+#pragma mark 判断输入钱
+
+- (BOOL)j_validMoney
+{
+    return [self validWithRegex:@"^(0|[1-9][0-9]+)(\\.[0-9]{0,2})?$"];
+}
+
 
 #pragma mark 判断输入0-9数字
 

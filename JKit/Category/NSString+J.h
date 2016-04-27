@@ -6,6 +6,11 @@
 //  Copyright © 2016年 陈杰. All rights reserved.
 //
 
+
+
+
+
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -69,6 +74,14 @@
  *  @return NSString
  */
 - (NSString *)j_sha1;
+
+/**
+ *  判断输入的是否是钱数
+ *
+ *  @return 是/不是
+ */
+- (BOOL)j_validMoney;
+
 
 /**
  *  判断输入0-9数字
