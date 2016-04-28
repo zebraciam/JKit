@@ -310,13 +310,13 @@
         }
         
         if ([[_imageUrlStrings j_objectAtIndex:centerIndex] isKindOfClass:[NSString class]]) {
-            [_leftImageView sd_setImageWithURL:[self setUrlWithIndex:centerIndex] placeholderImage:_placeImage];
+            [_centerImageView sd_setImageWithURL:[self setUrlWithIndex:centerIndex] placeholderImage:_placeImage];
         }else{
             _centerImageView.image = [self setImageWithIndex:centerIndex];
         }
         
         if ([[_imageUrlStrings j_objectAtIndex:rightIndex] isKindOfClass:[NSString class]]) {
-            [_leftImageView sd_setImageWithURL:[self setUrlWithIndex:rightIndex] placeholderImage:_placeImage];
+            [_rightImageView sd_setImageWithURL:[self setUrlWithIndex:rightIndex] placeholderImage:_placeImage];
         }else{
             _rightImageView.image = [self setImageWithIndex:rightIndex];
         }
