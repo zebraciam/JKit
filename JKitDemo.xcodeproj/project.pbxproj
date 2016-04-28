@@ -21,7 +21,6 @@
 		9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273DB731C59FE49008E33E9 /* UITabBarController+J.m */; };
 		92AE7BB21C843811005B614C /* JPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BAA1C843811005B614C /* JPageControl.m */; };
 		92AE7BB31C843811005B614C /* JPicScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BAC1C843811005B614C /* JPicScrollerView.m */; };
-		92AE7BB41C843811005B614C /* JWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BAE1C843811005B614C /* JWebImageManager.m */; };
 		92AE7BB51C843811005B614C /* JTopClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BB11C843811005B614C /* JTopClassification.m */; };
 		92AE7BBE1C8438D7005B614C /* JLoadingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BBD1C8438D7005B614C /* JLoadingTool.m */; };
 		92AE7BC21C843C8E005B614C /* JCameraTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BC11C843C8E005B614C /* JCameraTool.m */; };
@@ -96,8 +95,6 @@
 		92AE7BAA1C843811005B614C /* JPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPageControl.m; sourceTree = "<group>"; };
 		92AE7BAB1C843811005B614C /* JPicScrollerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPicScrollerView.h; sourceTree = "<group>"; };
 		92AE7BAC1C843811005B614C /* JPicScrollerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPicScrollerView.m; sourceTree = "<group>"; };
-		92AE7BAD1C843811005B614C /* JWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWebImageManager.h; sourceTree = "<group>"; };
-		92AE7BAE1C843811005B614C /* JWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWebImageManager.m; sourceTree = "<group>"; };
 		92AE7BB01C843811005B614C /* JTopClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTopClassification.h; sourceTree = "<group>"; };
 		92AE7BB11C843811005B614C /* JTopClassification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTopClassification.m; sourceTree = "<group>"; };
 		92AE7BB61C843841005B614C /* JView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JView.h; sourceTree = "<group>"; };
@@ -298,8 +295,6 @@
 				92AE7BAA1C843811005B614C /* JPageControl.m */,
 				92AE7BAB1C843811005B614C /* JPicScrollerView.h */,
 				92AE7BAC1C843811005B614C /* JPicScrollerView.m */,
-				92AE7BAD1C843811005B614C /* JWebImageManager.h */,
-				92AE7BAE1C843811005B614C /* JWebImageManager.m */,
 			);
 			path = JPicScrollerView;
 			sourceTree = "<group>";
@@ -612,7 +607,6 @@
 				92E953BD1C3BB9770074912A /* ViewController.m in Sources */,
 				92E953BA1C3BB9770074912A /* AppDelegate.m in Sources */,
 				92D3DC2F1C3CB32C00DFDFE2 /* UIViewController+J.m in Sources */,
-				92AE7BB41C843811005B614C /* JWebImageManager.m in Sources */,
 				15AD79F41C982DDA00BA5529 /* NSDate+J.m in Sources */,
 				92AE7BB51C843811005B614C /* JTopClassification.m in Sources */,
 				92AE7BC21C843C8E005B614C /* JCameraTool.m in Sources */,

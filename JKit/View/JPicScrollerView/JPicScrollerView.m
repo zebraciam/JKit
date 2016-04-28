@@ -11,12 +11,11 @@
 #define pageSize (myHeight * 0.2 > 25 ? 25 : myHeight * 0.2)
 
 #import "JPicScrollerView.h"
-#import "JWebImageManager.h"
 #import "JPageControl.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "JKit.h"
 
 @interface JPicScrollerView () <UIScrollViewDelegate>
-
-@property (nonatomic,strong) NSMutableDictionary *imageData;
 
 @end
 
@@ -84,32 +83,6 @@
     if (_imageUrlStrings.count < 1) {
         return ;
     }
-    _imageData = [NSMutableDictionary dictionaryWithCapacity:_imageUrlStrings.count];
-    
-    _isNetwork = [imageUrlStrings.firstObject hasPrefix:@"http://"];
-    
-    if (_isNetwork) {
-        
-        JWebImageManager *manager = [JWebImageManager shareManager];
-        
-        [manager setDownLoadImageComplish:^(UIImage *image, NSString *url) {
-            [self.imageData setObject:image forKey:url];
-            [self changeImageLeft:_currentIndex-1 center:_currentIndex right:_currentIndex+1];
-        }];
-        
-        for (NSString *urlSting in imageUrlStrings) {
-            [manager downloadImageWithUrlString:urlSting];
-        }
-        
-    }else {
-        
-        for (NSString *name in imageUrlStrings) {
-            [self.imageData setObject:[UIImage imageNamed:name] forKey:name];
-        }
-        
-        
-    }
-    
     [self prepareScrollView];
     [self setMaxImageCount:self.imageUrlStrings.count];
 }
@@ -201,9 +174,9 @@
         return;
     }
     
-    if (titleData.count < _imageData.count) {
+    if (titleData.count < _imageUrlStrings.count) {
         NSMutableArray *temp = [NSMutableArray arrayWithArray:titleData];
-        for (int i = 0; i < _imageData.count - titleData.count; i++) {
+        for (int i = 0; i < _imageUrlStrings.count - titleData.count; i++) {
             [temp addObject:@""];
         }
         _titleData = temp;
@@ -318,14 +291,35 @@
 - (void)changeImageLeft:(NSInteger)LeftIndex center:(NSInteger)centerIndex right:(NSInteger)rightIndex {
     
     if (self.imageUrlStrings.count == 1) {
-        _leftImageView.image = [self setImageWithIndex:0];
-        _centerImageView.image = [self setImageWithIndex:0];
-        _rightImageView.image = [self setImageWithIndex:0];
+        if ([[_imageUrlStrings j_objectAtIndex:0] isKindOfClass:[NSString class]]) {
+            [_leftImageView sd_setImageWithURL:[self setUrlWithIndex:0] placeholderImage:_placeImage];
+            [_centerImageView sd_setImageWithURL:[self setUrlWithIndex:0] placeholderImage:_placeImage];
+            [_rightImageView sd_setImageWithURL:[self setUrlWithIndex:0] placeholderImage:_placeImage];
+        }else{
+            _leftImageView.image = [self setImageWithIndex:0];
+            _centerImageView.image = [self setImageWithIndex:0];
+            _rightImageView.image = [self setImageWithIndex:0];
+        }
+        
         
     }else{
-        _leftImageView.image = [self setImageWithIndex:LeftIndex];
-        _centerImageView.image = [self setImageWithIndex:centerIndex];
-        _rightImageView.image = [self setImageWithIndex:rightIndex];
+        if ([[_imageUrlStrings j_objectAtIndex:LeftIndex] isKindOfClass:[NSString class]]) {
+            [_leftImageView sd_setImageWithURL:[self setUrlWithIndex:LeftIndex] placeholderImage:_placeImage];
+        }else{
+            _leftImageView.image = [self setImageWithIndex:LeftIndex];
+        }
+        
+        if ([[_imageUrlStrings j_objectAtIndex:centerIndex] isKindOfClass:[NSString class]]) {
+            [_leftImageView sd_setImageWithURL:[self setUrlWithIndex:centerIndex] placeholderImage:_placeImage];
+        }else{
+            _centerImageView.image = [self setImageWithIndex:centerIndex];
+        }
+        
+        if ([[_imageUrlStrings j_objectAtIndex:rightIndex] isKindOfClass:[NSString class]]) {
+            [_leftImageView sd_setImageWithURL:[self setUrlWithIndex:rightIndex] placeholderImage:_placeImage];
+        }else{
+            _rightImageView.image = [self setImageWithIndex:rightIndex];
+        }
     }
 
     
@@ -347,13 +341,17 @@
     }
 }
 
+- (NSURL *)setUrlWithIndex:(NSInteger)index {
+    if (index < 0||index >= self.imageUrlStrings.count) {
+        return nil;
+    }
+    return [NSURL URLWithString:(NSString *)[_imageUrlStrings j_objectAtIndex:index]];
+}
 - (UIImage *)setImageWithIndex:(NSInteger)index {
     if (index < 0||index >= self.imageUrlStrings.count) {
         return _placeImage;
     }
-    //从内存缓存中取,如果没有使用占位图片
-    UIImage *image = [self.imageData objectForKey:self.imageUrlStrings[index]];
-    
+    UIImage *image = [UIImage imageNamed:(NSString *)[_imageUrlStrings j_objectAtIndex:index]];
     return image ? image : _placeImage;
 }
 
