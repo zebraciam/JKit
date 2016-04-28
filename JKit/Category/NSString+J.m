@@ -309,7 +309,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 - (BOOL)j_validMoney
 {
-    return [self validWithRegex:@"^(0|[1-9][0-9]+)(\\.[0-9]{0,2})?$"];
+    return [self validWithRegex:@"^(0|[1-9][0-9]*)(\\.[0-9]{0,2})?$"];
 }
 
 
