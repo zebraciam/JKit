@@ -110,7 +110,7 @@
     [_doneBarButtonItem setTitle:doneBarButtonItemTitle];
 }
 
-- (void)j_addBarItem:(UIBarButtonItem *)barItem andAttributes:(NSDictionary *)attributes
+- (void)j_addBarItem:(UIBarButtonItem *)barItem attributes:(NSDictionary *)attributes
 {
     if (attributes) {
         [barItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
