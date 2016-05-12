@@ -20,7 +20,7 @@
  */
 @property (strong, nonatomic) NSDictionary *j_itemBarAttributes;
 
-- (void)j_addBarItem:(UIBarButtonItem *)barItem;
+- (void)j_addBarItem:(UIBarButtonItem *)barItem andAttributes:(NSDictionary *)attributes;
 
 - (void)setCancelBarButtonItemTitle:(NSString *)cancelBarButtonItemTitle;
 
