@@ -86,7 +86,7 @@
     
     if (!_cancelBarButtonItem) {
         
-        _cancelBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction)];
+        _cancelBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancelAction)];
     }
     
     return _cancelBarButtonItem;
@@ -100,7 +100,7 @@
     
     if (!_doneBarButtonItem) {
         
-        _doneBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction)];
+        _doneBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStyleDone target:self action:@selector(doneAction)];
     }
     
     return _doneBarButtonItem;
@@ -110,10 +110,11 @@
     [_doneBarButtonItem setTitle:doneBarButtonItemTitle];
 }
 
-- (void)j_addBarItem:(UIBarButtonItem *)barItem
+- (void)j_addBarItem:(UIBarButtonItem *)barItem andAttributes:(NSDictionary *)attributes
 {
-    if (self.j_itemBarAttributes) {
-        
+    if (attributes) {
+        [barItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    }else if (self.j_itemBarAttributes) {
         [barItem setTitleTextAttributes:self.j_itemBarAttributes forState:UIControlStateNormal];
     }
     
