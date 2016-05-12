@@ -22,6 +22,10 @@
 
 - (void)j_addBarItem:(UIBarButtonItem *)barItem;
 
+- (void)setCancelBarButtonItemTitle:(NSString *)cancelBarButtonItemTitle;
+
+- (void)setDoneBarButtonItemTitle:(NSString *)doneBarButtonItemTitle;
+
 - (void)j_showPickerViewWithCancel:(dispatch_block_t)cancelAction done:(dispatch_block_t)doneAction;
 
 - (void)j_dismiss;

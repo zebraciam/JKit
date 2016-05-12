@@ -92,6 +92,10 @@
     return _cancelBarButtonItem;
 }
 
+- (void)setCancelBarButtonItemTitle:(NSString *)cancelBarButtonItemTitle{
+    [_cancelBarButtonItem setTitle:cancelBarButtonItemTitle];
+}
+
 - (UIBarButtonItem *)doneBarButtonItem {
     
     if (!_doneBarButtonItem) {
@@ -100,6 +104,10 @@
     }
     
     return _doneBarButtonItem;
+}
+
+- (void)setDoneBarButtonItemTitle:(NSString *)doneBarButtonItemTitle{
+    [_doneBarButtonItem setTitle:doneBarButtonItemTitle];
 }
 
 - (void)j_addBarItem:(UIBarButtonItem *)barItem
