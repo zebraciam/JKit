@@ -22,5 +22,6 @@
 #import "UITabBarController+J.h"
 #import "NSDate+J.h"
 #import "UIViewController+JPlaceholderView.h"
+#import "UIViewController+JAlertView.h"
 
 #endif /* JCategory_h */

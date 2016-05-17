@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1534F1001CEB2483009F6B34 /* UIViewController+JAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */; };
 		15AD79F41C982DDA00BA5529 /* NSDate+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD79F31C982DDA00BA5529 /* NSDate+J.m */; };
 		15B21BC11CAD2DE2003BD8DF /* JPagerTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC01CAD2DE2003BD8DF /* JPagerTopTabView.m */; };
 		15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC31CAD2E39003BD8DF /* JPagerViewController.m */; };
@@ -62,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1534F0FE1CEB2483009F6B34 /* UIViewController+JAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JAlertView.h"; sourceTree = "<group>"; };
+		1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JAlertView.m"; sourceTree = "<group>"; };
 		15AD79F21C982DDA00BA5529 /* NSDate+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+J.h"; sourceTree = "<group>"; };
 		15AD79F31C982DDA00BA5529 /* NSDate+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+J.m"; sourceTree = "<group>"; };
 		15B21BBE1CAD2D82003BD8DF /* JPagerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPagerMacro.h; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 				15AD79F31C982DDA00BA5529 /* NSDate+J.m */,
 				15EE6AC41CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.h */,
 				15EE6AC51CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m */,
+				1534F0FE1CEB2483009F6B34 /* UIViewController+JAlertView.h */,
+				1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */,
+				1534F1001CEB2483009F6B34 /* UIViewController+JAlertView.m in Sources */,
 				15EE6AC31CBB8B39000D8DA5 /* JPlaceholderView.m in Sources */,
 				15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */,
 				15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */,
