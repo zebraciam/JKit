@@ -9,6 +9,7 @@
 #import "UIViewController+JAlertView.h"
 #import <objc/runtime.h>
 #import "JKit.h"
+#import <ReactiveCocoa.h>
 
 @interface UIViewController ()
 @property (nonatomic, strong)UIAlertView *alertView;

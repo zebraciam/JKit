@@ -13,6 +13,5 @@
 #import "JMacro.h"
 #import "JView.h"
 #import "JTool.h"
-#import <ReactiveCocoa.h>
 
 #endif /* JKit_h */
