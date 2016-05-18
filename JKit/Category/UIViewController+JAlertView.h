@@ -31,7 +31,11 @@
  *
  *  @param message 有btn 有回调
  */
-- (void)j_showAlert:(NSString *)message andDoneTitle:(NSString *)doneTitle andCancleTitle:(NSString *)cancleTitle andBlock:(dispatch_block_t)block;
+- (void)j_showAlert:(NSString *)message
+           andTitle:(NSString *)title
+       andDoneTitle:(NSString *)doneTitle
+     andCancleTitle:(NSString *)cancleTitle
+           andBlock:(dispatch_block_t)block;
 
 /**
  *  在当前controller限制alert弹出次数
