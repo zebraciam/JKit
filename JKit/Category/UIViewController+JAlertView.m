@@ -57,6 +57,7 @@ static char const JAlertViewKey, JBlockKey, JAllowPlayCountKey;
 
 - (void)j_showAlert:(NSString *)message{
     
+    [JKeyWindow endEditing:YES];
     if ([self.allowPlayCount integerValue] == 1 || [self.allowPlayCount integerValue] == 0) {
         if ([self.allowPlayCount integerValue] == 1) {
             self.allowPlayCount = @"2";
@@ -70,7 +71,7 @@ static char const JAlertViewKey, JBlockKey, JAllowPlayCountKey;
 }
 
 - (void)j_showAlert:(NSString *)message andBlock:(dispatch_block_t)block{
-    
+    [JKeyWindow endEditing:YES];
     if ([self.allowPlayCount integerValue] == 1 || [self.allowPlayCount integerValue] == 0) {
         if ([self.allowPlayCount integerValue] == 1) {
             self.allowPlayCount = @"2";
@@ -81,6 +82,26 @@ static char const JAlertViewKey, JBlockKey, JAllowPlayCountKey;
         [self.alertView show];
         
         [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(alertDismissWithBlock) userInfo:nil repeats:NO];
+    }
+}
+
+- (void)j_showAlert:(NSString *)message andDoneTitle:(NSString *)doneTitle andCancleTitle:(NSString *)cancleTitle andBlock:(dispatch_block_t)block{
+    [JKeyWindow endEditing:YES];
+    if ([self.allowPlayCount integerValue] == 1 || [self.allowPlayCount integerValue] == 0) {
+        if ([self.allowPlayCount integerValue] == 1) {
+            self.allowPlayCount = @"2";
+        }
+        self.block = block;
+        self.alertView = [[UIAlertView alloc]initWithTitle:nil message:message delegate:nil cancelButtonTitle:cancleTitle otherButtonTitles:doneTitle, nil];
+    
+        [self.alertView show];
+        
+        [[self.alertView rac_buttonClickedSignal] subscribeNext:^(id x) {
+            if ([x boolValue]) {
+                JBlock(block);
+            }
+        }];
+        
     }
 }
 
