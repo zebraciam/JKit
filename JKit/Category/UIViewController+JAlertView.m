@@ -9,28 +9,17 @@
 #import "UIViewController+JAlertView.h"
 #import <objc/runtime.h>
 #import "JKit.h"
-#import <ReactiveCocoa.h>
 
 @interface UIViewController ()
-@property (nonatomic, strong)UIAlertView *alertView;
-
 @property (nonatomic, strong)dispatch_block_t block;
 
 @property (nonatomic, strong)NSString *allowPlayCount;
 
 @end
 
-static char const JAlertViewKey, JBlockKey, JAllowPlayCountKey;
+static char const JBlockKey, JAllowPlayCountKey;
 
 @implementation UIViewController (JAlertView)
-
-- (void)setAlertView:(UIAlertView *)alertView{
-    objc_setAssociatedObject(self, &JAlertViewKey, alertView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
--(UIAlertView *)alertView{
-    return objc_getAssociatedObject(self, &JAlertViewKey);
-}
-
 
 - (void)setBlock:(dispatch_block_t)block{
     objc_setAssociatedObject(self, &JBlockKey, block, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -58,65 +47,67 @@ static char const JAlertViewKey, JBlockKey, JAllowPlayCountKey;
 
 - (void)j_showAlert:(NSString *)message{
     
-    [JKeyWindow endEditing:YES];
     if ([self.allowPlayCount integerValue] == 1 || [self.allowPlayCount integerValue] == 0) {
         if ([self.allowPlayCount integerValue] == 1) {
             self.allowPlayCount = @"2";
         }
-        self.alertView = [[UIAlertView alloc]initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
         
-        [self.alertView show];
+        [alertView show];
         
-        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(alertDismiss) userInfo:nil repeats:NO];
+        
+        __block int timeout = 1; //倒计时时间
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+        
+        dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+        dispatch_source_set_event_handler(_timer, ^{
+            if(timeout == 0){ //倒计时结束，关闭
+                dispatch_source_cancel(_timer);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //设置界面的按钮显示 根据自己需求设置
+                    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+                });
+            }else{
+                timeout --;
+            }
+        });
+        dispatch_resume(_timer);
     }
 }
 
 - (void)j_showAlert:(NSString *)message andBlock:(dispatch_block_t)block{
-    [JKeyWindow endEditing:YES];
+    
     if ([self.allowPlayCount integerValue] == 1 || [self.allowPlayCount integerValue] == 0) {
         if ([self.allowPlayCount integerValue] == 1) {
             self.allowPlayCount = @"2";
         }
         self.block = block;
-        self.alertView = [[UIAlertView alloc]initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+        if(message){
+            [alertView show];
+        }
         
-        [self.alertView show];
         
-        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(alertDismissWithBlock) userInfo:nil repeats:NO];
-    }
-}
+        __block int timeout = 1; //倒计时时间
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+        
+        dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+        dispatch_source_set_event_handler(_timer, ^{
+            if(timeout == 0){ //倒计时结束，关闭
+                dispatch_source_cancel(_timer);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //设置界面的按钮显示 根据自己需求设置
+                    JBlock(self.block);
+                    [alertView dismissWithClickedButtonIndex:0 animated:YES];
 
-- (void)j_showAlert:(NSString *)message
-           andTitle:(NSString *)title
-       andDoneTitle:(NSString *)doneTitle
-     andCancleTitle:(NSString *)cancleTitle
-           andBlock:(dispatch_block_t)block{
-    
-    [JKeyWindow endEditing:YES];
-    if ([self.allowPlayCount integerValue] == 1 || [self.allowPlayCount integerValue] == 0) {
-        if ([self.allowPlayCount integerValue] == 1) {
-            self.allowPlayCount = @"2";
-        }
-        self.block = block;
-        self.alertView = [[UIAlertView alloc]initWithTitle:title message:message delegate:nil cancelButtonTitle:cancleTitle otherButtonTitles:doneTitle, nil];
-    
-        [self.alertView show];
-        
-        [[self.alertView rac_buttonClickedSignal] subscribeNext:^(id x) {
-            if ([x boolValue]) {
-                JBlock(block);
+                });
+            }else{
+                timeout --;
             }
-        }];
-        
+        });
+        dispatch_resume(_timer);
     }
-}
-
-- (void)alertDismissWithBlock{
-    JBlock(self.block);
-    [self alertDismiss];
-}
-
-- (void)alertDismiss{
-    [self.alertView dismissWithClickedButtonIndex:0 animated:YES];
 }
 @end
