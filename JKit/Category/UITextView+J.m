@@ -56,7 +56,33 @@ static char placeholderTextViewKey;
     self.placeholderTextView.font = self.font;
     self.placeholderTextView.text = j_placeholder;
 }
+#pragma mark 占位提示
 
+- (void)j_placeholder:(NSString *)j_placeholder andTextColor:(UIColor *)textColor{
+    
+    if (![self placeholderTextView]) {
+        
+        UITextView *textView = [[UITextView alloc] initWithFrame:self.bounds];
+        textView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        textView.backgroundColor = [UIColor clearColor];
+        textView.textColor = textColor;
+        textView.userInteractionEnabled = NO;
+        [self addSubview:textView];
+        
+        [self setPlaceholderTextView:textView];
+        textView.hidden = self.text.length;
+        
+        NSOperationQueue *mainQuene =[NSOperationQueue mainQueue];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:UITextViewTextDidChangeNotification object:nil queue:mainQuene usingBlock:^(NSNotification *note) {
+            
+            textView.hidden = self.text.length;
+        }];
+    }
+    
+    self.placeholderTextView.font = self.font;
+    self.placeholderTextView.text = j_placeholder;
+}
 #pragma mark 限制输入长度
 
 - (void)j_limitLength:(NSUInteger)length
