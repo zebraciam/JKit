@@ -145,6 +145,13 @@
     }
 }
 
+- (void)j_setPagerViewControllerWithIndex:(NSInteger)index{
+    [pagerView.scrollView setContentOffset:CGPointMake(FUll_VIEW_WIDTH * index, 0) animated:YES];
+    pagerView.currentPage = (FUll_VIEW_WIDTH * index + FUll_VIEW_WIDTH / 2) / FUll_VIEW_WIDTH;
+}
+
+
+
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"currentPage"]) {

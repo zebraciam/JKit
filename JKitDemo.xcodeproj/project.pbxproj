@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150F422F1D06C61500233827 /* JTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F422E1D06C61500233827 /* JTabBarController.m */; };
+		150F42321D06C69D00233827 /* JTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F42311D06C69D00233827 /* JTabBarButton.m */; };
 		1534F1001CEB2483009F6B34 /* UIViewController+JAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */; };
 		15AD79F41C982DDA00BA5529 /* NSDate+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD79F31C982DDA00BA5529 /* NSDate+J.m */; };
 		15B21BC11CAD2DE2003BD8DF /* JPagerTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC01CAD2DE2003BD8DF /* JPagerTopTabView.m */; };
@@ -63,6 +65,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		150F422D1D06C61500233827 /* JTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTabBarController.h; sourceTree = "<group>"; };
+		150F422E1D06C61500233827 /* JTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTabBarController.m; sourceTree = "<group>"; };
+		150F42301D06C69D00233827 /* JTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTabBarButton.h; sourceTree = "<group>"; };
+		150F42311D06C69D00233827 /* JTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTabBarButton.m; sourceTree = "<group>"; };
 		1534F0FE1CEB2483009F6B34 /* UIViewController+JAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JAlertView.h"; sourceTree = "<group>"; };
 		1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JAlertView.m"; sourceTree = "<group>"; };
 		15AD79F21C982DDA00BA5529 /* NSDate+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+J.h"; sourceTree = "<group>"; };
@@ -170,6 +176,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		150F422C1D06C5ED00233827 /* JTabBarView */ = {
+			isa = PBXGroup;
+			children = (
+				150F422D1D06C61500233827 /* JTabBarController.h */,
+				150F422E1D06C61500233827 /* JTabBarController.m */,
+				150F42301D06C69D00233827 /* JTabBarButton.h */,
+				150F42311D06C69D00233827 /* JTabBarButton.m */,
+			);
+			path = JTabBarView;
+			sourceTree = "<group>";
+		};
 		15B21BBD1CAD2B02003BD8DF /* JPagerViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				92AE7BB61C843841005B614C /* JView.h */,
+				150F422C1D06C5ED00233827 /* JTabBarView */,
 				15EE6AC01CBB8B2C000D8DA5 /* JPlaceholderView */,
 				15EE6AB91CBB7AA5000D8DA5 /* JGuideView */,
 				15B21BBD1CAD2B02003BD8DF /* JPagerViewController */,
@@ -598,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */,
+				150F42321D06C69D00233827 /* JTabBarButton.m in Sources */,
 				1534F1001CEB2483009F6B34 /* UIViewController+JAlertView.m in Sources */,
 				15EE6AC31CBB8B39000D8DA5 /* JPlaceholderView.m in Sources */,
 				15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */,
@@ -615,6 +634,7 @@
 				92D3DC2F1C3CB32C00DFDFE2 /* UIViewController+J.m in Sources */,
 				15AD79F41C982DDA00BA5529 /* NSDate+J.m in Sources */,
 				92AE7BB51C843811005B614C /* JTopClassification.m in Sources */,
+				150F422F1D06C61500233827 /* JTabBarController.m in Sources */,
 				92AE7BC21C843C8E005B614C /* JCameraTool.m in Sources */,
 				92D3DC1B1C3CA2D000DFDFE2 /* NSString+J.m in Sources */,
 				92AE7BB21C843811005B614C /* JPageControl.m in Sources */,

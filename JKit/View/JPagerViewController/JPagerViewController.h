@@ -57,4 +57,6 @@ typedef void(^JPagerViewControllerBlock)(NSInteger index);
    andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary
             andSelectCallBack:(JPagerViewControllerBlock)block;
 
+- (void)j_setPagerViewControllerWithIndex:(NSInteger)index;
+
 @end

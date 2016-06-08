@@ -138,6 +138,8 @@
             lineBottom.backgroundColor = UIColorFromRGB(0xff6262);
         }
         [_topTab addSubview:lineBottom];
+        [self initUI];
+
     }
     return _topTab;
 }
@@ -146,7 +148,7 @@
 - (void)touchAction:(UIButton *)button {
     [_scrollView setContentOffset:CGPointMake(FUll_VIEW_WIDTH * button.tag, 0) animated:YES];
     self.currentPage = (FUll_VIEW_WIDTH * button.tag + FUll_VIEW_WIDTH / 2) / FUll_VIEW_WIDTH;
-    
+
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -194,7 +196,6 @@
 #pragma mark - LayOutSubViews
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self initUI];
 }
 
 - (void)initUI {
