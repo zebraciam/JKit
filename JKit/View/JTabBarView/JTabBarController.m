@@ -8,7 +8,7 @@
 
 #import "JTabBarController.h"
 #import "JTabBarButton.h"
-
+#import "JKit.h"
 
 @interface JTabBarController ()<UIAlertViewDelegate>{
     NSInteger count;

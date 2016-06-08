@@ -16,5 +16,6 @@
 #import "JGuideViewController.h"
 #import "JCustomPickerView.h"
 #import "JPlaceholderView.h"
+#import "JTabBarController.h"
 
 #endif /* JView_h */
