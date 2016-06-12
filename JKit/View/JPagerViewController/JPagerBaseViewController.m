@@ -7,7 +7,7 @@
 //
 
 #import "JPagerBaseViewController.h"
-
+#import "JKit.h"
 @implementation JPagerBaseViewController{
     UIView *lineBottom;
     UIView *topTabBottomLine;
@@ -182,11 +182,11 @@
             }];
         }
         if (selectBtn) {
-            [btnArray[yourPage] setTitleColor:selectBtn forState:UIControlStateNormal];
+            [(UIButton *)[btnArray j_objectAtIndex:yourPage] setTitleColor:selectBtn forState:UIControlStateNormal];
         }else {
-            [btnArray[yourPage] setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [(UIButton *)[btnArray j_objectAtIndex:yourPage] setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
-        UIButton *changeButton = btnArray[yourPage];
+        UIButton *changeButton = (UIButton *)[btnArray j_objectAtIndex:yourPage];
         [UIView animateWithDuration:0.3 animations:^{
             changeButton.transform = CGAffineTransformMakeScale(1.15, 1.15);
         }];

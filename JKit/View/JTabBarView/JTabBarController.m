@@ -22,7 +22,11 @@
 - (instancetype)init{
     self = [super init];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mTabSelectIndex:) name:@"JTabBarSelectIndex" object:nil];
+        
+        // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideTabBar:) name:JTabBarHidden object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mTabSelectIndex:) name:JTabBarSelectIndex object:nil];
     }
     return self;
 }
@@ -36,7 +40,7 @@
     [self hideOriginalTab];
     self.tabBarView = [[UIView alloc]init];
     self.tabBarView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-49, [UIScreen mainScreen].bounds.size.width, 49);
-        self.tabBarView.backgroundColor = JColorWithHex(0xffffff);
+    self.tabBarView.backgroundColor = JColorWithHex(0xffffff);
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, JScreenWidth, 0.5)];
     lineView.backgroundColor = JColorWithHex(0xebe8e8);
     [self.tabBarView addSubview:lineView];
@@ -47,25 +51,24 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//隐藏tabbar
-- (void)hideTabBar:(NSNotification *)notif {
+//隐藏tabbar  yes 隐藏  no 显示
+- (void)hideTabBar:(NSNotification *)notify {
+    
+    BOOL value = [notify.object boolValue];
+
+    self.tabBar.translucent = value;
+    
     [UIView animateWithDuration:0.2
                           delay:0.00
                         options:UIViewAnimationOptionTransitionCurlUp animations:^(void){
-                            self.tabBarView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 49);
+                            if (value) {
+                                self.tabBarView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 49);
+                            }else{
+                                self.tabBarView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-49, [UIScreen mainScreen].bounds.size.width, 49);
+                            }
                         }completion:nil];
-    
 }
 
-//显示tabbar
-- (void)appearTabBar:(NSNotification *)notif {
-    [UIView animateWithDuration:0.2
-                          delay:0.00
-                        options:UIViewAnimationOptionTransitionCurlUp animations:^(void){
-                            self.tabBarView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-49, [UIScreen mainScreen].bounds.size.width, 49);
-                        }completion:nil];
-    
-}
 
 //给tabbar自定义按钮或其他控件
 - (void)setTabWithArray:(NSArray *)tabArray
@@ -139,7 +142,7 @@
                 
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:10.0f];
                 btn.adjustsImageWhenHighlighted = NO;
-
+                
                 btn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/[tabArray count]*i, 0, [UIScreen mainScreen].bounds.size.width/[tabArray count], 49);
                 [btn setBackgroundColor:[UIColor clearColor]];
                 btn.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -185,18 +188,21 @@
 
 - (void)hideOriginalTab {
     NSArray *array = [self.view subviews];
-    UIView *originalTabView = [array objectAtIndex:1];
-    originalTabView.frame = CGRectMake(0,[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 49);
-    originalTabView.backgroundColor = [UIColor clearColor];
-    UIView *newTabView = [array objectAtIndex:0];
-    newTabView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    for (int i = 0; i < array.count; i++) {
+        UIView *originalTabView = [array objectAtIndex:i];
+        originalTabView.frame = CGRectMake(0,[UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 49);
+        originalTabView.backgroundColor = [UIColor clearColor];
+        UIView *newTabView = [array objectAtIndex:0];
+        newTabView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    }
+    
 }
 
 
 
 
 - (void)mTabSelectIndex:(NSNotification *)notify{
-    NSInteger value = [[notify.userInfo objectForKey:@"JTabBarSelectIndex"] integerValue];
+    NSInteger value = [notify.object integerValue];
     UIViewController *selectVC = [self.viewControllers objectAtIndex:value];
     self.selectedViewController = selectVC;
     for(int i = 0; i < count; i++) {
@@ -206,8 +212,6 @@
         else
             btn.selected = YES;
     }
-    
-    
 }
 
 
@@ -222,17 +226,6 @@
         else
             btn.selected = YES;
     }
-    
-    UINavigationController * nav = (UINavigationController *)self.selectedViewController;
-    if([nav.viewControllers count]!=1)
-    {
-        [self hideTabBar:nil];
-    }
-    else
-    {
-        [self appearTabBar:nil];
-    }
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -241,13 +234,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

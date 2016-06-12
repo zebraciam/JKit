@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *const JTabBarHidden = @"JTabbarHidden";
+static NSString *const JTabBarSelectIndex = @"JTabBarSelectIndex";
+
+
 @interface JTabBarController : UITabBarController
 
 @property (strong, nonatomic) UIView * tabBarView;
@@ -55,20 +59,6 @@
  *  @param index index
  */
 - (void)selectIndex:(int)index;
-
-/**
- *  隐藏tabbar
- *
- *  @param notif nil
- */
-- (void)hideTabBar:(NSNotification *)notif;
-
-/**
- *  显示tabbar
- *
- *  @param notif nil
- */
-- (void)appearTabBar:(NSNotification *)notif;
 
 
 @end
