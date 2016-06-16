@@ -112,6 +112,7 @@ JSingletonImplementation(JCameraTool);
         if(_isCropper){
             [self cropperDelegate:portraitImg andPickerController:picker];
         }else{
+            [picker dismissViewControllerAnimated:YES completion:nil];
             JBlock(self.block, portraitImg);
         }
     }];

@@ -43,10 +43,33 @@ typedef void(^j_WriteToSavedPhotosError)(NSError *error);
  *  @param KB 图片最大多少KB
  */
 - (float)j_pressImageWithLessThanSizeKB:(CGFloat )KB;
+
 /**
  *  改变图片尺寸
  *
  *  @param newSize 尺寸
  */
 - (UIImage*)j_imageWithscaledToSize:(CGSize)newSize;
+
+/**
+ *  改变图片相关
+ *
+ *  @param color 需要改变的颜色
+ *
+ *  @return 新的图片
+ */
+-(UIImage*)j_tintedImageWithColor:(UIColor*)color;
+-(UIImage*)j_tintedImageWithColor:(UIColor*)color level:(CGFloat)level;
+-(UIImage*)j_tintedImageWithColor:(UIColor*)color rect:(CGRect)rect;
+-(UIImage*)j_tintedImageWithColor:(UIColor*)color rect:(CGRect)rect level:(CGFloat)level;
+-(UIImage*)j_tintedImageWithColor:(UIColor*)color insets:(UIEdgeInsets)insets;
+-(UIImage*)j_tintedImageWithColor:(UIColor*)color insets:(UIEdgeInsets)insets level:(CGFloat)level;
+
+-(UIImage*)j_lightenWithLevel:(CGFloat)level;
+-(UIImage*)j_lightenWithLevel:(CGFloat)level insets:(UIEdgeInsets)insets;
+-(UIImage*)j_lightenRect:(CGRect)rect withLevel:(CGFloat)level;
+
+-(UIImage*)j_darkenWithLevel:(CGFloat)level;
+-(UIImage*)j_darkenWithLevel:(CGFloat)level insets:(UIEdgeInsets)insets;
+-(UIImage*)j_darkenRect:(CGRect)rect withLevel:(CGFloat)level;
 @end
