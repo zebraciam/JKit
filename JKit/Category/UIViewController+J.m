@@ -58,6 +58,7 @@
 - (void)j_createNavBarBackView:(UIView *)backView{
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:backView];
 }
+
 @end
 
 

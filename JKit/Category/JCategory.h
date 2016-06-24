@@ -23,5 +23,6 @@
 #import "NSDate+J.h"
 #import "UIViewController+JPlaceholderView.h"
 #import "UIViewController+JAlertView.h"
+#import "UITableView+J.h"
 
 #endif /* JCategory_h */
