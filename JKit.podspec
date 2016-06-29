@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "JKit"
-s.version      = "1.8.3"
+s.version      = "1.8.4"
 s.summary      = "Fast iOS Develope App Kit"
 s.description  = <<-DESC
 JKit 平时用的工具类

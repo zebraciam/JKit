@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "JMacro.h"
 #import "UIView+J.h"
-#import "ReactiveCocoa.h"
 
 typedef void (^JPickViewSubmit)(NSString*selectStr);
 

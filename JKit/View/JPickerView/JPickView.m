@@ -184,29 +184,7 @@
     [submit setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     submit.backgroundColor = [UIColor whiteColor];
     submit.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
-//    [submit addTarget:pickView action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
-    [[submit rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [JKeyWindow endEditing:YES];
-        
-        NSString *pickStr = pickView.selectedStr;
-        if (!pickStr || pickStr.length == 0) {
-            if(pickView.isDate) {
-                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                if (pickView.mode == UIDatePickerModeDateAndTime) {
-                    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-                }else{
-                    [formatter setDateFormat:@"yyyy-MM-dd"];
-                }
-                pickView.selectedStr = [formatter stringFromDate:[NSDate date]];
-            } else {
-                if([pickView.proTitleList count] > 0) {
-                    pickView.selectedStr = pickView.proTitleList[0];
-                }
-            }
-        }
-        JBlock(block, pickView.selectedStr);
-        
-    }];
+    [submit addTarget:pickView action:@selector(submit1:) forControlEvents:UIControlEventTouchUpInside];
     
     [header addSubview:submit];
     
@@ -215,10 +193,8 @@
     [cancel setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     cancel.backgroundColor = [UIColor whiteColor];
     cancel.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
-//    [cancel addTarget:pickView action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
-    [[submit rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [JKeyWindow endEditing:YES];
-    }];
+    [cancel addTarget:pickView action:@selector(cancel1:) forControlEvents:UIControlEventTouchUpInside];
+
     [header addSubview:cancel];
     
     [pickView addSubview:header];
@@ -312,6 +288,35 @@
     JBlock(_block, self.selectedStr);
     [self hide];
    
+    
+}
+- (void)cancel1:(UIButton *)btn
+{
+    [JKeyWindow endEditing:YES];
+}
+
+- (void)submit1:(UIButton *)btn
+{
+    [JKeyWindow endEditing:YES];
+    
+    NSString *pickStr = self.selectedStr;
+    if (!pickStr || pickStr.length == 0) {
+        if(self.isDate) {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            if (self.mode == UIDatePickerModeDateAndTime) {
+                [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+            }else{
+                [formatter setDateFormat:@"yyyy-MM-dd"];
+            }
+            self.selectedStr = [formatter stringFromDate:[NSDate date]];
+        } else {
+            if([self.proTitleList count] > 0) {
+                self.selectedStr = self.proTitleList[0];
+            }
+        }
+    }
+    JBlock(self.block, self.selectedStr);
+    
     
 }
 
