@@ -7,7 +7,7 @@
 //
 
 #import "JPickView.h"
-#import "JKit.h"
+#import <ReactiveCocoa.h>
 
 #define SCREENSIZE UIScreen.mainScreen.bounds.size
 @implementation JPickView

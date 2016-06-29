@@ -14,8 +14,6 @@
 #import "JView.h"
 #import "JTool.h"
 
-#import <ReactiveCocoa.h>
-#import <SVProgressHUD.h>
-#import <SDWebImage/UIImageView+WebCache.h>
+
 
 #endif /* JKit_h */
