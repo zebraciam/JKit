@@ -29,14 +29,40 @@ typedef void (^JPickViewSubmit)(NSString*selectStr);
  *
  *  @param title title
  */
-+ (void)j_createDatePickerWithTitle:(NSString *)title andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block;
++ (void)j_createDatePickerWithTitle:(NSString *)title
+                  andDatePickerMode:(UIDatePickerMode)mode
+                     andDefaultDate:(NSDate *)defaultDate
+                         andMaxDate:(NSDate *)maxDate
+                         andMinDate:(NSDate *)minDate
+                        andCallBack:(JPickViewSubmit)block;
 /**
  *  PickerView
  *
  *  @param items 一维数组
  *  @param title title
  */
-+ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title andCallBack:(JPickViewSubmit)block;
++ (void)j_createPickerWithItem:(NSArray *)items
+                         title:(NSString *)title
+                   andCallBack:(JPickViewSubmit)block;
+
+/**
+ *  textField 或者 textView  inputView
+ *
+ *  @param textView    UITextField 或者 UITextView
+ *  @param title       title
+ *  @param mode        pickerView类型
+ *  @param defaultDate 默认显示时间
+ *  @param maxDate     最大时间
+ *  @param minDate     最小时间
+ *  @param block       确定回调
+ */
++ (void)j_createDatePickerWithTextFieldInputView:(id)textView
+                                        andTitle:(NSString *)title
+                               andDatePickerMode:(UIDatePickerMode)mode
+                                  andDefaultDate:(NSDate *)defaultDate
+                                      andMaxDate:(NSDate *)maxDate
+                                      andMinDate:(NSDate *)minDate
+                                     andCallBack:(JPickViewSubmit)block;
 
 @property(nonatomic,copy)JPickViewSubmit block;
 @end
