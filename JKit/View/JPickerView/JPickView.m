@@ -40,10 +40,118 @@
     [self.bgView removeFromSuperview];
     [self removeFromSuperview];
 }
+
++ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title andCallBack:(JPickViewSubmit)block
+{
+    JPickView *pickView = [[JPickView alloc] init];
+    pickView.block = block;
+    pickView.isDate = NO;
+    pickView.proTitleList = items;
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENSIZE.width, 39.5)];
+    header.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, SCREENSIZE.width - 80, 39.5)];
+    titleLbl.text = title;
+    titleLbl.textAlignment = NSTextAlignmentCenter;
+    titleLbl.textColor = [pickView getColor:@"999999"];
+    titleLbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.0];
+    [header addSubview:titleLbl];
+    
+    
+    
+    UIButton *submit = [[UIButton alloc] initWithFrame:CGRectMake(SCREENSIZE.width - 50, 10, 50 ,29.5)];
+    [submit setTitle:@"确定" forState:UIControlStateNormal];
+    [submit setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    submit.backgroundColor = [UIColor whiteColor];
+    submit.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
+    [submit addTarget:pickView action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
+    [header addSubview:submit];
+    
+    UIButton *cancel = [[UIButton alloc] initWithFrame:CGRectMake(0, 10, 50 ,29.5)];
+    [cancel setTitle:@"取消" forState:UIControlStateNormal];
+    [cancel setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    cancel.backgroundColor = [UIColor whiteColor];
+    cancel.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
+    [cancel addTarget:pickView action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    [header addSubview:cancel];
+
+    [pickView addSubview:header];
+    UIPickerView *pick = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, SCREENSIZE.width, 270)];
+    
+    pick.delegate = pickView;
+    pick.backgroundColor = [UIColor whiteColor];
+    [pickView addSubview:pick];
+    
+    
+    float height = 300;
+    pickView.frame = CGRectMake(0, SCREENSIZE.height - height, SCREENSIZE.width, height);
+    [pickView showPickView];
+
+}
+
++ (void)j_createPickerWithTextFieldInputView:(id)textView
+                                     andItem:(NSArray *)items
+                                       title:(NSString *)title
+                                 andCallBack:(JPickViewSubmit)block {
+    
+    JPickView *pickView = [[JPickView alloc] init];
+    pickView.block = block;
+    pickView.isDate = NO;
+    pickView.proTitleList = items;
+    
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENSIZE.width, 39.5)];
+    header.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, SCREENSIZE.width - 80, 39.5)];
+    titleLbl.text = title;
+    titleLbl.textAlignment = NSTextAlignmentCenter;
+    titleLbl.textColor = [pickView getColor:@"999999"];
+    titleLbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.0];
+    [header addSubview:titleLbl];
+    
+    UIButton *submit = [[UIButton alloc] initWithFrame:CGRectMake(SCREENSIZE.width - 50, 10, 50 ,29.5)];
+    [submit setTitle:@"确定" forState:UIControlStateNormal];
+    [submit setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    submit.backgroundColor = [UIColor whiteColor];
+    submit.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
+    [submit addTarget:pickView action:@selector(submit1:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [header addSubview:submit];
+    
+    UIButton *cancel = [[UIButton alloc] initWithFrame:CGRectMake(0, 10, 50 ,29.5)];
+    [cancel setTitle:@"取消" forState:UIControlStateNormal];
+    [cancel setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    cancel.backgroundColor = [UIColor whiteColor];
+    cancel.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
+    [cancel addTarget:pickView action:@selector(cancel1:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [header addSubview:cancel];
+    
+    [pickView addSubview:header];
+    
+    UIPickerView *pick = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, SCREENSIZE.width, 250)];
+    
+    pick.delegate = pickView;
+    pick.backgroundColor = [UIColor whiteColor];
+    [pickView addSubview:pick];
+    
+    
+    float height = 270;
+    
+    pickView.frame = CGRectMake(0, SCREENSIZE.height - height, SCREENSIZE.width, height);
+    
+    if([textView isKindOfClass:[UITextField class]]){
+        ((UITextField *)textView).inputView = pickView;
+    }else if([textView isKindOfClass:[UITextView class]]){
+        ((UITextView *)textView).inputView = pickView;
+    }
+    
+}
+
 + (void)j_createDatePickerWithTitle:(NSString *)title andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block{
     
     JPickView *pickView = [[JPickView alloc] init];
-
+    
     pickView.block = block;
     
     pickView.isDate = YES;
@@ -112,53 +220,7 @@
     pickView.frame = CGRectMake(0, SCREENSIZE.height - height, SCREENSIZE.width, height);
     [pickView showPickView];
 }
-+ (void)j_createPickerWithItem:(NSArray *)items title:(NSString *)title andCallBack:(JPickViewSubmit)block
-{
-    JPickView *pickView = [[JPickView alloc] init];
-    pickView.block = block;
-    pickView.isDate = NO;
-    pickView.proTitleList = items;
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENSIZE.width, 39.5)];
-    header.backgroundColor = [UIColor whiteColor];
-    
-    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, SCREENSIZE.width - 80, 39.5)];
-    titleLbl.text = title;
-    titleLbl.textAlignment = NSTextAlignmentCenter;
-    titleLbl.textColor = [pickView getColor:@"999999"];
-    titleLbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.0];
-    [header addSubview:titleLbl];
-    
-    
-    
-    UIButton *submit = [[UIButton alloc] initWithFrame:CGRectMake(SCREENSIZE.width - 50, 10, 50 ,29.5)];
-    [submit setTitle:@"确定" forState:UIControlStateNormal];
-    [submit setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    submit.backgroundColor = [UIColor whiteColor];
-    submit.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
-    [submit addTarget:pickView action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
-    [header addSubview:submit];
-    
-    UIButton *cancel = [[UIButton alloc] initWithFrame:CGRectMake(0, 10, 50 ,29.5)];
-    [cancel setTitle:@"取消" forState:UIControlStateNormal];
-    [cancel setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    cancel.backgroundColor = [UIColor whiteColor];
-    cancel.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:15.0];
-    [cancel addTarget:pickView action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
-    [header addSubview:cancel];
 
-    [pickView addSubview:header];
-    UIPickerView *pick = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, SCREENSIZE.width, 270)];
-    
-    pick.delegate = pickView;
-    pick.backgroundColor = [UIColor whiteColor];
-    [pickView addSubview:pick];
-    
-    
-    float height = 300;
-    pickView.frame = CGRectMake(0, SCREENSIZE.height - height, SCREENSIZE.width, height);
-    [pickView showPickView];
-
-}
 
 + (void)j_createDatePickerWithTextFieldInputView:(id)textView andTitle:(NSString *)title andDatePickerMode:(UIDatePickerMode)mode andDefaultDate:(NSDate *)defaultDate andMaxDate:(NSDate *)maxDate andMinDate:(NSDate *)minDate andCallBack:(JPickViewSubmit)block {
     

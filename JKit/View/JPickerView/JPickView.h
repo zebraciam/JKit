@@ -25,6 +25,28 @@ typedef void (^JPickViewSubmit)(NSString*selectStr);
 @property (nonatomic, assign) UIDatePickerMode mode;
 
 
+
+/**
+ *  PickerView
+ *
+ *  @param items 一维数组
+ *  @param title title
+ */
++ (void)j_createPickerWithItem:(NSArray *)items
+                         title:(NSString *)title
+                   andCallBack:(JPickViewSubmit)block;
+/**
+ *  textField 或者 textView  inputView
+ *
+ *  @param textView UITextField 或者 UITextView
+ *  @param items    一维数组
+ *  @param title    title
+ */
++ (void)j_createPickerWithTextFieldInputView:(id)textView
+                                     andItem:(NSArray *)items
+                                       title:(NSString *)title
+                                 andCallBack:(JPickViewSubmit)block;
+
 /**
  *  DatePickerView
  *
@@ -36,15 +58,6 @@ typedef void (^JPickViewSubmit)(NSString*selectStr);
                          andMaxDate:(NSDate *)maxDate
                          andMinDate:(NSDate *)minDate
                         andCallBack:(JPickViewSubmit)block;
-/**
- *  PickerView
- *
- *  @param items 一维数组
- *  @param title title
- */
-+ (void)j_createPickerWithItem:(NSArray *)items
-                         title:(NSString *)title
-                   andCallBack:(JPickViewSubmit)block;
 
 /**
  *  textField 或者 textView  inputView
