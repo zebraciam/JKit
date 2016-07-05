@@ -31,15 +31,18 @@ JSingletonImplementation(LoadingTool)
 }
 + (void)j_startLoading
 {
+    [SVProgressHUD show];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
 }
 
 + (void)j_startLoadingWithNoSelect
 {
+    [SVProgressHUD show];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
 }
 + (void)j_startLoadingWithSVProgressHUDMaskType:(SVProgressHUDMaskType)type
 {
+    [SVProgressHUD show];
     [SVProgressHUD setDefaultMaskType:type];
 }
 + (void)j_stopLoading
