@@ -13,7 +13,7 @@
 #import "RACDelegateProxy.h"
 #import "UIView+J.h"
 #import <objc/runtime.h>
-#import "VPImageCropperViewController.h"
+#import "JImageCropperViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface JCameraTool ()
@@ -59,7 +59,7 @@ JSingletonImplementation(JCameraTool);
                 imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
                 [SELF imagePickerDelegate:imagePicker];
             }
-
+            
         }];
         UIAlertAction * pics = [UIAlertAction actionWithTitle:@"从手机相册获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -90,7 +90,7 @@ JSingletonImplementation(JCameraTool);
                     imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
                     [SELF imagePickerDelegate:imagePicker];
                 }
-
+                
             }else if([x integerValue] == 2){
                 imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 [SELF imagePickerDelegate:imagePicker];
@@ -101,7 +101,7 @@ JSingletonImplementation(JCameraTool);
 }
 #pragma mark -UIImagePickerControllerDelegate
 - (void)imagePickerDelegate:(UIImagePickerController *)imagePicker{
-
+    
     @weakify(self);
     RACDelegateProxy * delegateProxy = [[RACDelegateProxy alloc]initWithProtocol:@protocol(UIImagePickerControllerDelegate)];
     [[delegateProxy rac_signalForSelector:@selector(imagePickerController:didFinishPickingMediaWithInfo:)] subscribeNext:^(RACTuple *arg) {
@@ -112,7 +112,6 @@ JSingletonImplementation(JCameraTool);
         if(_isCropper){
             [self cropperDelegate:portraitImg andPickerController:picker];
         }else{
-            [picker dismissViewControllerAnimated:YES completion:nil];
             JBlock(self.block, portraitImg);
         }
     }];
@@ -121,34 +120,40 @@ JSingletonImplementation(JCameraTool);
     [self.viewC  presentViewController:imagePicker animated:YES completion:^{
     }];
 }
-#pragma mark -VPImageCropperDelegate
+#pragma mark -JImageCropperDelegate
 - (void)cropperDelegate:(UIImage *)portraitImg andPickerController:(UIImagePickerController *)picker{
     
-    VPImageCropperViewController *imgCropperVC = [[VPImageCropperViewController alloc] initWithImage:portraitImg cropFrame:CGRectMake(0, 100.0f, self.viewC.view.j_width, self.viewC.view.j_width * self.scale) limitScaleRatio:3.0];
+    JImageCropperViewController *imgCropperVC = [[JImageCropperViewController alloc] initWithImage:portraitImg cropFrame:CGRectMake(0, 100.0f, self.viewC.view.j_width, self.viewC.view.j_width * self.scale) limitScaleRatio:3.0];
     imgCropperVC.confirmTitle = @"确定";
     imgCropperVC.confirmBtnFont = [UIFont systemFontOfSize:15];
     imgCropperVC.cancelTitle = @"取消";
     
     imgCropperVC.cancelBtnFont = [UIFont systemFontOfSize:15];
     imgCropperVC.cropRectColor = [UIColor whiteColor];
-    [picker pushViewController:imgCropperVC animated:YES];
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self.viewC presentViewController:imgCropperVC animated:YES completion:nil];
+    }];
+    
+    
     [imgCropperVC.navigationController setNavigationBarHidden:YES animated:YES];
-
+    
     @weakify(self);
-    RACDelegateProxy * delegateProxy = [[RACDelegateProxy alloc]initWithProtocol:@protocol(VPImageCropperDelegate)];
+    RACDelegateProxy * delegateProxy = [[RACDelegateProxy alloc]initWithProtocol:@protocol(JImageCropperDelegate)];
     [[delegateProxy rac_signalForSelector:@selector(imageCropper:didFinished:)] subscribeNext:^(RACTuple *arg) {
         @strongify(self);
         [imgCropperVC.navigationController setNavigationBarHidden:NO animated:YES];
         UIImage * image = [arg second];
         JBlock(self.block, image);
-        [picker dismissViewControllerAnimated:YES completion:nil];
+        [imgCropperVC dismissViewControllerAnimated:NO completion:nil];
     }];
     [[delegateProxy rac_signalForSelector:@selector(imageCropperDidCancel:)] subscribeNext:^(RACTuple *arg) {
         [imgCropperVC.navigationController setNavigationBarHidden:NO animated:YES];
-        [picker dismissViewControllerAnimated:YES completion:nil];
+        [imgCropperVC dismissViewControllerAnimated:NO completion:nil];
+        
     }];
     
-    imgCropperVC.delegate = (id<VPImageCropperDelegate>)delegateProxy;
+    imgCropperVC.delegate = (id<JImageCropperDelegate>)delegateProxy;
     objc_setAssociatedObject(imgCropperVC, _cmd, delegateProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 

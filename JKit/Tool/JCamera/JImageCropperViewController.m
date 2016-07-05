@@ -1,18 +1,16 @@
 //
-//  VPImageCropperViewController.m
-//  VPolor
+//  JImageCropperViewController.m
+//  JKitDemo
 //
-//  Created by Vinson.D.Warm on 12/30/13.
-//  Copyright (c) 2013 Huang Vinson. All rights reserved.
+//  Created by Zebra on 16/7/5.
+//  Copyright © 2016年 陈杰. All rights reserved.
 //
 
-#import "VPImageCropperViewController.h"
-
+#import "JImageCropperViewController.h"
 #define SCALE_FRAME_Y 100.0f
 #define BOUNDCE_DURATION 0.3f
 
-@interface VPImageCropperViewController ()
-
+@interface JImageCropperViewController ()
 @property (nonatomic, retain) UIImage *originalImage;
 @property (nonatomic, retain) UIImage *editedImage;
 
@@ -25,10 +23,9 @@
 @property (nonatomic, assign) CGFloat limitRatio;
 
 @property (nonatomic, assign) CGRect latestFrame;
-
 @end
 
-@implementation VPImageCropperViewController
+@implementation JImageCropperViewController
 
 - (void)dealloc {
     self.originalImage = nil;
@@ -112,8 +109,14 @@
 }
 
 - (void)initControlBtn {
+    
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 50.0f, self.view.frame.size.width, 50)];
+    bgView.backgroundColor = [UIColor blackColor];
+    bgView.alpha = 0.3;
+    [self.view addSubview:bgView];
+    
     UIButton *cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 50.0f, 100, 50)];
-    cancelBtn.backgroundColor = self.btnBgColor ? self.btnBgColor : [UIColor blackColor];
+    cancelBtn.backgroundColor = self.btnBgColor ? self.btnBgColor : [UIColor clearColor];
     cancelBtn.titleLabel.textColor = [UIColor whiteColor];
     [cancelBtn setTitle:self.cancelTitle ? self.cancelTitle : @"Cancel" forState:UIControlStateNormal];
     [cancelBtn.titleLabel setFont:self.cancelBtnFont ? self.cancelBtnFont : [UIFont boldSystemFontOfSize:18.0f]];
@@ -125,7 +128,7 @@
     [self.view addSubview:cancelBtn];
     
     UIButton *confirmBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 100.0f, self.view.frame.size.height - 50.0f, 100, 50)];
-    confirmBtn.backgroundColor = self.btnBgColor ? self.btnBgColor : [UIColor blackColor];
+    confirmBtn.backgroundColor = self.btnBgColor ? self.btnBgColor : [UIColor clearColor];
     confirmBtn.titleLabel.textColor = [UIColor whiteColor];
     [confirmBtn setTitle:self.confirmTitle ? self.confirmTitle : @"OK" forState:UIControlStateNormal];
     [confirmBtn.titleLabel setFont:self.confirmBtnFont ? self.confirmBtnFont : [UIFont boldSystemFontOfSize:18.0f]];
@@ -137,6 +140,7 @@
     [confirmBtn addTarget:self action:@selector(confirm:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:confirmBtn];
 }
+
 
 - (void)cancel:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(imageCropperDidCancel:)]) {
@@ -368,5 +372,16 @@
     CGImageRelease(cgimg);
     return img;
 }
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

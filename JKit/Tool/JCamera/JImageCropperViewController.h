@@ -1,26 +1,26 @@
 //
-//  VPImageCropperViewController.h
-//  VPolor
+//  JImageCropperViewController.h
+//  JKitDemo
 //
-//  Created by Vinson.D.Warm on 12/30/13.
-//  Copyright (c) 2013 Huang Vinson. All rights reserved.
+//  Created by Zebra on 16/7/5.
+//  Copyright © 2016年 陈杰. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class VPImageCropperViewController;
+@class JImageCropperViewController;
 
-@protocol VPImageCropperDelegate <NSObject>
+@protocol JImageCropperDelegate <NSObject>
 
-- (void)imageCropper:(VPImageCropperViewController *)cropperViewController didFinished:(UIImage *)editedImage;
-- (void)imageCropperDidCancel:(VPImageCropperViewController *)cropperViewController;
+- (void)imageCropper:(JImageCropperViewController *)cropperViewController didFinished:(UIImage *)editedImage;
+- (void)imageCropperDidCancel:(JImageCropperViewController *)cropperViewController;
 
 @end
 
-@interface VPImageCropperViewController : UIViewController
+@interface JImageCropperViewController : UIViewController
 
 @property (nonatomic, assign) NSInteger tag;
-@property (nonatomic, assign) id<VPImageCropperDelegate> delegate;
+@property (nonatomic, assign) id<JImageCropperDelegate> delegate;
 @property (nonatomic, assign) CGRect cropFrame;
 @property (nonatomic, strong) NSString *confirmTitle;
 @property (nonatomic, strong) NSString *cancelTitle;

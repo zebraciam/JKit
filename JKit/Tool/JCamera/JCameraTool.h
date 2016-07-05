@@ -19,6 +19,9 @@ typedef void(^CallBackBlock)(UIImage * image);
  *  @param scale     剪切的尺寸（屏幕的宽/scale）
  *  @param block     image
  */
-+ (void)j_creatAlertController:(UIViewController *)viewC andisCropper:(BOOL)isCropper andScale:(CGFloat)scale callBack:(CallBackBlock)block;
++ (void)j_creatAlertController:(UIViewController *)viewC
+                  andisCropper:(BOOL)isCropper
+                      andScale:(CGFloat)scale
+                      callBack:(CallBackBlock)block;
 
 @end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "JKit"
-s.version      = "1.8.5"
+s.version      = "1.8.6"
 s.summary      = "Fast iOS Develope App Kit"
 s.description  = <<-DESC
 JKit 平时用的工具类
@@ -13,8 +13,7 @@ s.platform     = :ios, "7.0"
 s.source       = { :git => "https://github.com/GitHubZebra/JKit.git", :tag => s.version }
 s.source_files = "JKit/**/*.{h,m}"
 s.requires_arc = true
-s.dependency 'VPImageCropper'
-s.dependency 'SVProgressHUD', '~> 1.1.3'
+s.dependency 'SVProgressHUD'
 s.dependency 'ReactiveCocoa'
 s.dependency 'SDWebImage'
 end

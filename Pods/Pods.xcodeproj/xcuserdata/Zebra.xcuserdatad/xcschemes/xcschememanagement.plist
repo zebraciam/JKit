@@ -24,35 +24,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>VPImageCropper.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>126624114DE8D505CB67A4B960255386</key>
+		<key>3CEA7EE0E89B1D5238A383CE0ECCDA62</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>671DB4B4F9475610DE143CD7D03E2390</key>
+		<key>994B1DF9A9CA2B5CA771D1D36C02458B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A2A6D72DDED3D3A7617DB50E45F9961</key>
+		<key>BF83D61D6B6A36FEECCC95722E455BC3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C6D72BAFBFAFF68DA8CB68C9AC9088DC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DFA3AF901209D6AB7113D1EE083470C6</key>
+		<key>DF26747F7AC87865D65FE4192E4BB317</key>
 		<dict>
 			<key>primary</key>
 			<true/>

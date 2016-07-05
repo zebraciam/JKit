@@ -1,1 +1,0 @@
-../../../VPImageCropper/VPImageCropperDemo/VPImageCropper/VPImageCropperViewController.h

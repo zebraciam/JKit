@@ -10,6 +10,7 @@
 		150F422F1D06C61500233827 /* JTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F422E1D06C61500233827 /* JTabBarController.m */; };
 		150F42321D06C69D00233827 /* JTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 150F42311D06C69D00233827 /* JTabBarButton.m */; };
 		1534F1001CEB2483009F6B34 /* UIViewController+JAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */; };
+		156CBC291D2B723300BAA844 /* JImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBC281D2B723300BAA844 /* JImageCropperViewController.m */; };
 		15AD79F41C982DDA00BA5529 /* NSDate+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD79F31C982DDA00BA5529 /* NSDate+J.m */; };
 		15B21BC11CAD2DE2003BD8DF /* JPagerTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC01CAD2DE2003BD8DF /* JPagerTopTabView.m */; };
 		15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC31CAD2E39003BD8DF /* JPagerViewController.m */; };
@@ -72,6 +73,8 @@
 		150F42311D06C69D00233827 /* JTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTabBarButton.m; sourceTree = "<group>"; };
 		1534F0FE1CEB2483009F6B34 /* UIViewController+JAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JAlertView.h"; sourceTree = "<group>"; };
 		1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JAlertView.m"; sourceTree = "<group>"; };
+		156CBC271D2B723300BAA844 /* JImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JImageCropperViewController.h; sourceTree = "<group>"; };
+		156CBC281D2B723300BAA844 /* JImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JImageCropperViewController.m; sourceTree = "<group>"; };
 		15AD79F21C982DDA00BA5529 /* NSDate+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+J.h"; sourceTree = "<group>"; };
 		15AD79F31C982DDA00BA5529 /* NSDate+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+J.m"; sourceTree = "<group>"; };
 		15B21BBE1CAD2D82003BD8DF /* JPagerMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPagerMacro.h; sourceTree = "<group>"; };
@@ -350,6 +353,8 @@
 			children = (
 				92AE7BC01C843C8E005B614C /* JCameraTool.h */,
 				92AE7BC11C843C8E005B614C /* JCameraTool.m */,
+				156CBC271D2B723300BAA844 /* JImageCropperViewController.h */,
+				156CBC281D2B723300BAA844 /* JImageCropperViewController.m */,
 			);
 			path = JCamera;
 			sourceTree = "<group>";
@@ -631,6 +636,7 @@
 				92D3DC321C3CB5C400DFDFE2 /* UIImage+J.m in Sources */,
 				92D3DC291C3CB04700DFDFE2 /* UITextView+J.m in Sources */,
 				92D3DC2C1C3CB1C200DFDFE2 /* UIView+J.m in Sources */,
+				156CBC291D2B723300BAA844 /* JImageCropperViewController.m in Sources */,
 				92AE7BB31C843811005B614C /* JPicScrollerView.m in Sources */,
 				9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */,
 				92D3DC181C3CA2BF00DFDFE2 /* NSArray+J.m in Sources */,
