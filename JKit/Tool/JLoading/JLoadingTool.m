@@ -53,6 +53,7 @@ JSingletonImplementation(LoadingTool)
 
 + (void)j_showSuccessWithStatus:(NSString *)string
 {
+    [SVProgressHUD setMinimumDismissTimeInterval:1];
     [SVProgressHUD showSuccessWithStatus:string];
     [[JLoadingTool sharedLoadingTool].view removeFromSuperview];
     
@@ -60,6 +61,7 @@ JSingletonImplementation(LoadingTool)
 
 + (void)j_showErrorWithStatus:(NSString *)string
 {
+    [SVProgressHUD setMinimumDismissTimeInterval:1];
     [SVProgressHUD showErrorWithStatus:string];
     [[JLoadingTool sharedLoadingTool].view removeFromSuperview];
     
@@ -67,6 +69,7 @@ JSingletonImplementation(LoadingTool)
 
 + (void)j_showInfoWithStatus:(NSString *)string
 {
+    [SVProgressHUD setMinimumDismissTimeInterval:1];
     [SVProgressHUD showInfoWithStatus:string];
     [[JLoadingTool sharedLoadingTool].view removeFromSuperview];
     

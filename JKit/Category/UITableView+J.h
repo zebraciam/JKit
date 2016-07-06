@@ -13,6 +13,6 @@
 /**
  *  去掉tableView多余分割线
  */
-- (void)hiddenExtraCellLine;
+- (void)j_hiddenExtraCellLine;
 
 @end

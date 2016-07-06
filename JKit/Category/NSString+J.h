@@ -40,6 +40,12 @@
 
 @interface NSString (J)
 
+/**
+ *  10进制 转 16进制
+ *
+ *  @return 16进制字符串
+ */
+- (NSString *)j_toHex;
 
 /******************************************************************************
  函数名称 : + (NSString *)base64StringFromText:(NSString *)text

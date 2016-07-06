@@ -10,7 +10,7 @@
 
 @implementation UITableView (J)
 
-- (void)hiddenExtraCellLine{
+- (void)j_hiddenExtraCellLine{
     
     UIView *view = [UIView new];
     
