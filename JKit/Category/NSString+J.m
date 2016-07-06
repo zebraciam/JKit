@@ -21,8 +21,8 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 - (NSString *)j_toHex{
     NSString *nLetterValue;
     NSString *str =@"";
-    NSInteger tmpid = [self integerValue];
-    NSInteger ttmpig;
+    long long int tmpid = [self integerValue];
+    long long int ttmpig;
     for (int i = 0; i<9; i++) {
         ttmpig=tmpid%16;
         tmpid=tmpid/16;
@@ -40,8 +40,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
                 nLetterValue =@"E";break;
             case 15:
                 nLetterValue =@"F";break;
-            default:nLetterValue=[[NSString alloc]initWithFormat:@"%ld",ttmpig];
-                
+            default:nLetterValue=[[NSString alloc]initWithFormat:@"%lli",ttmpig];
         }
         str = [nLetterValue stringByAppendingString:str];
         if (tmpid == 0) {
