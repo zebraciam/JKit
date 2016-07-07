@@ -7,6 +7,7 @@
 //
 
 #import "NSArray+J.h"
+#import "JKit.h"
 
 @implementation NSArray (J)
 
@@ -18,10 +19,40 @@
     }
     return NO;
 }
+
 - (instancetype)j_objectAtIndex:(NSInteger)index{
     if (self.count > index) {
         return [self objectAtIndex:index];
     }
     return nil;
 }
+
+- (NSArray *)j_ChineseSort{
+    
+    NSMutableArray *pinyinArr = [NSMutableArray array];
+    
+    for (NSString *ChineseStr in self) {
+        [pinyinArr addObject:[ChineseStr j_pinyinWithoutBlank]];
+    }
+    
+    NSArray *resultPinyinSort = [pinyinArr sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];
+    
+    NSMutableArray *resultSort = [NSMutableArray arrayWithArray:self];
+    
+    for (int i = 0; i<self.count; i++) {
+        NSString *pinyinStr = [self[i] j_pinyinWithoutBlank];
+        for (int j = 0; j<resultPinyinSort.count; j++) {
+            NSString *pinyinSort = resultPinyinSort[j];
+            if ([pinyinStr isEqualToString:pinyinSort]) {
+                resultSort[j] = self[i];
+            }
+        }
+
+    }
+    
+    return resultSort;
+}
+
 @end

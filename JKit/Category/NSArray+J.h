@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (J)
+@interface NSArray<ObjectType> (J)
 
 /**
  *  数组是否包含该字符串
@@ -26,5 +26,13 @@
  *
  *  @return nil 或者 id
  */
-- (instancetype)j_objectAtIndex:(NSInteger)index;
+- (ObjectType)j_objectAtIndex:(NSInteger)index;
+
+/**
+ *  汉字排序
+ *
+ *  @return 排序结果
+ */
+- (NSArray *)j_ChineseSort;
+
 @end
