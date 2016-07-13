@@ -277,7 +277,7 @@
             _rightTitleLabel.font = JFont(edge + poor * 2);
             
             _leftTitleLabel.textColor = _textColors[0];
-            _centerTitleLabel.textColor = _textColors[1];
+            _centerTitleLabel.textColor = _textColors[0];
             _rightTitleLabel.textColor = _textColors[2];
             
         }else if (remainder >= 3 && remainder < 4) {
@@ -287,7 +287,7 @@
             _rightTitleLabel.font = JFont(edge + poor * 3);
             
             _leftTitleLabel.textColor = _textColors[0];
-            _centerTitleLabel.textColor = _textColors[1];
+            _centerTitleLabel.textColor = _textColors[0];
             _rightTitleLabel.textColor = _textColors[2];
             
         }else{
@@ -297,7 +297,7 @@
             _rightTitleLabel.font = JFont(edge + poor * 4);
             
             _leftTitleLabel.textColor = _textColors[0];
-            _centerTitleLabel.textColor = _textColors[1];
+            _centerTitleLabel.textColor = _textColors[0];
             _rightTitleLabel.textColor = _textColors[2];
             
         }
