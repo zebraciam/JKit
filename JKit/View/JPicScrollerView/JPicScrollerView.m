@@ -291,34 +291,68 @@
 - (void)changeImageLeft:(NSInteger)LeftIndex center:(NSInteger)centerIndex right:(NSInteger)rightIndex {
     
     if (self.imageUrlStrings.count == 1) {
-        if ([[_imageUrlStrings j_objectAtIndex:0] isKindOfClass:[NSString class]]) {
+        if ([[_imageUrlStrings j_objectAtIndex:0] isKindOfClass:[NSString class]] && [[_imageUrlStrings j_objectAtIndex:0] rangeOfString:@"http"].location !=NSNotFound) {
+            
             [_leftImageView sd_setImageWithURL:[self setUrlWithIndex:0] placeholderImage:_placeImage];
             [_centerImageView sd_setImageWithURL:[self setUrlWithIndex:0] placeholderImage:_placeImage];
             [_rightImageView sd_setImageWithURL:[self setUrlWithIndex:0] placeholderImage:_placeImage];
-        }else{
-            _leftImageView.image = [self setImageWithIndex:0];
+            
+        }else if([[_imageUrlStrings j_objectAtIndex:0] isKindOfClass:[NSString class]]){
+            
+            _leftImageView.image =  [self setImageWithIndex:0];
             _centerImageView.image = [self setImageWithIndex:0];
             _rightImageView.image = [self setImageWithIndex:0];
+            
+        }else{
+            
+            _leftImageView.image = [_imageUrlStrings j_objectAtIndex:0];
+            _centerImageView.image = [_imageUrlStrings j_objectAtIndex:0];
+            _rightImageView.image = [_imageUrlStrings j_objectAtIndex:0];
+            
         }
         
         
     }else{
-        if ([[_imageUrlStrings j_objectAtIndex:LeftIndex] isKindOfClass:[NSString class]]) {
+        if ([[_imageUrlStrings j_objectAtIndex:LeftIndex] isKindOfClass:[NSString class]]  && [[_imageUrlStrings j_objectAtIndex:LeftIndex] rangeOfString:@"http"].location !=NSNotFound) {
+            
             [_leftImageView sd_setImageWithURL:[self setUrlWithIndex:LeftIndex] placeholderImage:_placeImage];
-        }else{
+            
+        }else if([[_imageUrlStrings j_objectAtIndex:LeftIndex] isKindOfClass:[NSString class]]){
+            
             _leftImageView.image = [self setImageWithIndex:LeftIndex];
+            
+        }else{
+            
+            _leftImageView.image = [_imageUrlStrings j_objectAtIndex:LeftIndex];
+
         }
         
-        if ([[_imageUrlStrings j_objectAtIndex:centerIndex] isKindOfClass:[NSString class]]) {
+        if ([[_imageUrlStrings j_objectAtIndex:centerIndex] isKindOfClass:[NSString class]] && [[_imageUrlStrings j_objectAtIndex:centerIndex] rangeOfString:@"http"].location !=NSNotFound) {
+            
             [_centerImageView sd_setImageWithURL:[self setUrlWithIndex:centerIndex] placeholderImage:_placeImage];
-        }else{
+            
+        }else if([[_imageUrlStrings j_objectAtIndex:centerIndex] isKindOfClass:[NSString class]]){
+            
             _centerImageView.image = [self setImageWithIndex:centerIndex];
+            
+        }else{
+            
+            _centerImageView.image = [_imageUrlStrings j_objectAtIndex:centerIndex];
+            
         }
         
-        if ([[_imageUrlStrings j_objectAtIndex:rightIndex] isKindOfClass:[NSString class]]) {
+        if ([[_imageUrlStrings j_objectAtIndex:rightIndex] isKindOfClass:[NSString class]] && [[_imageUrlStrings j_objectAtIndex:rightIndex] rangeOfString:@"http"].location !=NSNotFound) {
+            
             [_rightImageView sd_setImageWithURL:[self setUrlWithIndex:rightIndex] placeholderImage:_placeImage];
-        }else{
+            
+        }else if([[_imageUrlStrings j_objectAtIndex:rightIndex] isKindOfClass:[NSString class]]){
+            
             _rightImageView.image = [self setImageWithIndex:rightIndex];
+            
+        }else{
+            
+            _rightImageView.image = [_imageUrlStrings j_objectAtIndex:rightIndex];
+            
         }
     }
 

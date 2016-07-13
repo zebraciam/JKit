@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (J)
+@interface NSDictionary<KeyType, ObjectType> (J)
 
 /**
  *  取值(防止为Null)
@@ -17,10 +17,10 @@
  *
  *  @return nil 或者 值
  */
-- (instancetype)j_objectForKey:(NSString *)key;
+- (ObjectType)j_objectForKey:(KeyType)key;
 
 /**
  *  post 提交参数转化为URL
  */
-- (NSString *)j_urlValue;
+- (ObjectType)j_urlValue;
 @end

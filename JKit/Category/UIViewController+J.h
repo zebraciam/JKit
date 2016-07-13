@@ -13,6 +13,12 @@
 @optional
 
 /**
+ *  获取验证码倒计时
+ *
+ *  @param sender 点击的btn
+ */
+- (void)j_getCode:(UIButton *)sender;
+/**
  *  重写此方法处理返回按钮
  *
  *  @return YES:返回,NO:不返回

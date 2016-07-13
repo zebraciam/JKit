@@ -11,6 +11,7 @@
 
 @interface ViewController (){
     JPicScrollerView  *_picView;
+    JPicScrollerLabel  *_picLabel;
 }
 
 @end
@@ -20,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self JPicScrollerViewDeme];
+    [self JPicScrollerLabelDemo];
     [self JTopClassificationDemo];
 }
 #pragma mark -轮播图
@@ -30,7 +31,7 @@
     NSMutableArray *arr3 = [[NSMutableArray alloc] init];
     
     for (int i = 1; i < 7; i++) {
-        [arr2 addObject:[NSString stringWithFormat:@"%d.jpg",i]];
+        [arr2 addObject:[NSString stringWithFormat:@"%d",i]];
         [arr3 addObject:[NSString stringWithFormat:@"我是第%d张图片啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",i]];
     };
     
@@ -59,6 +60,35 @@
         JLog("你点到我了😳index:%zd\n",index);
     }];
 }
+
+#pragma mark -轮播图
+- (void)JPicScrollerLabelDemo{
+    NSMutableArray *arr2 = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *arr3 = [[NSMutableArray alloc] init];
+    
+    for (int i = 1; i < 7; i++) {
+        [arr2 addObject:[NSString stringWithFormat:@"%d",i]];
+        [arr3 addObject:[NSString stringWithFormat:@"我是第%d张图片啊",i]];
+    };
+    
+    
+    //    _picView = [JPicScrollerView j_picScrollViewWithFrame:CGRectMake(0,100,self.view.frame.size.width, 200) WithImageUrls:nil];
+    _picLabel = [JPicScrollerLabel j_picScrollLabelWithFrame:CGRectMake(0,100,self.view.frame.size.width, 60)];
+    [_picLabel setImageUrlStrings:arr2];
+    _picLabel.titleData = arr3;
+    _picLabel.textColors = @[JColorWithGray,JColorWithRed,JColorWithGray];
+    _picLabel.fonts = @[JFont(12),JFont(14),JFont(12)];
+    _picLabel.backgroundColor = [UIColor clearColor];
+    [_picLabel setImageViewDidTapAtIndex:^(NSInteger index) {
+        JLog("你点到我了😳index:%zd\n",index);
+    }];
+    
+    _picLabel.AutoScrollDelay = 3.0f;
+    
+    [self.view addSubview:_picLabel];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

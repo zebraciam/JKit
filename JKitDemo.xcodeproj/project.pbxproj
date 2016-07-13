@@ -15,6 +15,7 @@
 		15B21BC11CAD2DE2003BD8DF /* JPagerTopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC01CAD2DE2003BD8DF /* JPagerTopTabView.m */; };
 		15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC31CAD2E39003BD8DF /* JPagerViewController.m */; };
 		15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC61CAD2F20003BD8DF /* JPagerBaseViewController.m */; };
+		15C3F9741D34DAC100FE22A5 /* JPicScrollerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C3F9731D34DAC100FE22A5 /* JPicScrollerLabel.m */; };
 		15CC76BB1D1CE1BC00895BAE /* UITableView+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CC76BA1D1CE1BC00895BAE /* UITableView+J.m */; };
 		15E05FE91C903DC8006AF100 /* JPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E05FE81C903DC8006AF100 /* JPickView.m */; };
 		15EE6ABC1CBB7B5C000D8DA5 /* JGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6ABB1CBB7B5C000D8DA5 /* JGuideViewController.m */; };
@@ -84,6 +85,8 @@
 		15B21BC31CAD2E39003BD8DF /* JPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPagerViewController.m; sourceTree = "<group>"; };
 		15B21BC51CAD2F20003BD8DF /* JPagerBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPagerBaseViewController.h; sourceTree = "<group>"; };
 		15B21BC61CAD2F20003BD8DF /* JPagerBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPagerBaseViewController.m; sourceTree = "<group>"; };
+		15C3F9721D34DAC100FE22A5 /* JPicScrollerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPicScrollerLabel.h; sourceTree = "<group>"; };
+		15C3F9731D34DAC100FE22A5 /* JPicScrollerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPicScrollerLabel.m; sourceTree = "<group>"; };
 		15CC76B91D1CE1BC00895BAE /* UITableView+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+J.h"; sourceTree = "<group>"; };
 		15CC76BA1D1CE1BC00895BAE /* UITableView+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+J.m"; sourceTree = "<group>"; };
 		15E05FE71C903DC8006AF100 /* JPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPickView.h; sourceTree = "<group>"; };
@@ -315,6 +318,8 @@
 				15E05FE61C903DA1006AF100 /* JPickerView */,
 				92AE7BA81C843811005B614C /* JPicScrollerView */,
 				92AE7BAF1C843811005B614C /* JTopClassification */,
+				15C3F9721D34DAC100FE22A5 /* JPicScrollerLabel.h */,
+				15C3F9731D34DAC100FE22A5 /* JPicScrollerLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -633,6 +638,7 @@
 				15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */,
 				15B21BC41CAD2E39003BD8DF /* JPagerViewController.m in Sources */,
 				92AE7BBE1C8438D7005B614C /* JLoadingTool.m in Sources */,
+				15C3F9741D34DAC100FE22A5 /* JPicScrollerLabel.m in Sources */,
 				92D3DC321C3CB5C400DFDFE2 /* UIImage+J.m in Sources */,
 				92D3DC291C3CB04700DFDFE2 /* UITextView+J.m in Sources */,
 				92D3DC2C1C3CB1C200DFDFE2 /* UIView+J.m in Sources */,

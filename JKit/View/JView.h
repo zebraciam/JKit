@@ -17,5 +17,6 @@
 #import "JCustomPickerView.h"
 #import "JPlaceholderView.h"
 #import "JTabBarController.h"
+#import "JPicScrollerLabel.h"
 
 #endif /* JView_h */
