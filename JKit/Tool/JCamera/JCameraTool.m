@@ -15,6 +15,7 @@
 #import <objc/runtime.h>
 #import "JImageCropperViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <QBImagePickerController/QBImagePickerController.h>
 
 @interface JCameraTool ()
 
@@ -26,12 +27,65 @@
 
 @property (nonatomic, strong) CallBackBlock block;
 
+@property (nonatomic, strong) CallBackBlocks blocks;
+
+
 @end
 
 @implementation JCameraTool
 
-JSingletonImplementation(JCameraTool);
-+ (void)j_creatAlertController:(UIViewController *)viewC andisCropper:(BOOL)isCropper andScale:(CGFloat)scale callBack:(CallBackBlock)block{
+#pragma mark -多选（不支持裁剪）
++ (void)j_creatAlertController:(UIViewController *)viewC
+   andMinimumNumberOfSelection:(NSInteger)minNumber
+   andMaximumNumberOfSelection:(NSInteger)maxNumber
+    andAllowsMultipleSelection:(BOOL)allowsMultipleSelection
+                      callBack:(CallBackBlocks)block{
+    
+    JCameraTool * SELF = [JCameraTool new];
+    SELF.viewC = viewC;
+    SELF.blocks = block;
+    
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"打开照相机",@"从手机相册获取", nil];
+    
+    [[sheet rac_buttonClickedSignal] subscribeNext:^(id x) {
+        if ([x integerValue] == 0) {
+            NSString *mediaType = AVMediaTypeVideo;
+            AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+            if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
+                [JLoadingTool j_showInfoWithStatus:@"相机权限受限"];
+            }
+            else{
+                BOOL isCamera = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+                if (!isCamera) {
+                    JLog(@"没有摄像头");
+                    [JLoadingTool j_showInfoWithStatus:@"抱歉,您的设备不具备拍照功能!"];
+                    return ;
+                }
+                UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+                imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [SELF imagePickerDelegate:imagePicker];
+            }
+            
+        }else if([x integerValue] == 1){
+            
+            QBImagePickerController *imagePickerController = [QBImagePickerController new];
+            imagePickerController.allowsMultipleSelection = allowsMultipleSelection;
+            imagePickerController.minimumNumberOfSelection = minNumber;
+            imagePickerController.maximumNumberOfSelection = maxNumber;
+            imagePickerController.showsNumberOfSelectedAssets = YES;
+            
+            [SELF QBImagePickerDelegate:imagePickerController];
+        }
+    }];
+    [sheet showInView:SELF.viewC.view];
+}
+
+#pragma mark -单选（支持裁剪）
++ (void)j_creatAlertController:(UIViewController *)viewC
+                    andCropper:(BOOL)isCropper
+                      andScale:(CGFloat)scale
+                      callBack:(CallBackBlock)block {
+    
     JCameraTool * SELF = [JCameraTool new];
     SELF.viewC = viewC;
     SELF.block = block;
@@ -39,6 +93,13 @@ JSingletonImplementation(JCameraTool);
     SELF.scale = scale;
     
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+//    if(isCropper){
+//        imagePicker.allowsEditing = NO;
+//    }else{
+//        imagePicker.allowsEditing = YES;
+//    }
+    
     if(IOS8){
         UIAlertController * sheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction * canle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -74,7 +135,7 @@ JSingletonImplementation(JCameraTool);
         UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"打开照相机",@"从手机相册获取", nil];
         
         [[sheet rac_buttonClickedSignal] subscribeNext:^(id x) {
-            if ([x integerValue] == 1) {
+            if ([x integerValue] == 0) {
                 NSString *mediaType = AVMediaTypeVideo;
                 AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
                 if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
@@ -91,7 +152,7 @@ JSingletonImplementation(JCameraTool);
                     [SELF imagePickerDelegate:imagePicker];
                 }
                 
-            }else if([x integerValue] == 2){
+            }else if([x integerValue] == 1){
                 imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 [SELF imagePickerDelegate:imagePicker];
             }
@@ -113,6 +174,7 @@ JSingletonImplementation(JCameraTool);
             [self cropperDelegate:portraitImg andPickerController:picker];
         }else{
             JBlock(self.block, portraitImg);
+            [self.viewC dismissViewControllerAnimated:YES completion:nil];
         }
     }];
     imagePicker.delegate = (id<UIImagePickerControllerDelegate,UINavigationControllerDelegate>)delegateProxy;
@@ -155,6 +217,48 @@ JSingletonImplementation(JCameraTool);
     
     imgCropperVC.delegate = (id<JImageCropperDelegate>)delegateProxy;
     objc_setAssociatedObject(imgCropperVC, _cmd, delegateProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+#pragma mark -QBImagePickerControllerDelegate
+- (void)QBImagePickerDelegate:(QBImagePickerController *)imagePicker{
+    
+    RACDelegateProxy * delegateProxy = [[RACDelegateProxy alloc]initWithProtocol:@protocol(QBImagePickerControllerDelegate)];
+    [[delegateProxy rac_signalForSelector:@selector(qb_imagePickerControllerDidCancel:)] subscribeNext:^(RACTuple *arg) {
+        QBImagePickerController * picker = [arg first];
+        [picker dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    
+    [[delegateProxy rac_signalForSelector:@selector(qb_imagePickerController:didSelectAssets:)] subscribeNext:^(RACTuple *arg) {
+        QBImagePickerController * picker = [arg first];
+        NSArray *info = [arg second];
+        
+        NSMutableArray *dataImgs = [NSMutableArray array];
+        
+        for (ALAsset *asset in info) {
+            ALAssetRepresentation *representation = [asset defaultRepresentation];
+            [dataImgs addObject:[UIImage imageWithCGImage:[representation fullResolutionImage]]];
+        }
+        
+        JBlock(self.blocks, dataImgs);
+        [picker dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    
+    [[delegateProxy rac_signalForSelector:@selector(qb_imagePickerController:didSelectAsset:)] subscribeNext:^(RACTuple *arg) {
+        QBImagePickerController * picker = [arg first];
+        
+        NSMutableArray *dataImgs = [NSMutableArray array];
+        
+        ALAssetRepresentation *representation = [[arg second] defaultRepresentation];
+        [dataImgs addObject:[UIImage imageWithCGImage:[representation fullResolutionImage]]];
+        
+        JBlock(self.blocks, dataImgs);
+        [picker dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    
+    imagePicker.delegate = (id<QBImagePickerControllerDelegate>)delegateProxy;
+    objc_setAssociatedObject(imagePicker, _cmd, delegateProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self.viewC  presentViewController:imagePicker animated:YES completion:^{
+    }];
 }
 
 @end

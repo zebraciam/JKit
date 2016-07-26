@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>QBImagePickerController-QBImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>QBImagePickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ReactiveCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3CEA7EE0E89B1D5238A383CE0ECCDA62</key>
+		<key>19C9973624D27928209631AC90F8ACF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>994B1DF9A9CA2B5CA771D1D36C02458B</key>
+		<key>3375D034F590841AB090D6436C1CA7F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF83D61D6B6A36FEECCC95722E455BC3</key>
+		<key>43432B066FBFDD1C1C26F6F0D300F87B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF26747F7AC87865D65FE4192E4BB317</key>
+		<key>58FA894F53071DBEFFEC109D9D032F05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>61B5D777EE6DF096A477DEAF6406B96E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>81DC522A03F620137E586ADE6050F645</key>
 		<dict>
 			<key>primary</key>
 			<true/>
