@@ -163,10 +163,9 @@
 #pragma mark -UIImagePickerControllerDelegate
 - (void)imagePickerDelegate:(UIImagePickerController *)imagePicker{
     
-    @weakify(self);
     RACDelegateProxy * delegateProxy = [[RACDelegateProxy alloc]initWithProtocol:@protocol(UIImagePickerControllerDelegate)];
     [[delegateProxy rac_signalForSelector:@selector(imagePickerController:didFinishPickingMediaWithInfo:)] subscribeNext:^(RACTuple *arg) {
-        @strongify(self);
+        
         UIImagePickerController * picker = [arg first];
         NSDictionary * info = [arg second];
         UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
@@ -174,6 +173,7 @@
             [self cropperDelegate:portraitImg andPickerController:picker];
         }else{
             JBlock(self.block, portraitImg);
+            JBlock(self.blocks, [NSMutableArray arrayWithObject:portraitImg]);
             [self.viewC dismissViewControllerAnimated:YES completion:nil];
         }
     }];
@@ -200,10 +200,9 @@
     
     [imgCropperVC.navigationController setNavigationBarHidden:YES animated:YES];
     
-    @weakify(self);
     RACDelegateProxy * delegateProxy = [[RACDelegateProxy alloc]initWithProtocol:@protocol(JImageCropperDelegate)];
     [[delegateProxy rac_signalForSelector:@selector(imageCropper:didFinished:)] subscribeNext:^(RACTuple *arg) {
-        @strongify(self);
+        
         [imgCropperVC.navigationController setNavigationBarHidden:NO animated:YES];
         UIImage * image = [arg second];
         JBlock(self.block, image);

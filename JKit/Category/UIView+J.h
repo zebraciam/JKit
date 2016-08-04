@@ -29,6 +29,15 @@ typedef void(^j_PanGestureBlock)(UIPanGestureRecognizer *gestureRecognizer);
 @property (nonatomic) CGFloat j_left;
 @property (nonatomic) CGFloat j_right;
 
+/**
+ *  画虚线
+ *
+ *  @param lineLength  虚线的宽度
+ *  @param lineSpacing 虚线的间距
+ *  @param lineColor   虚线的颜色
+ */
+- (void)j_drawDashLineWithLineLength:(int)lineLength andLineSpacing:(int)lineSpacing andLineColor:(UIColor *)lineColor;
+
 #pragma mark - TapGesture
 
 /**
