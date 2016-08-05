@@ -7,15 +7,12 @@
 //
 
 #import "JCameraTool.h"
-#import "JLoadingTool.h"
-#import "JMacro.h"
+#import "JKit.h"
 #import "ReactiveCocoa.h"
 #import "RACDelegateProxy.h"
-#import "UIView+J.h"
 #import <objc/runtime.h>
 #import "JImageCropperViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import "QBImagePickerController.h"
 
 @interface JCameraTool ()
 

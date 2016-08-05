@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "QBImagePickerController.h"
 
 typedef void(^CallBackBlock)(UIImage *image);
 typedef void(^CallBackBlocks)(NSMutableArray *images);
