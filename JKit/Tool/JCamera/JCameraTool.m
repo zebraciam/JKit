@@ -15,7 +15,7 @@
 #import <objc/runtime.h>
 #import "JImageCropperViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import <QBImagePickerController/QBImagePickerController.h>
+#import "QBImagePickerController.h"
 
 @interface JCameraTool ()
 
@@ -39,7 +39,7 @@
    andMinimumNumberOfSelection:(NSInteger)minNumber
    andMaximumNumberOfSelection:(NSInteger)maxNumber
     andAllowsMultipleSelection:(BOOL)allowsMultipleSelection
-                      callBack:(CallBackBlocks)block{
+                      callBack:(CallBackBlocks)block {
     
     JCameraTool * SELF = [JCameraTool new];
     SELF.viewC = viewC;
