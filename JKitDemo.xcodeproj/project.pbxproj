@@ -22,9 +22,9 @@
 		15EE6ABF1CBB8996000D8DA5 /* JCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6ABE1CBB8996000D8DA5 /* JCustomPickerView.m */; };
 		15EE6AC31CBB8B39000D8DA5 /* JPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6AC21CBB8B39000D8DA5 /* JPlaceholderView.m */; };
 		15EE6AC61CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6AC51CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m */; };
-		7CF38599AD154ED316C54045 /* libPods-JKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B23374BEA6BE1C24B63F89 /* libPods-JKitDemo.a */; };
 		921E68D01C3BC902003E3389 /* UIColor+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 921E68CE1C3BC902003E3389 /* UIColor+J.m */; };
 		925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 925D93AC1C45E06E0061B83B /* NSDictionary+J.m */; };
+		92636B2D720FCA1E8CF884C6 /* Pods_JKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A50089F0630196E1D5AB21 /* Pods_JKitDemo.framework */; };
 		9273DB741C59FE49008E33E9 /* UITabBarController+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 9273DB731C59FE49008E33E9 /* UITabBarController+J.m */; };
 		92AE7BB21C843811005B614C /* JPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BAA1C843811005B614C /* JPageControl.m */; };
 		92AE7BB31C843811005B614C /* JPicScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AE7BAC1C843811005B614C /* JPicScrollerView.m */; };
@@ -155,8 +155,8 @@
 		92E953DA1C3BB9770074912A /* JKitDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKitDemoUITests.m; sourceTree = "<group>"; };
 		92E953DC1C3BB9770074912A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B900FCAC6F1F009CB2091ADD /* Pods-JKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKitDemo/Pods-JKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C5A50089F0630196E1D5AB21 /* Pods_JKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68AAAF93B7D4E07DF1420D4 /* Pods-JKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKitDemo/Pods-JKitDemo.release.xcconfig"; sourceTree = "<group>"; };
-		F3B23374BEA6BE1C24B63F89 /* libPods-JKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CF38599AD154ED316C54045 /* libPods-JKitDemo.a in Frameworks */,
+				92636B2D720FCA1E8CF884C6 /* Pods_JKitDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +442,7 @@
 		C446540EBB5861442C95BA66 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F3B23374BEA6BE1C24B63F89 /* libPods-JKitDemo.a */,
+				C5A50089F0630196E1D5AB21 /* Pods_JKitDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
