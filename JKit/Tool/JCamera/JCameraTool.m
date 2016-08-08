@@ -13,6 +13,8 @@
 #import <objc/runtime.h>
 #import "JImageCropperViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <QBImagePickerController/QBImagePickerController.h>
+
 
 @interface JCameraTool ()
 

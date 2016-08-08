@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-JKitDemo.xcscheme</key>
+		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>57BE92BCED1FA7ECF7BBBA81B6EEB539</key>
+		<key>19C9973624D27928209631AC90F8ACF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>659A0F554EC891DB03C71A69E60F78A1</key>
+		<key>3375D034F590841AB090D6436C1CA7F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B0A3194ABEB49F418831C7EDE0DF03C</key>
+		<key>43432B066FBFDD1C1C26F6F0D300F87B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C3B4BC167C9154678DC774BB63351F7</key>
+		<key>58FA894F53071DBEFFEC109D9D032F05</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6057BF409C18DBDDC4CB83BE2461374</key>
+		<key>61B5D777EE6DF096A477DEAF6406B96E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EADAD0540A87B89BF0330B3B8087F6F8</key>
+		<key>81DC522A03F620137E586ADE6050F645</key>
 		<dict>
 			<key>primary</key>
 			<true/>
