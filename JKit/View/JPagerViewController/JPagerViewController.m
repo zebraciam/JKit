@@ -136,9 +136,9 @@
                 [pagerView.scrollView addSubview:ctrl.view];
                 viewAlloc[self.defaultIndex] = YES;
                 [vcsArray addObject:ctrl];
-                [vcsTagArray addObject:[NSString stringWithFormat:@"%ld",self.defaultIndex]];
-                NSLog(@"现在是控制器%ld",self.defaultIndex);
-                self.PageIndex = [NSString stringWithFormat:@"%ld",self.defaultIndex];
+                [vcsTagArray addObject:[NSString stringWithFormat:@"%ld",(long)self.defaultIndex]];
+                NSLog(@"现在是控制器%ld",(long)self.defaultIndex);
+                self.PageIndex = [NSString stringWithFormat:@"%ld",(long)self.defaultIndex];
                 _block(self.defaultIndex);
                 /**< 利用NSCache对内存进行管理测试 **/
                 //                [self.limitControllerCache setObject:ctrl forKey:@(0)];
