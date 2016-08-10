@@ -12,6 +12,8 @@ typedef void(^JPagerViewControllerBlock)(NSInteger index);
 
 @property (nonatomic, strong) JPagerViewControllerBlock block;
 
+@property (nonatomic, assign) BOOL isUnnecessary;/**< 只保留最近的5个控制器，释放其他控制器的空间，如果滑到对应位置在对其重新创建加载 **/
+
 /**
  *  创建总控制器 类方法
  *
@@ -21,7 +23,7 @@ typedef void(^JPagerViewControllerBlock)(NSInteger index);
  *  @param unselectColor  未选中时的颜色
  *  @param underlineColor 下划线的颜色
  *  @param topTabColor    顶部菜单栏的背景颜色
- *  @param isUnnecessary  只保留最近的5个控制器，释放其他控制器的空间，如果滑到对应位置在对其重新创建加载
+ *  @param index          默认显示的页数（必须和 j_setPagerViewControllerWithIndex: 混合使用）
  */
 
 + (void)j_createPagerViewControllerWithFrame:(CGRect)frame
@@ -33,6 +35,7 @@ typedef void(^JPagerViewControllerBlock)(NSInteger index);
                            andUnderlineColor:(UIColor *)underlineColor
                             andTopTabBgColor:(UIColor *)topTabColor
                   andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary
+                             andDefaultIndex:(NSInteger)index
                            andSelectCallBack:(JPagerViewControllerBlock)block;
 
 /**
@@ -45,6 +48,7 @@ typedef void(^JPagerViewControllerBlock)(NSInteger index);
  *  @param underlineColor 下划线的颜色
  *  @param topTabColor    顶部菜单栏的背景颜色
  *  @param isUnnecessary  只保留最近的5个控制器，释放其他控制器的空间，如果滑到对应位置在对其重新创建加载
+ *  @param index          默认显示的页数（必须和 j_setPagerViewControllerWithIndex: 混合使用）
  */
 - (instancetype)initWithFrame:(CGRect)frame
                 andSuperClass:(UIViewController *)superClass
@@ -55,6 +59,7 @@ typedef void(^JPagerViewControllerBlock)(NSInteger index);
             andUnderlineColor:(UIColor *)underlineColor
              andTopTabBgColor:(UIColor *)topTabColor
    andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary
+              andDefaultIndex:(NSInteger)index
             andSelectCallBack:(JPagerViewControllerBlock)block;
 
 - (void)j_setPagerViewControllerWithIndex:(NSInteger)index;

@@ -20,7 +20,6 @@
 @property (strong, nonatomic) UIColor *underlineColor; /**<  下划线的颜色   **/
 @property (strong, nonatomic) UIColor *topTabColor; /**<  顶部菜单栏的背景颜色   **/
 @property (copy, nonatomic) NSString *PageIndex; /**< 所在的控制器index或点击上方button的index **/
-@property (nonatomic, assign) BOOL isUnnecessary;/**< 只保留最近的5个控制器，释放其他控制器的空间，如果滑到对应位置在对其重新创建加载 **/
 
 
 @property (nonatomic, strong) NSArray *myArray;
@@ -28,6 +27,8 @@
 @property (nonatomic, strong)  NSArray *classArray;
 
 @property (nonatomic, strong) UIViewController *superClass;
+
+@property (nonatomic, assign) NSInteger defaultIndex;
 
 @end
 
@@ -41,6 +42,10 @@
     BOOL fontChangeColor;
 }
 
+- (void)setIsUnnecessary:(BOOL)isUnnecessary{
+    _isUnnecessary = isUnnecessary;
+}
+
 + (void)j_createPagerViewControllerWithFrame:(CGRect)frame
                                andSuperClass:(UIViewController *)superClass
                                    andTitles:(NSArray *)titles
@@ -50,6 +55,7 @@
                            andUnderlineColor:(UIColor *)underlineColor
                             andTopTabBgColor:(UIColor *)topTabColor
                   andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary
+                             andDefaultIndex:(NSInteger)index
                            andSelectCallBack:(JPagerViewControllerBlock)block{
     
     JPagerViewController *ninaPagerView = [[JPagerViewController alloc] initWithFrame:frame];
@@ -61,6 +67,7 @@
     ninaPagerView.topTabColor = topTabColor;
     ninaPagerView.underlineColor = underlineColor;
     ninaPagerView.isUnnecessary = isUnnecessary;
+    ninaPagerView.defaultIndex = index;
     ninaPagerView.block = block;
     [superClass.view addSubview:ninaPagerView];
     
@@ -77,6 +84,7 @@
             andUnderlineColor:(UIColor *)underlineColor
              andTopTabBgColor:(UIColor *)topTabColor
    andDeallocVCsIfUnnecessary:(BOOL)isUnnecessary
+              andDefaultIndex:(NSInteger)index
             andSelectCallBack:(JPagerViewControllerBlock)block{
     self = [super initWithFrame:frame];
     if (self) {
@@ -88,6 +96,7 @@
         self.topTabColor = topTabColor;
         self.underlineColor = underlineColor;
         self.isUnnecessary = isUnnecessary;
+        self.defaultIndex = index;
         self.block = block;
         
         [self createPagerViewWithFrame:frame];
@@ -112,25 +121,25 @@
     vcsArray = [NSMutableArray array];
     vcsTagArray = [NSMutableArray array];
     
-    if (_myArray.count > 0 && _classArray.count > 0) {
+    if (_myArray.count > self.defaultIndex && _classArray.count > self.defaultIndex) {
         pagerView = [[JPagerBaseViewController alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height) WithSelectColor:_selectColor WithUnselectorColor:_unselectColor WithUnderLineColor:_underlineColor WithtopTabColor:_topTabColor];
         pagerView.titleArray = _myArray;
         [pagerView addObserver:self forKeyPath:@"currentPage" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
         [self addSubview:pagerView];
         //First ViewController present to the screen
-        if (_classArray.count > 0 && _myArray.count > 0) {
-            NSString *className = _classArray[0];
+        if (_classArray.count > self.defaultIndex && _myArray.count > self.defaultIndex) {
+            NSString *className = _classArray[self.defaultIndex];
             Class class = NSClassFromString(className);
             if (class) {
                 UIViewController *ctrl = class.new;
-                ctrl.view.frame = CGRectMake(FUll_VIEW_WIDTH * 0, 0, FUll_VIEW_WIDTH, FUll_CONTENT_HEIGHT - PageBtn);
+                ctrl.view.frame = CGRectMake(FUll_VIEW_WIDTH * self.defaultIndex, 0, FUll_VIEW_WIDTH, FUll_CONTENT_HEIGHT - PageBtn);
                 [pagerView.scrollView addSubview:ctrl.view];
-                viewAlloc[0] = YES;
+                viewAlloc[self.defaultIndex] = YES;
                 [vcsArray addObject:ctrl];
-                [vcsTagArray addObject:@"0"];
-                NSLog(@"现在是控制器0");
-                self.PageIndex = @"0";
-                _block(0);
+                [vcsTagArray addObject:[NSString stringWithFormat:@"%ld",self.defaultIndex]];
+                NSLog(@"现在是控制器%ld",self.defaultIndex);
+                self.PageIndex = [NSString stringWithFormat:@"%ld",self.defaultIndex];
+                _block(self.defaultIndex);
                 /**< 利用NSCache对内存进行管理测试 **/
                 //                [self.limitControllerCache setObject:ctrl forKey:@(0)];
                 //                NSLog(@"%@", [self.limitControllerCache objectForKey:@(0)]);
