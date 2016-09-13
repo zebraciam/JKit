@@ -9,6 +9,8 @@
 #ifndef JMacro_h
 #define JMacro_h
 
+// 过期
+#define JExtensionDeprecated(instead) NS_DEPRECATED(2_0, 2_0, 2_0, 2_0, instead)
 
 #define JScreenWidth [UIScreen mainScreen].bounds.size.width
 #define JScreenHeight [UIScreen mainScreen].bounds.size.height

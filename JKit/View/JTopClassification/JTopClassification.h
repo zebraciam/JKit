@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "JKit.h"
 typedef void(^JTopClassificationCallBackBlock)(NSInteger index);
 @interface JTopClassification : UIView
 
@@ -26,7 +27,34 @@ typedef void(^JTopClassificationCallBackBlock)(NSInteger index);
  *  @return TopClassification
  */
 
-+ (instancetype)j_topClassificationWithFrame:(CGRect)frame andTitleArr:(NSMutableArray<NSString *> *)titleArr andTitleBtnWidth:(CGFloat)width andIsSliding:(BOOL)isSliding;
++ (instancetype)j_topClassificationWithFrame:(CGRect)frame
+                                 andTitleArr:(NSMutableArray<NSString *> *)titleArr
+                            andTitleBtnWidth:(CGFloat)width
+                                andIsSliding:(BOOL)isSliding JExtensionDeprecated("方法弃用并在下个版本删除，把andTitleArr:(NSMutableArray<NSString *> *)titleArr替换为 andTitles:(NSMutableArray<NSString *> *)titles");
+
+
+/**
+ *  实例化
+ *
+ *  @param frame     frame
+ *  @param titles  title
+ *  @param width     每个btn的宽
+ *  @param isSliding 是否支持滑动
+ *
+ *  @return TopClassification
+ */
++ (instancetype)j_topClassificationWithFrame:(CGRect)frame
+                                 andTitles:(NSMutableArray<NSString *> *)titles
+                            andTitleBtnWidth:(CGFloat)width
+                                andIsSliding:(BOOL)isSliding
+                              andSelectIndex:(NSInteger)index;
+
+/**
+ *  切换到指定item
+ *
+ *  @param index index
+ */
+- (void)j_switchItemWithIndex:(NSInteger)index;
 
 /**
  *  title颜色

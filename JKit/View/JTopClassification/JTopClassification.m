@@ -24,20 +24,47 @@
 @end
 
 @implementation JTopClassification
-+ (instancetype)j_topClassificationWithFrame:(CGRect)frame andTitleArr:(NSMutableArray *)titleArr andTitleBtnWidth:(CGFloat)width andIsSliding:(BOOL)isSliding{
+
++ (instancetype)j_topClassificationWithFrame:(CGRect)frame
+                                 andTitleArr:(NSMutableArray *)titleArr
+                            andTitleBtnWidth:(CGFloat)width
+                                andIsSliding:(BOOL)isSliding {
+    
     JTopClassification * topView = [[JTopClassification alloc]initWithFrame:frame];
     if (isSliding) {
-        [topView createUIWithTitleArr:titleArr andTitleBtnWidth:width andIsSliding:isSliding];
+        [topView createUIWithTitleArr:titleArr andTitleBtnWidth:width andIsSliding:isSliding andSelectIndex:0];
         topView.backgroundColor = JColorWithWhite;
     }else{
-        [topView createUIWithTitleArr:titleArr andTitleBtnWidth:JScreenWidth / titleArr.count andIsSliding:isSliding];
+        [topView createUIWithTitleArr:titleArr andTitleBtnWidth:JScreenWidth / titleArr.count andIsSliding:isSliding andSelectIndex:0];
         topView.backgroundColor = JColorWithWhite;
     }
     return topView;
 
 }
 
-- (void)createUIWithTitleArr:(NSMutableArray *)titleArr andTitleBtnWidth:(CGFloat)width andIsSliding:(BOOL)isSliding{
++ (instancetype)j_topClassificationWithFrame:(CGRect)frame
+                                   andTitles:(NSMutableArray<NSString *> *)titles
+                            andTitleBtnWidth:(CGFloat)width
+                                andIsSliding:(BOOL)isSliding
+                              andSelectIndex:(NSInteger)index {
+    
+    JTopClassification * topView = [[JTopClassification alloc]initWithFrame:frame];
+    if (isSliding) {
+        [topView createUIWithTitleArr:titles andTitleBtnWidth:width andIsSliding:isSliding andSelectIndex:index];
+        topView.backgroundColor = JColorWithWhite;
+    }else{
+        [topView createUIWithTitleArr:titles andTitleBtnWidth:JScreenWidth / titles.count andIsSliding:isSliding andSelectIndex:index];
+        topView.backgroundColor = JColorWithWhite;
+    }
+    return topView;
+    
+}
+
+- (void)createUIWithTitleArr:(NSMutableArray *)titleArr
+            andTitleBtnWidth:(CGFloat)width
+                andIsSliding:(BOOL)isSliding
+              andSelectIndex:(NSInteger)index {
+    
     CGFloat height = self.frame.size.height;
     _titleArr = titleArr;
     if (isSliding) {
@@ -59,7 +86,7 @@
             btn.titleLabel.textAlignment = NSTextAlignmentCenter;
             btn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
             btn.adjustsImageWhenHighlighted = NO;
-            if (i == 0) {
+            if (i == index) {
                 btn.selected = YES;
             }else{
                 btn.selected = NO;
@@ -79,7 +106,7 @@
             btn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
             btn.adjustsImageWhenHighlighted = NO;
 
-            if (i == 0) {
+            if (i == index) {
                 btn.selected = YES;
             }else{
                 btn.selected = NO;
@@ -150,6 +177,20 @@
         [btn setBackgroundImage:normalImg forState:UIControlStateNormal];
     }
 }
+
+- (void)j_switchItemWithIndex:(NSInteger)index {
+    for (int i = 0; i < _titleArr.count; i++) {
+        UIButton * btn = [self viewWithTag:Tag + i];
+        if (i == index) {
+            btn.selected = YES;
+        }else{
+            btn.selected = NO;
+        }
+    }
+}
+
+
+
 - (void)j_getTopClassificationCallBackBlock:(JTopClassificationCallBackBlock)block{
     _block = block;
 }
