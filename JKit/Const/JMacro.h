@@ -49,10 +49,18 @@
 #define JBlock(block, ...) block ? block(__VA_ARGS__) : nil
 
 #ifdef DEBUG
-# define JLog(fmt, ...) NSLog((@"\n[文件名:%s]" "\n[函数名:%s]" "\n[行号:%d]\n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define JString [NSString stringWithFormat:@"%s", __FILE__].lastPathComponent
+#define JLog(...) printf("%s: %s 第%d行: %s\n\n",[[NSString j_date] UTF8String], [JString UTF8String] ,__LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
+
 #else
-# define JLog(...);
+#define JLog(...)
 #endif
+
+//#ifdef DEBUG
+//# define JLog(fmt, ...) NSLog((@"\n[文件名:%s]" "\n[函数名:%s]" "\n[行号:%d]\n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+//#else
+//# define JLog(...);
+//#endif
 
 
 #define JSingletonInterface(className) + (instancetype)shared##className;

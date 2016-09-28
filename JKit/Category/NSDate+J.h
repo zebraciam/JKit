@@ -214,4 +214,7 @@ typedef enum {
  *  @return NSDate
  */
 - (NSDate *)j_dateWithDateFormat:(JDateFormat)format;
+
++ (NSString *)j_date;
+
 @end

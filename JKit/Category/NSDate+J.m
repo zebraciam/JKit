@@ -328,4 +328,11 @@
     return date;
 }
 
++ (NSString *)j_date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    return dateString;
+}
+
 @end
