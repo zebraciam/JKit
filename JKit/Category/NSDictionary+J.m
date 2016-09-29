@@ -18,6 +18,13 @@
         return [self objectForKey:key];
     }
 }
+
+- (NSString *)j_description {
+    NSString *desc = [self description];
+    desc = [NSString stringWithCString:[desc cStringUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding];
+    return desc;
+}
+
 - (NSString *)j_urlValue{
     NSString *url = @"";
     NSArray *keyArr = [self allKeys];

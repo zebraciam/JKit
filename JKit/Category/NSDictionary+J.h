@@ -23,4 +23,10 @@
  *  post 提交参数转化为URL
  */
 - (ObjectType)j_urlValue;
+
+/**
+ *  打印时unicode
+ */
+- (ObjectType)j_description;
+
 @end
