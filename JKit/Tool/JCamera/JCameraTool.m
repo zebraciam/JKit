@@ -16,18 +16,23 @@
 #import <QBImagePickerController/QBImagePickerController.h>
 
 
-@interface JCameraTool ()
+@interface JCameraTool () {
+    UIStatusBarStyle _statusBarStyle;
+}
 
 @property (nonatomic, assign) BOOL isCropper;
+
+@property (nonatomic, assign) BOOL isSystem;
 
 @property (nonatomic, assign) CGFloat scale;
 
 @property (nonatomic, strong) UIViewController *viewC;
 
-@property (nonatomic, strong) CallBackBlock block;
+@property (nonatomic, strong) CallBackBlock confirmBlock;
 
-@property (nonatomic, strong) CallBackBlocks blocks;
+@property (nonatomic, strong) CallBackBlocks confirmBlocks;
 
+@property (nonatomic, strong) dispatch_block_t cancelBlock;
 
 @end
 
@@ -38,11 +43,13 @@
    andMinimumNumberOfSelection:(NSInteger)minNumber
    andMaximumNumberOfSelection:(NSInteger)maxNumber
     andAllowsMultipleSelection:(BOOL)allowsMultipleSelection
-                      callBack:(CallBackBlocks)block {
+                   confirmBack:(CallBackBlocks)confirmBlocks
+                 andCancelBack:(dispatch_block_t)cancelBlock {
     
     JCameraTool * SELF = [JCameraTool new];
     SELF.viewC = viewC;
-    SELF.blocks = block;
+    SELF.confirmBlocks = confirmBlocks;
+    SELF.cancelBlock = cancelBlock;
     
     UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"打开照相机",@"从手机相册获取", nil];
     
@@ -81,23 +88,29 @@
 
 #pragma mark -单选（支持裁剪）
 + (void)j_creatAlertController:(UIViewController *)viewC
+        andCropperTypeIsSystem:(BOOL)isSystem
                     andCropper:(BOOL)isCropper
                       andScale:(CGFloat)scale
-                      callBack:(CallBackBlock)block {
+                   confirmBack:(CallBackBlock)confirmBlock
+                 andCancelBack:(dispatch_block_t)cancelBlock {
     
     JCameraTool * SELF = [JCameraTool new];
     SELF.viewC = viewC;
-    SELF.block = block;
+    SELF.confirmBlock = confirmBlock;
+    SELF.cancelBlock = cancelBlock;
     SELF.isCropper = isCropper;
+    SELF.isSystem = isSystem;
     SELF.scale = scale;
     
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
-//    if(isCropper){
-//        imagePicker.allowsEditing = NO;
-//    }else{
-//        imagePicker.allowsEditing = YES;
-//    }
+    if (isSystem) {
+        if(isCropper){
+            imagePicker.allowsEditing = YES;
+        }else{
+            imagePicker.allowsEditing = NO;
+        }
+    }
     
     if(IOS8){
         UIAlertController * sheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -167,18 +180,42 @@
         
         UIImagePickerController * picker = [arg first];
         NSDictionary * info = [arg second];
-        UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         if(_isCropper){
-            [self cropperDelegate:portraitImg andPickerController:picker];
+            
+            if (_isSystem) {
+                UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+                JBlock(self.confirmBlock, portraitImg);
+                JBlock(self.confirmBlocks, [NSMutableArray arrayWithObject:portraitImg]);
+                [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
+
+                [self.viewC dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                [self cropperDelegate:[info objectForKey:@"UIImagePickerControllerOriginalImage"] andPickerController:picker];
+            }
+            
         }else{
-            JBlock(self.block, portraitImg);
-            JBlock(self.blocks, [NSMutableArray arrayWithObject:portraitImg]);
+            UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+            JBlock(self.confirmBlock, portraitImg);
+            JBlock(self.confirmBlocks, [NSMutableArray arrayWithObject:portraitImg]);
+            [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
             [self.viewC dismissViewControllerAnimated:YES completion:nil];
         }
     }];
+    [[delegateProxy rac_signalForSelector:@selector(imagePickerControllerDidCancel:)] subscribeNext:^(RACTuple *arg) {
+        UIImagePickerController * picker = [arg first];
+        JBlock(self.cancelBlock);
+        [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
+        [picker dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    
     imagePicker.delegate = (id<UIImagePickerControllerDelegate,UINavigationControllerDelegate>)delegateProxy;
     objc_setAssociatedObject(imagePicker, _cmd, delegateProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self.viewC  presentViewController:imagePicker animated:YES completion:^{
+        if ([[UIApplication sharedApplication] statusBarStyle] != UIStatusBarStyleDefault) {
+            _statusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        }
+        
     }];
 }
 #pragma mark -JImageCropperDelegate
@@ -204,10 +241,13 @@
         
         [imgCropperVC.navigationController setNavigationBarHidden:NO animated:YES];
         UIImage * image = [arg second];
-        JBlock(self.block, image);
+        JBlock(self.confirmBlock, image);
+        [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
         [imgCropperVC dismissViewControllerAnimated:NO completion:nil];
     }];
     [[delegateProxy rac_signalForSelector:@selector(imageCropperDidCancel:)] subscribeNext:^(RACTuple *arg) {
+        JBlock(self.cancelBlock);
+        [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
         [imgCropperVC.navigationController setNavigationBarHidden:NO animated:YES];
         [imgCropperVC dismissViewControllerAnimated:NO completion:nil];
         
@@ -223,6 +263,8 @@
     RACDelegateProxy * delegateProxy = [[RACDelegateProxy alloc]initWithProtocol:@protocol(QBImagePickerControllerDelegate)];
     [[delegateProxy rac_signalForSelector:@selector(qb_imagePickerControllerDidCancel:)] subscribeNext:^(RACTuple *arg) {
         QBImagePickerController * picker = [arg first];
+        JBlock(self.cancelBlock);
+        [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
         [picker dismissViewControllerAnimated:YES completion:NULL];
     }];
     
@@ -237,7 +279,8 @@
             [dataImgs addObject:[UIImage imageWithCGImage:[representation fullResolutionImage]]];
         }
         
-        JBlock(self.blocks, dataImgs);
+        JBlock(self.confirmBlocks, dataImgs);
+        [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
         [picker dismissViewControllerAnimated:YES completion:NULL];
     }];
     
@@ -249,7 +292,8 @@
         ALAssetRepresentation *representation = [[arg second] defaultRepresentation];
         [dataImgs addObject:[UIImage imageWithCGImage:[representation fullResolutionImage]]];
         
-        JBlock(self.blocks, dataImgs);
+        JBlock(self.confirmBlocks, dataImgs);
+        [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
         [picker dismissViewControllerAnimated:YES completion:NULL];
     }];
     

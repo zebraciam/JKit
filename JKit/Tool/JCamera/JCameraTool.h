@@ -20,14 +20,17 @@ typedef void(^CallBackBlocks)(NSMutableArray *images);
  *  裁剪实例化
  *
  *  @param viewC     self
+ *  @param isSystem  是否使用系统裁剪  NO 不 YES 是
  *  @param isCropper 是否剪切  NO 不 YES 是
  *  @param scale     剪切的尺寸（屏幕的宽/scale）
  *  @param block     image
  */
 + (void)j_creatAlertController:(UIViewController *)viewC
-                    andCropper:(BOOL)isCropper
-                      andScale:(CGFloat)scale
-                      callBack:(CallBackBlock)block;
+   andMinimumNumberOfSelection:(NSInteger)minNumber
+   andMaximumNumberOfSelection:(NSInteger)maxNumber
+    andAllowsMultipleSelection:(BOOL)allowsMultipleSelection
+                   confirmBack:(CallBackBlocks)confirmBlocks
+                 andCancelBack:(dispatch_block_t)cancelBlock;
 
 
 /**
@@ -40,8 +43,9 @@ typedef void(^CallBackBlocks)(NSMutableArray *images);
  *  @param block                   images
  */
 + (void)j_creatAlertController:(UIViewController *)viewC
-   andMinimumNumberOfSelection:(NSInteger)minNumber
-   andMaximumNumberOfSelection:(NSInteger)maxNumber
-    andAllowsMultipleSelection:(BOOL)allowsMultipleSelection
-                      callBack:(CallBackBlocks)block;
+        andCropperTypeIsSystem:(BOOL)isSystem
+                    andCropper:(BOOL)isCropper
+                      andScale:(CGFloat)scale
+                   confirmBack:(CallBackBlock)confirmBlock
+                 andCancelBack:(dispatch_block_t)cancelBlock;
 @end
