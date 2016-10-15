@@ -26,10 +26,10 @@ typedef void(^CallBackBlocks)(NSMutableArray *images);
  *  @param block     image
  */
 + (void)j_creatAlertController:(UIViewController *)viewC
-   andMinimumNumberOfSelection:(NSInteger)minNumber
-   andMaximumNumberOfSelection:(NSInteger)maxNumber
-    andAllowsMultipleSelection:(BOOL)allowsMultipleSelection
-                   confirmBack:(CallBackBlocks)confirmBlocks
+        andCropperTypeIsSystem:(BOOL)isSystem
+                    andCropper:(BOOL)isCropper
+                      andScale:(CGFloat)scale
+                   confirmBack:(CallBackBlock)confirmBlock
                  andCancelBack:(dispatch_block_t)cancelBlock;
 
 
@@ -43,9 +43,9 @@ typedef void(^CallBackBlocks)(NSMutableArray *images);
  *  @param block                   images
  */
 + (void)j_creatAlertController:(UIViewController *)viewC
-        andCropperTypeIsSystem:(BOOL)isSystem
-                    andCropper:(BOOL)isCropper
-                      andScale:(CGFloat)scale
-                   confirmBack:(CallBackBlock)confirmBlock
+   andMinimumNumberOfSelection:(NSInteger)minNumber
+   andMaximumNumberOfSelection:(NSInteger)maxNumber
+    andAllowsMultipleSelection:(BOOL)allowsMultipleSelection
+                   confirmBack:(CallBackBlocks)confirmBlocks
                  andCancelBack:(dispatch_block_t)cancelBlock;
 @end
