@@ -25,5 +25,6 @@
 #import "UIViewController+JAlertView.h"
 #import "UITableView+J.h"
 #import "UIView+JPlaceholderView.h"
+#import "NSData+J.h"
 
 #endif /* JCategory_h */

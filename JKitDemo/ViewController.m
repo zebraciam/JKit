@@ -42,7 +42,7 @@
     //    _picView.titleData = arr3;
     _picView.backgroundColor = [UIColor clearColor];
     [_picView setImageViewDidTapAtIndex:^(NSInteger index) {
-        JLog("你点到我了😳index:%zd\n",index);
+        JLog(@"你点到我了😳index:%zd\n",index);
     }];
     
     _picView.AutoScrollDelay = 2.0f;
@@ -57,7 +57,7 @@
     [top j_setBackgroundSelectedImage:[UIImage imageNamed:@"tabcr"] andBackgroundNormalImage:nil];
     [self.view addSubview:top];
     [top j_getTopClassificationCallBackBlock:^(NSInteger index) {
-        JLog("你点到我了😳index:%zd\n",index);
+        JLog(@"你点到我了😳index:%zd\n",index);
     }];
 }
 
@@ -81,7 +81,7 @@
     _picLabel.fonts = @[JFont(12),JFont(14),JFont(12)];
     _picLabel.backgroundColor = [UIColor clearColor];
     [_picLabel setImageViewDidTapAtIndex:^(NSInteger index) {
-        JLog("你点到我了😳index:%zd\n",index);
+        JLog(@"你点到我了😳index:%zd\n",index);
     }];
     
     _picLabel.AutoScrollDelay = 3.0f;

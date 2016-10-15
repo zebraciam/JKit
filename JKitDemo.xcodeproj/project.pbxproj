@@ -18,6 +18,7 @@
 		15B21BC71CAD2F20003BD8DF /* JPagerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B21BC61CAD2F20003BD8DF /* JPagerBaseViewController.m */; };
 		15BC7E711D8653CF0075DC57 /* UIView+JPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15BC7E701D8653CF0075DC57 /* UIView+JPlaceholderView.m */; };
 		15CC76BB1D1CE1BC00895BAE /* UITableView+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CC76BA1D1CE1BC00895BAE /* UITableView+J.m */; };
+		15D5B1DA1DB22D430034B7BC /* NSData+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D5B1D91DB22D430034B7BC /* NSData+J.m */; };
 		15E05FE91C903DC8006AF100 /* JPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E05FE81C903DC8006AF100 /* JPickView.m */; };
 		15EE6ABC1CBB7B5C000D8DA5 /* JGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6ABB1CBB7B5C000D8DA5 /* JGuideViewController.m */; };
 		15EE6ABF1CBB8996000D8DA5 /* JCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15EE6ABE1CBB8996000D8DA5 /* JCustomPickerView.m */; };
@@ -92,6 +93,8 @@
 		15BC7E701D8653CF0075DC57 /* UIView+JPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JPlaceholderView.m"; sourceTree = "<group>"; };
 		15CC76B91D1CE1BC00895BAE /* UITableView+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+J.h"; sourceTree = "<group>"; };
 		15CC76BA1D1CE1BC00895BAE /* UITableView+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+J.m"; sourceTree = "<group>"; };
+		15D5B1D81DB22D430034B7BC /* NSData+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+J.h"; sourceTree = "<group>"; };
+		15D5B1D91DB22D430034B7BC /* NSData+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+J.m"; sourceTree = "<group>"; };
 		15E05FE71C903DC8006AF100 /* JPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPickView.h; sourceTree = "<group>"; };
 		15E05FE81C903DC8006AF100 /* JPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPickView.m; sourceTree = "<group>"; };
 		15EE6ABA1CBB7B5C000D8DA5 /* JGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGuideViewController.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				15CC76BA1D1CE1BC00895BAE /* UITableView+J.m */,
 				15BC7E6F1D8653CF0075DC57 /* UIView+JPlaceholderView.h */,
 				15BC7E701D8653CF0075DC57 /* UIView+JPlaceholderView.m */,
+				15D5B1D81DB22D430034B7BC /* NSData+J.h */,
+				15D5B1D91DB22D430034B7BC /* NSData+J.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -644,6 +649,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BC7E711D8653CF0075DC57 /* UIView+JPlaceholderView.m in Sources */,
+				15D5B1DA1DB22D430034B7BC /* NSData+J.m in Sources */,
 				15CC76BB1D1CE1BC00895BAE /* UITableView+J.m in Sources */,
 				925D93AD1C45E06E0061B83B /* NSDictionary+J.m in Sources */,
 				150F42321D06C69D00233827 /* JTabBarButton.m in Sources */,
