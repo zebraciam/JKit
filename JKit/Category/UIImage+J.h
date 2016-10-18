@@ -42,7 +42,7 @@ typedef void(^j_WriteToSavedPhotosError)(NSError *error);
  *
  *  @param KB 图片最大多少KB
  */
-- (instancetype)j_pressImageWithLessThanSizeKB:(CGFloat)KB;
+- (NSData *)j_pressImageWithLessThanSizeKB:(CGFloat)KB;
 /**
  *  修改大小 消除白边  图片最大 1242 * 2208  5.5寸
  */

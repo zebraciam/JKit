@@ -60,7 +60,7 @@
 }
 
 #pragma mark -图片压缩系数
-- (instancetype)j_pressImageWithLessThanSizeKB:(CGFloat )KB{
+- (NSData *)j_pressImageWithLessThanSizeKB:(CGFloat )KB{
     
     NSData *data;
     UIImage *image = [self scaleAndRotateImage];
@@ -69,7 +69,6 @@
     }else{
         return nil;
     }
-    float num = 1;
     if ([data length] < 1024*KB) {
         return data;
     }else{
@@ -80,7 +79,7 @@
             }
         }
     }
-    
+    return nil;
 }
 #pragma mark -改变图片尺寸
 - (UIImage*)j_imageWithscaledToSize:(CGSize)newSize{
