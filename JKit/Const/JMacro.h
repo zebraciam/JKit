@@ -21,9 +21,9 @@
 #define JKeyWindow [[UIApplication sharedApplication] keyWindow]
 #define JWindow [[[UIApplication sharedApplication] delegate] window]
 
-#define IOS7 [[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=7
+#define IOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7
 
-#define IOS8 [[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]>=8
+#define IOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8
 
 #define JiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define JiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
