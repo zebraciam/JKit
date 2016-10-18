@@ -210,6 +210,7 @@
     
     imagePicker.delegate = (id<UIImagePickerControllerDelegate,UINavigationControllerDelegate>)delegateProxy;
     objc_setAssociatedObject(imagePicker, _cmd, delegateProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
     [self.viewC  presentViewController:imagePicker animated:YES completion:^{
         if ([[UIApplication sharedApplication] statusBarStyle] != UIStatusBarStyleDefault) {
             _statusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
@@ -300,6 +301,10 @@
     imagePicker.delegate = (id<QBImagePickerControllerDelegate>)delegateProxy;
     objc_setAssociatedObject(imagePicker, _cmd, delegateProxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self.viewC  presentViewController:imagePicker animated:YES completion:^{
+        if ([[UIApplication sharedApplication] statusBarStyle] != UIStatusBarStyleDefault) {
+            _statusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        }
     }];
 }
 

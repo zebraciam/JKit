@@ -38,11 +38,15 @@ typedef void(^j_WriteToSavedPhotosError)(NSError *error);
 - (void)j_writeToSavedPhotosAlbumWithSuccess:(j_WriteToSavedPhotosSuccess)success error:(j_WriteToSavedPhotosError)error;
 
 /**
- *  根据图片的大小返回压缩系数
+ *  根据图片的大小返回data
  *
  *  @param KB 图片最大多少KB
  */
-- (float)j_pressImageWithLessThanSizeKB:(CGFloat )KB;
+- (instancetype)j_pressImageWithLessThanSizeKB:(CGFloat)KB;
+/**
+ *  修改大小 消除白边  图片最大 1242 * 2208  5.5寸
+ */
+- (UIImage *)scaleAndRotateImage;
 
 /**
  *  改变图片尺寸
