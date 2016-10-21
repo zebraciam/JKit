@@ -21,14 +21,14 @@
 
 @implementation JLoadingTool
 
-static char const JBlockKey, JAllowPlayCountKey;
+static char const JLoadingBlockKey;
 
 - (void)setBlock:(dispatch_block_t)block{
-    objc_setAssociatedObject(self, &JBlockKey, block, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &JLoadingBlockKey, block, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
 }
 -(dispatch_block_t)block{
-    return objc_getAssociatedObject(self, &JBlockKey);
+    return objc_getAssociatedObject(self, &JLoadingBlockKey);
 }
 
 
