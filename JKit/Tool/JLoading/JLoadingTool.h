@@ -54,6 +54,9 @@
  */
 + (void)j_showInfoWithStatus:(NSString *)string;
 
+
++ (void)j_showSuccessWithStatus:(NSString *)string andCallBack:(dispatch_block_t)block;
+
 /**
  *  显示（默认一个灰色背景）
  */
