@@ -55,7 +55,27 @@
 + (void)j_showInfoWithStatus:(NSString *)string;
 
 
+/**
+ *  成功提示
+ *
+ *  @param string 提示信息延迟1秒
+ */
+
 + (void)j_showSuccessWithStatus:(NSString *)string andCallBack:(dispatch_block_t)block;
+
+/**
+ *  错误提示
+ *
+ *  @param string 提示信息延迟1秒
+ */
++ (void)j_showErrorWithStatus:(NSString *)string andCallBack:(dispatch_block_t)block;
+
+/**
+ *  警告提示
+ *
+ *  @param string 提示信息延迟1秒
+ */
++ (void)j_showInfoWithStatus:(NSString *)string andCallBack:(dispatch_block_t)block;
 
 /**
  *  显示（默认一个灰色背景）

@@ -97,11 +97,36 @@ JSingletonImplementation(LoadingTool)
 
 + (void)j_showSuccessWithStatus:(NSString *)string andCallBack:(dispatch_block_t)block {
     
+    [self j_status:string andStatusType:1 andCallBack:block];
+    
+}
+
++ (void)j_showErrorWithStatus:(NSString *)string andCallBack:(dispatch_block_t)block {
+    
+    [self j_status:string andStatusType:2 andCallBack:block];
+    
+}
+
++ (void)j_showInfoWithStatus:(NSString *)string andCallBack:(dispatch_block_t)block {
+    
+    [self j_status:string andStatusType:3 andCallBack:block];
+    
+}
+
++ (void)j_status:(NSString *)string andStatusType:(NSInteger)type andCallBack:(dispatch_block_t)block {
+    
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
     [SVProgressHUD setMinimumDismissTimeInterval:1];
     
-    [SVProgressHUD showSuccessWithStatus:string];
+    if (type == 1) {
+        [SVProgressHUD showSuccessWithStatus:string];
+    } else if (type == 2) {
+        [SVProgressHUD showErrorWithStatus:string];
+    } else {
+        [SVProgressHUD showInfoWithStatus:string];
+    }
+    
     
     [JLoadingTool sharedLoadingTool].block = block;
     __block int timeout = 1.5; //倒计时时间
@@ -116,7 +141,7 @@ JSingletonImplementation(LoadingTool)
                 //设置界面的按钮显示 根据自己需求设置
                 JBlock([JLoadingTool sharedLoadingTool].block);
                 [[JLoadingTool sharedLoadingTool].view removeFromSuperview];
-
+                
             });
         }else{
             timeout --;
@@ -125,6 +150,7 @@ JSingletonImplementation(LoadingTool)
     dispatch_resume(_timer);
     
 }
+
 
 + (void)j_startLoadingWithBackgroundColor:(UIColor *)backgroundColor
 {
