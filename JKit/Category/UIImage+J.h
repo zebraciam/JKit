@@ -56,6 +56,15 @@ typedef void(^j_WriteToSavedPhotosError)(NSError *error);
 - (UIImage*)j_imageWithscaledToSize:(CGSize)newSize;
 
 /**
+ *  根据图片url获取图片尺寸
+ *
+ *  @param imageURL 图片url
+ *
+ *  @param newSize 尺寸
+ */
++ (CGSize)j_getImageSizeWithURL:(id)imageURL;
+
+/**
  *  改变图片相关
  *
  *  @param color 需要改变的颜色
@@ -76,4 +85,7 @@ typedef void(^j_WriteToSavedPhotosError)(NSError *error);
 -(UIImage*)j_darkenWithLevel:(CGFloat)level;
 -(UIImage*)j_darkenWithLevel:(CGFloat)level insets:(UIEdgeInsets)insets;
 -(UIImage*)j_darkenRect:(CGRect)rect withLevel:(CGFloat)level;
+
+
+
 @end
