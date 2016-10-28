@@ -9,7 +9,6 @@
 #import "JCameraTool.h"
 #import "JKit.h"
 #import "ReactiveCocoa.h"
-#import "RACDelegateProxy.h"
 #import <objc/runtime.h>
 #import "JImageCropperViewController.h"
 #import <AVFoundation/AVFoundation.h>
@@ -52,7 +51,7 @@
     SELF.cancelBlock = cancelBlock;
     
     UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"打开照相机",@"从手机相册获取", nil];
-    
+        
     [[sheet rac_buttonClickedSignal] subscribeNext:^(id x) {
         if ([x integerValue] == 0) {
             NSString *mediaType = AVMediaTypeVideo;
@@ -269,15 +268,32 @@
         [picker dismissViewControllerAnimated:YES completion:NULL];
     }];
     
-    [[delegateProxy rac_signalForSelector:@selector(qb_imagePickerController:didSelectAssets:)] subscribeNext:^(RACTuple *arg) {
+    [[delegateProxy rac_signalForSelector:@selector(qb_imagePickerController:didFinishPickingAssets:)] subscribeNext:^(RACTuple *arg) {
         QBImagePickerController * picker = [arg first];
         NSArray *info = [arg second];
         
         NSMutableArray *dataImgs = [NSMutableArray array];
         
-        for (ALAsset *asset in info) {
-            ALAssetRepresentation *representation = [asset defaultRepresentation];
-            [dataImgs addObject:[UIImage imageWithCGImage:[representation fullResolutionImage]]];
+        for (PHAsset *asset in info) {
+            __block NSData *data;
+            PHAssetResource *resource = [[PHAssetResource assetResourcesForAsset:asset] firstObject];
+            if (asset.mediaType == PHAssetMediaTypeImage) {
+                PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+                options.version = PHImageRequestOptionsVersionCurrent;
+                options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+                options.synchronous = YES;
+                [[PHImageManager defaultManager] requestImageDataForAsset:asset
+                                                                  options:options
+                                                            resultHandler:
+                 ^(NSData *imageData,
+                   NSString *dataUTI,
+                   UIImageOrientation orientation,
+                   NSDictionary *info) {
+                     data = [NSData dataWithData:imageData];
+                 }];
+            }
+            [dataImgs addObject:[UIImage imageWithData:data]];
+            
         }
         
         JBlock(self.confirmBlocks, dataImgs);
@@ -289,10 +305,26 @@
         QBImagePickerController * picker = [arg first];
         
         NSMutableArray *dataImgs = [NSMutableArray array];
-        
-        ALAssetRepresentation *representation = [[arg second] defaultRepresentation];
-        [dataImgs addObject:[UIImage imageWithCGImage:[representation fullResolutionImage]]];
-        
+        PHAsset *asset = [arg second];
+        __block NSData *data;
+        PHAssetResource *resource = [[PHAssetResource assetResourcesForAsset:asset] firstObject];
+        if (asset.mediaType == PHAssetMediaTypeImage) {
+            PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+            options.version = PHImageRequestOptionsVersionCurrent;
+            options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+            options.synchronous = YES;
+            [[PHImageManager defaultManager] requestImageDataForAsset:asset
+                                                              options:options
+                                                        resultHandler:
+             ^(NSData *imageData,
+               NSString *dataUTI,
+               UIImageOrientation orientation,
+               NSDictionary *info) {
+                 data = [NSData dataWithData:imageData];
+             }];
+        }
+        [dataImgs addObject:[UIImage imageWithData:data]];
+    
         JBlock(self.confirmBlocks, dataImgs);
         [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle];
         [picker dismissViewControllerAnimated:YES completion:NULL];
