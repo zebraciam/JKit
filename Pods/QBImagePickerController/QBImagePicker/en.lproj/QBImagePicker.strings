@@ -2,20 +2,20 @@
   QBImagePicker.strings
   QBImagePicker
 
-  Created by Katsuma Tanaka on 2015/04/06.
+  Created by Katsuma Tanaka on 2015/04/03.
   Copyright (c) 2015 Katsuma Tanaka. All rights reserved.
 */
 
-"title" = "Photos";
+"albums.title" = "Photos";
 
-"format_photo" = "%ld Photo";
-"format_photos" = "%ld Photos";
-"format_video" = "%ld Video";
-"format_videos" = "%ld Videos";
-"format_photo_and_video" = "%ld Photo, %ld Video";
-"format_photos_and_video" = "%ld Photos, %ld Video";
-"format_photo_and_videos" = "%ld Photo, %ld Videos";
-"format_photos_and_videos" = "%ld Photos, %ld Videos";
+"assets.footer.photo" = "%ld Photo";
+"assets.footer.photos" = "%ld Photos";
+"assets.footer.video" = "%ld Video";
+"assets.footer.videos" = "%ld Videos";
+"assets.footer.photo-and-video" = "%ld Photo, %ld Video";
+"assets.footer.photos-and-video" = "%ld Photos, %ld Video";
+"assets.footer.photo-and-videos" = "%ld Photo, %ld Videos";
+"assets.footer.photos-and-videos" = "%ld Photos, %ld Videos";
 
-"item_selected" = "%ld Item Selected";
-"items_selected" = "%ld Items Selected";
+"assets.toolbar.item-selected" = "%ld Item Selected";
+"assets.toolbar.items-selected" = "%ld Items Selected";

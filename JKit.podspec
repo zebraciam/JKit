@@ -1,17 +1,17 @@
 Pod::Spec.new do |s|
 s.name         = "JKit"
-s.version      = "2.0.3"
+s.version      = "2.0.3.1"
 s.summary      = "Fast iOS Develope App Kit"
 s.description  = <<-DESC
-JKit 开发时用的工具类
-Fast iOS Develope App Kit
-DESC
+                    JKit 开发时用的工具类
+                 DESC
 s.homepage     = "https://github.com/GitHubZebra/JKit"
-s.license      = "MIT"
+s.license      = { :type => "MIT", :file => "LICENSE" }
 s.author       = { "陈杰" => "mr_banma@126.com" }
 s.platform = :ios
 
-s.ios.deployment_target = '7.0'
+s.ios.deployment_target = '8.0'
+
 s.source       = { :git => "https://github.com/GitHubZebra/JKit.git", :tag => s.version }
 s.source_files = "JKit/**/*.{h,m}"
 s.requires_arc = true

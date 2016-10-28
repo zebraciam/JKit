@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-JKitDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Result.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>19C9973624D27928209631AC90F8ACF1</key>
+		<key>1E8529450C522AD073EDC6CE9A7A76CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3375D034F590841AB090D6436C1CA7F2</key>
+		<key>6101CB398E244AD45C64963A9F1D8034</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>43432B066FBFDD1C1C26F6F0D300F87B</key>
+		<key>76321C701093142D48B674895846FCCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>58FA894F53071DBEFFEC109D9D032F05</key>
+		<key>7ED8336242C9BA9EDD0B8649EF23396F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61B5D777EE6DF096A477DEAF6406B96E</key>
+		<key>DD2D22B9BC026E1CEF3B5C67AEDDDB5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>81DC522A03F620137E586ADE6050F645</key>
+		<key>E93C6101261FE6E8C9CC94649C3CFF47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EBD04E312CC73FA3E44EA6F014159F08</key>
 		<dict>
 			<key>primary</key>
 			<true/>
