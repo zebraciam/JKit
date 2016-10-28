@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "JKit"
-s.version      = "2.0.3.4"
+s.version      = "2.0.3.5"
 s.summary      = "Fast iOS Develope App Kit"
 s.description  = <<-DESC
                     JKit 开发时用的工具类
@@ -14,10 +14,11 @@ s.ios.deployment_target = '8.0'
 
 s.source       = { :git => "https://github.com/GitHubZebra/JKit.git", :tag => s.version }
 s.source_files = "JKit/**/*.{h,m}"
+s.exclude_files = "JKit/Tool/JCamera"
 s.requires_arc = true
 
 s.dependency "SVProgressHUD"
 #s.dependency "ReactiveCocoa"
 s.dependency "SDWebImage"
-s.dependency "QBImagePickerController"
+#s.dependency "QBImagePickerController"
 end
