@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "JKit"
-s.version      = "2.0.3.3"
+s.version      = "2.0.3.4"
 s.summary      = "Fast iOS Develope App Kit"
 s.description  = <<-DESC
                     JKit 开发时用的工具类
@@ -17,7 +17,7 @@ s.source_files = "JKit/**/*.{h,m}"
 s.requires_arc = true
 
 s.dependency "SVProgressHUD"
-s.dependency "ReactiveCocoa"
+#s.dependency "ReactiveCocoa"
 s.dependency "SDWebImage"
 s.dependency "QBImagePickerController"
 end
