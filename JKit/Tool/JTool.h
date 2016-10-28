@@ -10,6 +10,6 @@
 #define JTool_h
 
 #import "JLoadingTool.h"
-#import "JCameraTool.h"
+//#import "JCameraTool.h"
 
 #endif /* JTool_h */
