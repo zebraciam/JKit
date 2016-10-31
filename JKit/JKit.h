@@ -11,9 +11,7 @@
 
 #import "JCategory.h"
 #import "JMacro.h"
-#import "JView.h"
-#import "JTool.h"
-
-
+//#import "JView.h"
+//#import "JTool.h"
 
 #endif /* JKit_h */
