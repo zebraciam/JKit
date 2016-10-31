@@ -21,4 +21,6 @@ s.requires_arc = true
 #s.dependency "ReactiveCocoa"
 #s.dependency "SDWebImage"
 #s.dependency "QBImagePickerController"
+
+s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 end
