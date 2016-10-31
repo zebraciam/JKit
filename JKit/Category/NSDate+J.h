@@ -202,19 +202,13 @@ typedef enum {
  */
 - (NSDate *)j_offsetHours:(NSInteger)hours;
 
+
++ (NSString *)formatString:(JDateFormat)format;
+
 @end
 
 @interface NSString (JDateFormat)
 
-/**
- *  将NSString转为NSDate
- *
- *  @param format jDateFormat
- *
- *  @return NSDate
- */
-- (NSDate *)j_dateWithDateFormat:(JDateFormat)format;
 
-+ (NSString *)j_date;
 
 @end

@@ -13,6 +13,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "NSDate+J.h"
+#import "NSData+J.h"
 
 #define JMD5(string) [string j_md5]
 #define JSHA1(string) [string j_sha1]
@@ -39,6 +41,17 @@
 
 
 @interface NSString (J)
+
+/**
+ *  将NSString转为NSDate
+ *
+ *  @param format jDateFormat
+ *
+ *  @return NSDate
+ */
+- (NSDate *)j_dateWithDateFormat:(JDateFormat)format;
+
++ (NSString *)j_date;
 
 /**
  *  10进制 转 16进制

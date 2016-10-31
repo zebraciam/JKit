@@ -7,7 +7,6 @@
 //
 
 #import "NSString+J.h"
-#import "JKit.h"
 #import <CommonCrypto/CommonDigest.h>
 //引入IOS自带密码库
 #import <CommonCrypto/CommonCryptor.h>
@@ -17,6 +16,25 @@
 #define myNumbers          @"0123456789\n"
 
 @implementation NSString (J)
+
+#pragma mark 将NSString转为NSDate
+
+- (NSDate *)j_dateWithDateFormat:(JDateFormat)format
+{
+    NSDateFormatter *JDateFormatter = [[NSDateFormatter alloc] init];
+    
+    [JDateFormatter setDateFormat:[NSDate formatString:format]];
+    NSDate *date = [JDateFormatter dateFromString:self];
+    
+    return date;
+}
+
++ (NSString *)j_date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+    return dateString;
+}
 
 - (NSString *)j_toHex{
     NSString *nLetterValue;

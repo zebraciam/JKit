@@ -7,6 +7,7 @@
 //
 
 #import "NSDate+J.h"
+#import "NSString+J.h"
 
 @implementation NSDate (J)
 
@@ -316,23 +317,6 @@
 
 @implementation NSString (JDateFormat)
 
-#pragma mark 将NSString转为NSDate
 
-- (NSDate *)j_dateWithDateFormat:(JDateFormat)format
-{
-    NSDateFormatter *JDateFormatter = [[NSDateFormatter alloc] init];
-    
-    [JDateFormatter setDateFormat:[NSDate formatString:format]];
-    NSDate *date = [JDateFormatter dateFromString:self];
-    
-    return date;
-}
-
-+ (NSString *)j_date {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-    return dateString;
-}
 
 @end
