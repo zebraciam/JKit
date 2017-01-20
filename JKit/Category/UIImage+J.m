@@ -79,7 +79,7 @@
             }
         }
     }
-    return nil;
+    return data;
 }
 #pragma mark -改变图片尺寸
 - (UIImage*)j_imageWithscaledToSize:(CGSize)newSize{

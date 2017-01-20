@@ -207,8 +207,3 @@ typedef enum {
 
 @end
 
-@interface NSString (JDateFormat)
-
-
-
-@end
