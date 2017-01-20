@@ -314,9 +314,3 @@
 }
 
 @end
-
-@implementation NSString (JDateFormat)
-
-
-
-@end
