@@ -8,23 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, JDateFormat) {
     /**
      *  e.g.2014-03-04 13:23:35:67
      */
-    JDateFormatWithAll,
+    JDateFormatWithAll = 0,
+    
     /**
      *  e.g.2014-03-04 13:23:35
      */
-    JDateFormatWithDateAndTime,     //
+    JDateFormatWithDateAndTime,
+    
     /**
      *  e.g.13:23:35
      */
     JDateFormatWithTime,
+    
     /**
      *  e.g.13:23
      */
     JDateFormatWithTimeHourMinute,
+    
     /**
      *  e.g.13:23:35:67
      */
@@ -34,27 +38,32 @@ typedef enum {
      *  e.g.2014-03-04
      */
     JDateFormatWithYearMonthDay,
+    
     /**
      *  e.g.2014-03
      */
     JDateFormatWithYearMonth,
+    
     /**
      *  e.g.03-04
      */
     JDateFormatWithMonthDay,
+    
     /**
      *  e.g.2014
      */
     JDateFormatWithYear,
+    
     /**
      *  e.g.03
      */
     JDateFormatWithMonth,
+    
     /**
      *  e.g.04
      */
     JDateFormatWithDay,
-} JDateFormat;
+};
 
 @interface NSDate (J)
 /**
