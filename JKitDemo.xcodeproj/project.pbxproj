@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1534F1001CEB2483009F6B34 /* UIViewController+JAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */; };
-		1566B65B1EE64D3800240A2F /* Bank.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1566B65A1EE64D3800240A2F /* Bank.plist */; };
+		1566B65D1EE6516E00240A2F /* Bank.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1566B65C1EE6516E00240A2F /* Bank.plist */; };
 		15AD79F41C982DDA00BA5529 /* NSDate+J.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AD79F31C982DDA00BA5529 /* NSDate+J.m */; };
 		15B939491DC6EA9F0067467E /* JPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B939481DC6EA9F0067467E /* JPlaceholderView.m */; };
 		15BC7E711D8653CF0075DC57 /* UIView+JPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15BC7E701D8653CF0075DC57 /* UIView+JPlaceholderView.m */; };
@@ -58,7 +58,7 @@
 /* Begin PBXFileReference section */
 		1534F0FE1CEB2483009F6B34 /* UIViewController+JAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JAlertView.h"; sourceTree = "<group>"; };
 		1534F0FF1CEB2483009F6B34 /* UIViewController+JAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JAlertView.m"; sourceTree = "<group>"; };
-		1566B65A1EE64D3800240A2F /* Bank.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Bank.plist; sourceTree = "<group>"; };
+		1566B65C1EE6516E00240A2F /* Bank.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Bank.plist; sourceTree = "<group>"; };
 		15AD79F21C982DDA00BA5529 /* NSDate+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+J.h"; sourceTree = "<group>"; };
 		15AD79F31C982DDA00BA5529 /* NSDate+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+J.m"; sourceTree = "<group>"; };
 		15B939471DC6EA9F0067467E /* JPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPlaceholderView.h; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		1566B6571EE64C9500240A2F /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				1566B65A1EE64D3800240A2F /* Bank.plist */,
+				1566B65C1EE6516E00240A2F /* Bank.plist */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 			files = (
 				92E953C51C3BB9770074912A /* LaunchScreen.storyboard in Resources */,
 				92E953C21C3BB9770074912A /* Assets.xcassets in Resources */,
-				1566B65B1EE64D3800240A2F /* Bank.plist in Resources */,
+				1566B65D1EE6516E00240A2F /* Bank.plist in Resources */,
 				92D3DC341C3CBA3300DFDFE2 /* JKit.podspec in Resources */,
 				92E953C01C3BB9770074912A /* Main.storyboard in Resources */,
 			);
