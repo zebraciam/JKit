@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "JKit"
-s.version      = "2.1.2"
+s.version      = "2.1.3"
 s.summary      = "Fast iOS Develope App Kit"
 s.description  = <<-DESC
                     JKit 开发时用的工具类
@@ -13,7 +13,7 @@ s.platform = :ios
 s.ios.deployment_target = '8.0'
 
 s.source       = { :git => "https://github.com/GitHubZebra/JKit.git", :tag => s.version }
-s.source_files = "JKit/**/*.{h,m}"
+s.source_files = "JKit/**/*.{h,m,plist}"
 s.exclude_files = "JKit/Tool/JCamera"
 s.requires_arc = true
 

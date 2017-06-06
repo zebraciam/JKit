@@ -410,22 +410,147 @@
     return YES;
 }
 
-#pragma mark 判断URL
+#pragma mark -判断银行卡号
+- (BOOL)j_validBankCardNumber {
+    
+    int oddsum = 0;     //奇数求和
+    int evensum = 0;    //偶数求和
+    int allsum = 0;
+    
+    int cardNoLength = (int)[self length];
+    int lastNum = [[self substringFromIndex:cardNoLength-1] intValue];
+    
+    NSString *cardNo = [self substringToIndex:cardNoLength - 1];
+    
+    for (int i = cardNoLength -1 ; i>=1;i--) {
+        
+        NSString *tmpString = [cardNo substringWithRange:NSMakeRange(i-1, 1)];
+        int tmpVal = [tmpString intValue];
+        
+        if (cardNoLength % 2 == 1 ) {
+            if ((i % 2) == 0) {
+                
+                tmpVal *= 2;
+                
+                if(tmpVal>=10) {
+                    
+                    tmpVal -= 9;
+                }
+                
+                evensum += tmpVal;
+                
+            } else {
+                
+                oddsum += tmpVal;
+            }
+            
+        } else {
+            if ((i % 2) == 1) {
+                
+                tmpVal *= 2;
+                
+                if (tmpVal >= 10) {
+                    
+                    tmpVal -= 9;
+                }
+                
+                evensum += tmpVal;
+                
+            } else {
+                
+                oddsum += tmpVal;
+            }
+        }
+    }
+    
+    allsum = oddsum + evensum;
+    allsum += lastNum;
+    
+    if((allsum % 10) == 0) {
+     
+        return YES;
+        
+    } else {
+        
+        return NO;
+    }
+}
 
+- (NSString *)returnBankName {
+    
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Bank" ofType:@"plist"];
+    
+    NSDictionary *resultDic = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    
+    NSArray *bankName = [resultDic objectForKey:@"bankName"];
+    
+    NSArray *bankBin = [resultDic objectForKey:@"bankBin"];
+    
+    int index = -1;
+    
+    if([self j_validBankCardNumber]) {
+        
+        return @"";
+        
+    }
+    
+    //6位Bin号
+    
+    NSString *cardbin_6 = [self substringWithRange:NSMakeRange(0, 6)];
+    
+    for (int i = 0; i < bankBin.count; i++) {
+        
+        if ([cardbin_6 isEqualToString:bankBin[i]]) {
+            
+            index = i;
+            
+        }
+        
+    }
+    
+    if (index != -1) {
+        
+        return bankName[index];
+        
+    }
+    
+    //8位Bin号
+    
+    NSString *cardbin_8 = [self substringWithRange:NSMakeRange(0, 8)];
+    
+    for (int i = 0; i < bankBin.count; i++) {
+        
+        if ([cardbin_8 isEqualToString:bankBin[i]]) {
+            
+            index = i;
+            
+        }
+        
+    }
+    
+    if (index != -1) {
+        
+        return bankName[index];
+        
+    }
+    
+    return @"";
+    
+}
+
+#pragma mark 判断URL
 - (BOOL)j_validURL
 {
     return [self validWithRegex:@"^((http)|(https))+:[^\\s]+\\.[^\\s]*$"];
 }
 
 #pragma mark 判断EMail
-
 - (BOOL)j_validEMail
 {
     return [self validWithRegex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
 }
 
 #pragma mark 判断IP
-
 - (BOOL)j_validIPAddress
 {
     if ([self validWithRegex:@"^(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})$"]) {
@@ -447,7 +572,6 @@
 }
 
 #pragma mark 判断汉字
-
 - (BOOL)j_validChinese
 {
     return [self validWithRegex:@"^[\u4e00-\u9fa5]+$"];
@@ -456,7 +580,6 @@
 #pragma mark - -.-
 
 #pragma mark 计算Size
-
 - (CGSize)j_sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size
 {
     CGSize resultSize = CGSizeZero;
@@ -471,14 +594,12 @@
 }
 
 #pragma mark 计算Width
-
 - (CGFloat)j_widthWithFont:(UIFont *)font constrainedToSize:(CGSize)size
 {
     return [self j_sizeWithFont:font constrainedToSize:size].width;
 }
 
 #pragma mark 计算Height
-
 - (CGFloat)j_heightWithFont:(UIFont *)font constrainedToSize:(CGSize)size
 {
     return [self j_sizeWithFont:font constrainedToSize:size].height;
@@ -487,21 +608,18 @@
 #pragma mark - -.-
 
 #pragma mark 返回沙盒中的文件路径
-
 - (NSString *)j_documentsFile
 {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:self];
 }
 
 #pragma mark 删除沙盒中的文件
-
 - (BOOL)j_removeDocumentsFile
 {
     return [[NSFileManager defaultManager] removeItemAtPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:self] error:nil];
 }
 
 #pragma mark 写入系统偏好
-
 - (BOOL)j_saveUserDefaultsWithKey:(NSString *)key
 {
     [[NSUserDefaults standardUserDefaults] setObject:self forKey:key];
@@ -510,7 +628,6 @@
 }
 
 #pragma mark 获取系统偏好值
-
 - (NSString *)j_getUserDefaults
 {
     return [[NSUserDefaults standardUserDefaults] stringForKey:self];
@@ -519,28 +636,24 @@
 #pragma mark - -.-
 
 #pragma mark 去掉字符串两端的空白
-
 - (NSString *)j_trimWhitespace
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 #pragma mark 去掉字符串两端的空白和回车字符
-
 - (NSString *)j_trimWhitespaceAndNewline
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 #pragma mark 去掉字符串所有的空白字符
-
 - (NSString *)j_trimWhitespaceAll
 {
     return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
 #pragma mark 字符串反转
-
 - (NSString *)j_reverse
 {
     NSMutableString *reverseString = [[NSMutableString alloc] init];
@@ -558,7 +671,6 @@
 }
 
 #pragma mark 是否包含字符串
-
 - (BOOL)j_containsString:(NSString *)aString
 {
     NSRange rang = [self rangeOfString:aString];

@@ -123,6 +123,21 @@
 - (BOOL)j_validIdentityCard;
 
 /**
+ 判断银行卡号
+
+ @return 是/不是
+ */
+- (BOOL)j_validBankCardNumber;
+
+/**
+ 根据银行卡号判断银行名称
+
+ @param idCard 银行卡号
+ @return 银行名称
+ */
+- (NSString *)returnBankName;
+
+/**
  *  判断URL
  *
  *  @return 是/不是
