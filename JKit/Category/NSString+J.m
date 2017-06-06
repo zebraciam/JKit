@@ -545,9 +545,9 @@
 }
 
 #pragma mark 判断EMail
-- (BOOL)j_validEMail
-{
-    return [self validWithRegex:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"];
+- (BOOL)j_validEMail {
+    
+    return [self validWithRegex:@"^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$"];
 }
 
 #pragma mark 判断IP
