@@ -87,11 +87,14 @@ static char const JPlaceholderViewKey, JRefreshKey;
     }
 }
 
-- (void)j_hidePlaceholder
-{
-    [self.j_placeholderView j_hide];
+- (void)j_hidePlaceholder {
     
-    [self setScrollEnabled:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.j_placeholderView j_hide];
+        
+        [self setScrollEnabled:YES];
+    });
 }
 
 - (void)setScrollEnabled:(BOOL)enabled
