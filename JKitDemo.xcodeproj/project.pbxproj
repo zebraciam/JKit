@@ -35,7 +35,6 @@
 		92E953C51C3BB9770074912A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92E953C31C3BB9770074912A /* LaunchScreen.storyboard */; };
 		92E953D01C3BB9770074912A /* JKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E953CF1C3BB9770074912A /* JKitDemoTests.m */; };
 		92E953DB1C3BB9770074912A /* JKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E953DA1C3BB9770074912A /* JKitDemoUITests.m */; };
-		94F6600C40FE29BC99EFBB1D /* Pods_JKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE314221EC3149CF4B654FB /* Pods_JKitDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,9 +70,6 @@
 		15D5B1D91DB22D430034B7BC /* NSData+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+J.m"; sourceTree = "<group>"; };
 		15EE6AC41CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JPlaceholderView.h"; sourceTree = "<group>"; };
 		15EE6AC51CBB8C00000D8DA5 /* UIViewController+JPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JPlaceholderView.m"; sourceTree = "<group>"; };
-		1FE314221EC3149CF4B654FB /* Pods_JKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CD456149AEBFC7071111F7C /* Pods-JKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKitDemo/Pods-JKitDemo.release.xcconfig"; sourceTree = "<group>"; };
-		67682DCC85C69F9CEB04E2F0 /* Pods-JKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JKitDemo/Pods-JKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		921E68CC1C3BC902003E3389 /* JCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCategory.h; sourceTree = "<group>"; };
 		921E68CD1C3BC902003E3389 /* UIColor+J.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+J.h"; sourceTree = "<group>"; };
 		921E68CE1C3BC902003E3389 /* UIColor+J.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+J.m"; sourceTree = "<group>"; };
@@ -124,7 +120,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94F6600C40FE29BC99EFBB1D /* Pods_JKitDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,19 +148,9 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
-		429A884BEC6D87E1DB53DA63 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				67682DCC85C69F9CEB04E2F0 /* Pods-JKitDemo.debug.xcconfig */,
-				2CD456149AEBFC7071111F7C /* Pods-JKitDemo.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		8FC0D2169A052998E19DA86B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1FE314221EC3149CF4B654FB /* Pods_JKitDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,7 +227,6 @@
 				92E953CE1C3BB9770074912A /* JKitDemoTests */,
 				92E953D91C3BB9770074912A /* JKitDemoUITests */,
 				92E953B31C3BB9770074912A /* Products */,
-				429A884BEC6D87E1DB53DA63 /* Pods */,
 				8FC0D2169A052998E19DA86B /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -307,12 +291,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92E953DF1C3BB9770074912A /* Build configuration list for PBXNativeTarget "JKitDemo" */;
 			buildPhases = (
-				4BE381671080597AC1C1DEEE /* [CP] Check Pods Manifest.lock */,
 				92E953AE1C3BB9770074912A /* Sources */,
 				92E953AF1C3BB9770074912A /* Frameworks */,
 				92E953B01C3BB9770074912A /* Resources */,
-				9FF9DD7DBFA1258857A62C2C /* [CP] Embed Pods Frameworks */,
-				AEFD907CB4A0065C0AA86E0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -430,54 +411,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4BE381671080597AC1C1DEEE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9FF9DD7DBFA1258857A62C2C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKitDemo/Pods-JKitDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AEFD907CB4A0065C0AA86E0A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKitDemo/Pods-JKitDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		92E953AE1C3BB9770074912A /* Sources */ = {
@@ -643,7 +576,6 @@
 		};
 		92E953E01C3BB9770074912A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67682DCC85C69F9CEB04E2F0 /* Pods-JKitDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JKitDemo/PrefixHeader.pch";
@@ -658,7 +590,6 @@
 		};
 		92E953E11C3BB9770074912A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CD456149AEBFC7071111F7C /* Pods-JKitDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JKitDemo/PrefixHeader.pch";
