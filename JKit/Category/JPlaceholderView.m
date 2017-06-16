@@ -61,10 +61,7 @@
     [self addSubview:_imageView];
     
     _descriptionTextView = [[UITextView alloc] init];
-    [_descriptionTextView setFont:[UIFont systemFontOfSize:18.0f]];
     [_descriptionTextView setUserInteractionEnabled:NO];
-    [_descriptionTextView setBackgroundColor:JColorWithClear];
-    [_descriptionTextView setTextAlignment:NSTextAlignmentCenter];
     [_descriptionTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
     [self addSubview:_descriptionTextView];
@@ -78,15 +75,18 @@
     _imageView.frame = CGRectMake(0, 0, 100, 100);
     _imageView.center = CGPointMake(JScreenWidth /2, JScreenHeight /2 - 100);
     
-    _descriptionTextView.text = title;
+    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+    style.alignment = NSTextAlignmentCenter;
+    
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : JColorWithHex(0x666666),
+                                                                                                         NSParagraphStyleAttributeName  : style,
+                                                                                                         NSBackgroundColorAttributeName : JColorWithClear,
+                                                                                                         NSFontAttributeName            : [UIFont systemFontOfSize:18.0f]
+                                                                                                         }];
+    _descriptionTextView.attributedText = attributedString;
+    
     _descriptionTextView.frame = CGRectMake(20, _imageView.frame.size.height + _imageView.frame.origin.y + 25, self.frame.size.width - 40, 10);
-    _descriptionTextView.textColor = JColorWithHex(0x666666);
-    //    CGFloat fixedWidth = _descriptionTextView.frame.size.width;
-    //    CGSize newSize = [_descriptionTextView sizeThatFits:CGSizeMake(fixedWidth, 20)];
-    //    CGRect newFrame = _descriptionTextView.frame;
-    //    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    //    _descriptionTextView.frame = newFrame;
-    //
+    
     [UIView animateWithDuration:0.3f animations:^{
         
         self.alpha = 1.0f;
@@ -123,3 +123,4 @@
  */
 
 @end
+
