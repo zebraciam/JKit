@@ -12,8 +12,12 @@
 
 @property (strong, nonatomic) UIImageView *imageView;
 
+@property (strong, nonatomic) UITextView *descriptionTextView;
+
 - (void)j_showViewWithImageName:(NSString *)imageName andTitle:(NSString *)title;
 
 - (void)j_hide;
+
+@property (nonatomic, strong) NSAttributedString *titleAttributedText;
 
 @end

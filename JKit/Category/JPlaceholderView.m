@@ -11,8 +11,6 @@
 
 @interface JPlaceholderView ()
 
-@property (strong, nonatomic) UITextView *descriptionTextView;
-
 @end
 @implementation JPlaceholderView
 - (instancetype)init {
@@ -83,7 +81,15 @@
                                                                                                          NSBackgroundColorAttributeName : JColorWithClear,
                                                                                                          NSFontAttributeName            : [UIFont systemFontOfSize:18.0f]
                                                                                                          }];
-    _descriptionTextView.attributedText = attributedString;
+    
+    if (_titleAttributedText) {
+        
+        _descriptionTextView.attributedText = self.titleAttributedText;
+        
+    } else {
+        
+        _descriptionTextView.attributedText = attributedString;
+    }
     
     _descriptionTextView.frame = CGRectMake(20, _imageView.frame.size.height + _imageView.frame.origin.y + 25, self.frame.size.width - 40, 10);
     
@@ -95,6 +101,13 @@
         _imageView.alpha = 1.0f;
         
     } completion:nil];
+}
+
+- (void)setTitleAttributedText:(NSAttributedString *)titleAttributedText {
+    
+    _titleAttributedText = titleAttributedText;
+    
+    _descriptionTextView.attributedText = titleAttributedText;
 }
 
 - (void)j_hide
