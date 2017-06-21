@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "JKit"
-s.version      = "2.1.7.4"
+s.version      = "2.1.7.5"
 s.summary      = "Fast iOS Develope App Kit"
 s.description  = <<-DESC
                     JKit 开发时用的工具类
@@ -23,5 +23,5 @@ s.requires_arc = true
 #s.dependency "SDWebImage"
 #s.dependency "QBImagePickerController"
 
-#s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 end
