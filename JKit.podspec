@@ -1,9 +1,7 @@
 Pod::Spec.new do |s|
 
-if ! s.valid_encoding?
-    s = s.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
 s.name         = "JKit"
-s.version      = "2.1.7.3"
+s.version      = "2.1.7.4"
 s.summary      = "Fast iOS Develope App Kit"
 s.description  = <<-DESC
                     JKit 开发时用的工具类
