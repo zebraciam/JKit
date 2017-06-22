@@ -61,6 +61,7 @@
     _descriptionTextView = [[UITextView alloc] init];
     [_descriptionTextView setUserInteractionEnabled:NO];
     [_descriptionTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    _descriptionTextView.backgroundColor = JColorWithClear;
     
     [self addSubview:_descriptionTextView];
     
