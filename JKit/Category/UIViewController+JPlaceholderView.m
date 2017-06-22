@@ -64,20 +64,24 @@ static char const JPlaceholderViewKey, JRefreshKey;
     
     if (!self.j_placeholderView) {
         
-        self.j_placeholderView = [[JPlaceholderView alloc] initWithFrame:frame];
-        
-//        if ([self respondsToSelector:@selector(setTableView:)]) {
-//            
-//            if ([((UITableViewController *)self).tableView respondsToSelector:@selector(setScrollEnabled:)]) {
-//                
-//                self.j_placeholderView.j_top = self.j_placeholderView.j_top - 30;
-//            }
-//        }
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refreshAction)];
-        [self.j_placeholderView addGestureRecognizer:tap];
-        
-        [self.view addSubview:self.j_placeholderView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            self.j_placeholderView = [[JPlaceholderView alloc] initWithFrame:frame];
+            
+            //        if ([self respondsToSelector:@selector(setTableView:)]) {
+            //
+            //            if ([((UITableViewController *)self).tableView respondsToSelector:@selector(setScrollEnabled:)]) {
+            //
+            //                self.j_placeholderView.j_top = self.j_placeholderView.j_top - 30;
+            //            }
+            //        }
+            
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refreshAction)];
+            [self.j_placeholderView addGestureRecognizer:tap];
+            
+            [self.view addSubview:self.j_placeholderView];
+            
+        });
     }
     
     [self setScrollEnabled:NO];
