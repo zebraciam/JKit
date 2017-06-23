@@ -20,4 +20,6 @@
 
 @property (nonatomic, strong) NSAttributedString *titleAttributedText;
 
+- (void)setImageViewFrame:(CGRect)frame;
+
 @end

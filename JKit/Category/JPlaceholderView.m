@@ -61,6 +61,7 @@
     _descriptionTextView = [[UITextView alloc] init];
     [_descriptionTextView setUserInteractionEnabled:NO];
     [_descriptionTextView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    _descriptionTextView.backgroundColor = JColorWithClear;
     
     [self addSubview:_descriptionTextView];
     
@@ -71,7 +72,7 @@
 {
     _imageView.image = [UIImage imageNamed:imageName];
     _imageView.frame = CGRectMake(0, 0, 100, 100);
-    _imageView.center = CGPointMake(JScreenWidth /2, JScreenHeight /2 - 100);
+    _imageView.center = CGPointMake(self.frame.size.width /2, self.frame.size.height /2 - 100);
     
     NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
     style.alignment = NSTextAlignmentCenter;
@@ -113,6 +114,7 @@
 - (void)j_hide
 {
     self.alpha = 0.0f;
+    
 }
 
 - (void)layoutSubviews {

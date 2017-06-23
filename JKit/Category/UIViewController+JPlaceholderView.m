@@ -39,67 +39,67 @@ static char const JPlaceholderViewKey, JRefreshKey;
     return objc_getAssociatedObject(self, &JRefreshKey);
 }
 
-- (void)j_showPlaceholderInitWithBackgroundColor:(UIColor *)color imageName:(NSString *)imageName andTitle:(NSString *)title andFrame:(CGRect)frame andRefresBlock:(dispatch_block_t)block
-{
-    [self j_showPlaceholderInitWithImageName:imageName andTitle:title andFrame:frame andRefresBlock:block];
+- (void)j_showPlaceholderInitWithBackgroundColor:(UIColor *)color imageName:(NSString *)imageName andTitle:(NSString *)title andFrame:(CGRect)frame andRefresBlock:(dispatch_block_t)block {
     
-    self.j_placeholderView.backgroundColor = color;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.refreshBlock = block;
+        
+        if (!self.j_placeholderView) {
+            
+            self.j_placeholderView = [[JPlaceholderView alloc] initWithFrame:frame];
+                        
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refreshAction)];
+            [self.j_placeholderView addGestureRecognizer:tap];
+            
+            [self.view addSubview:self.j_placeholderView];
+            
+            [self.j_placeholderView j_showViewWithImageName:imageName andTitle:title];
+            
+        }
+        
+        [self setScrollEnabled:NO];
+            
+        self.j_placeholderView.backgroundColor = color;
+        
+    });
 }
 
-- (void)j_showPlaceholderInitWithBackgroundColor:(UIColor *)color imageName:(NSString *)imageName andTitle:(NSString *)title andRefresBlock:(dispatch_block_t)block
-{
-    [self j_showPlaceholderInitWithImageName:imageName andTitle:title andRefresBlock:block];
+- (void)j_showPlaceholderInitWithBackgroundColor:(UIColor *)color imageName:(NSString *)imageName andTitle:(NSString *)title andRefresBlock:(dispatch_block_t)block {
     
-    self.j_placeholderView.backgroundColor = color;
+    [self j_showPlaceholderInitWithBackgroundColor:color imageName:imageName andTitle:title andFrame:CGRectMake(0, 0, self.view.j_width, self.view.j_height) andRefresBlock:block];
 }
 
-- (void)j_showPlaceholderInitWithImageName:(NSString *)imageName andTitle:(NSString *)title andRefresBlock:(dispatch_block_t)block
-{
-    [self j_showPlaceholderInitWithImageName:imageName andTitle:title andFrame:CGRectMake(0, 0, JScreenWidth, JScreenHeight) andRefresBlock:block];
+- (void)j_showPlaceholderInitWithImageName:(NSString *)imageName andTitle:(NSString *)title andRefresBlock:(dispatch_block_t)block {
+    
+    [self j_showPlaceholderInitWithImageName:imageName andTitle:title andFrame:CGRectMake(0, 0, self.view.j_width, self.view.j_height) andRefresBlock:block];
 }
 
-- (void)j_showPlaceholderInitWithImageName:(NSString *)imageName andTitle:(NSString *)title andFrame:(CGRect)frame andRefresBlock:(dispatch_block_t)block
-{
-    self.refreshBlock = block;
+- (void)j_showPlaceholderInitWithImageName:(NSString *)imageName andTitle:(NSString *)title andFrame:(CGRect)frame andRefresBlock:(dispatch_block_t)block {
     
-    if (!self.j_placeholderView) {
-        
-        self.j_placeholderView = [[JPlaceholderView alloc] initWithFrame:frame];
-        
-//        if ([self respondsToSelector:@selector(setTableView:)]) {
-//            
-//            if ([((UITableViewController *)self).tableView respondsToSelector:@selector(setScrollEnabled:)]) {
-//                
-//                self.j_placeholderView.j_top = self.j_placeholderView.j_top - 30;
-//            }
-//        }
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(refreshAction)];
-        [self.j_placeholderView addGestureRecognizer:tap];
-        
-        [self.view addSubview:self.j_placeholderView];
-    }
-    
-    [self setScrollEnabled:NO];
-    
-    [self.j_placeholderView j_showViewWithImageName:imageName andTitle:title];
+    [self j_showPlaceholderInitWithBackgroundColor:JColorWithClear imageName:imageName andTitle:title andFrame:frame andRefresBlock:block];
 }
 
 - (void)refreshAction
 {
     if (self.refreshBlock) {
-        
-//        [self j_hidePlaceholder];
-        
+                
         self.refreshBlock();
     }
 }
 
 - (void)j_hidePlaceholder
 {
-    [self.j_placeholderView j_hide];
-    
-    [self setScrollEnabled:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.j_placeholderView j_hide];
+        
+        [self.j_placeholderView removeFromSuperview];
+        
+        self.j_placeholderView = nil;
+        
+        [self setScrollEnabled:YES];
+    });
 }
 
 - (void)setScrollEnabled:(BOOL)enabled
