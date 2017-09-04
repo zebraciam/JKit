@@ -75,9 +75,48 @@
 }
 
 #pragma mark 产生随机颜色
-
-+ (UIColor *)j_colorWithRamdom
-{
++ (UIColor *)j_colorWithRamdom {
+    
     return [UIColor colorWithRed:arc4random_uniform(256) / 255.0f green:arc4random_uniform(256) / 255.0f blue:arc4random_uniform(256) / 255.0f alpha:1.0f];
+}
+
+#pragma mark -translucent 相关颜色
+- (UIColor *)j_changeFromTranslucent {
+    
+    CGFloat red, green, blue, alpha;
+    
+    [self getRed:&red green:&green blue:&blue alpha:&alpha];
+    
+    CGFloat opacity = 0.4f;
+    
+    CGFloat minVal = MIN(MIN(red, green), blue);
+    
+    if ([self convertValue:minVal withOpacity:opacity] < 0) {
+        
+        opacity = [self minOpacityForValue:minVal];
+    }
+    
+    red = [self convertValue:red withOpacity:opacity];
+    
+    green = [self convertValue:green withOpacity:opacity];
+    
+    blue = [self convertValue:blue withOpacity:opacity];
+    
+    red = MAX(MIN(1.0, red), 0);
+    
+    green = MAX(MIN(1.0, green), 0);
+    
+    blue = MAX(MIN(1.0, blue), 0);
+    
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+
+}
+- (CGFloat)minOpacityForValue:(CGFloat)value {
+    
+    return (0.4 - 0.4 * value) / (0.6 * value + 0.4);
+}
+- (CGFloat)convertValue:(CGFloat)value withOpacity:(CGFloat)opacity {
+    
+    return 0.4 * value / opacity + 0.6 * value - 0.4 / opacity + 0.4;
 }
 @end

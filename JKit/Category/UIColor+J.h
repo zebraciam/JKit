@@ -24,6 +24,14 @@
 
 
 @interface UIColor (J)
+
+/**
+ translucent barTintColor YES -> NO   translucent为 YES 时，颜色也随着半透明了。
+
+ @return 真实颜色
+ */
+- (UIColor *)j_changeFromTranslucent;
+
 /**
  *  16进制转为UIColor
  *
