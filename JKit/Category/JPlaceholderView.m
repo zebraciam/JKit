@@ -70,17 +70,22 @@
 
 - (void)j_showViewWithImageName:(NSString *)imageName andTitle:(NSString *)title
 {
+    UIImage *image = [UIImage imageNamed:imageName];
+    
+    _imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    
     _imageView.image = [UIImage imageNamed:imageName];
-    _imageView.frame = CGRectMake(0, 0, 100, 100);
-    _imageView.center = CGPointMake(self.frame.size.width /2, self.frame.size.height /2 - 100);
+    
+    _imageView.center = CGPointMake(self.frame.size.width /2, self.frame.size.height / 2 - image.size.height / 2);
     
     NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+    
     style.alignment = NSTextAlignmentCenter;
     
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : JColorWithHex(0x666666),
                                                                                                          NSParagraphStyleAttributeName  : style,
                                                                                                          NSBackgroundColorAttributeName : JColorWithClear,
-                                                                                                         NSFontAttributeName            : [UIFont systemFontOfSize:18.0f]
+                                                                                                         NSFontAttributeName            : [UIFont systemFontOfSize:13.0f]
                                                                                                          }];
     
     if (_titleAttributedText) {
@@ -92,7 +97,7 @@
         _descriptionTextView.attributedText = attributedString;
     }
     
-    _descriptionTextView.frame = CGRectMake(20, _imageView.frame.size.height + _imageView.frame.origin.y + 25, self.frame.size.width - 40, 10);
+    _descriptionTextView.frame = CGRectMake(20, _imageView.frame.size.height + _imageView.frame.origin.y + 10, self.frame.size.width - 40, 10);
     
     [UIView animateWithDuration:0.3f animations:^{
         
@@ -120,13 +125,13 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    _descriptionTextView.frame = CGRectMake(20, _imageView.frame.size.height + _imageView.frame.origin.y + 25, self.frame.size.width - 40, 10);
+    _descriptionTextView.frame = CGRectMake(20, _imageView.frame.size.height + _imageView.frame.origin.y + 10, self.frame.size.width - 40, 10);
     _descriptionTextView.textColor = JColorWithHex(0x999999);
     CGFloat fixedWidth = _descriptionTextView.frame.size.width;
     CGSize newSize = [_descriptionTextView sizeThatFits:CGSizeMake(fixedWidth, 20)];
     CGRect newFrame = _descriptionTextView.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    newFrame.origin = CGPointMake(newFrame.origin.x, newFrame.origin.y + 30);
+    newFrame.origin = CGPointMake(newFrame.origin.x, newFrame.origin.y + 10);
     _descriptionTextView.frame = newFrame;
 }
 /*
