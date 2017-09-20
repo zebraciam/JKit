@@ -43,7 +43,7 @@
 #define IPhone5 (JiPhone && JScreenMax == 568.0)
 #define IPhone6 (JiPhone && JScreenMax == 667.0)
 #define IPhone6Plus (JiPhone && JScreenMax == 736.0)
-#define IPhoneX (JiPhone && JScreenMax == 818.0)
+#define IPhoneX (JiPhone && JScreenMax == 812.0)
 
 #define JFont(s) ([UIFont systemFontOfSize:s])
 #define JBoldFont(s) ([UIFont boldSystemFontOfSize:s])
