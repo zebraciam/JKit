@@ -21,9 +21,15 @@
 #define JKeyWindow [[UIApplication sharedApplication] keyWindow]
 #define JWindow [[[UIApplication sharedApplication] delegate] window]
 
-#define IOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7
+#define JiOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7
 
-#define IOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8
+#define JiOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8
+
+#define JiOS9 [[[UIDevice currentDevice] systemVersion] floatValue] >= 9
+
+#define JiOS10 [[[UIDevice currentDevice] systemVersion] floatValue] >= 10
+
+#define JiOS11 [[[UIDevice currentDevice] systemVersion] floatValue] >= 11
 
 #define JiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define JiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -35,6 +41,7 @@
 #define JiPhone5 (JiPhone && JScreenMax == 568.0)
 #define JiPhone6 (JiPhone && JScreenMax == 667.0)
 #define JiPhone6Plus (JiPhone && JScreenMax == 736.0)
+#define JiPhoneX (JiPhone && JScreenMax == 818.0)
 
 #define JFont(s) ([UIFont systemFontOfSize:s])
 #define JBoldFont(s) ([UIFont boldSystemFontOfSize:s])
