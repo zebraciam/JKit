@@ -21,15 +21,17 @@
 #define JKeyWindow [[UIApplication sharedApplication] keyWindow]
 #define JWindow [[[UIApplication sharedApplication] delegate] window]
 
-#define JiOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7
+#define JVersion [[[UIDevice currentDevice] systemVersion] floatValue]
 
-#define JiOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8
+#define IOS7 (JVersion >= 7 && JVersion < 8)
 
-#define JiOS9 [[[UIDevice currentDevice] systemVersion] floatValue] >= 9
+#define IOS8 (JVersion >= 8 && JVersion < 9)
 
-#define JiOS10 [[[UIDevice currentDevice] systemVersion] floatValue] >= 10
+#define IOS9 (JVersion >= 9 && JVersion < 10)
 
-#define JiOS11 [[[UIDevice currentDevice] systemVersion] floatValue] >= 11
+#define IOS10 (JVersion >= 10 && JVersion < 11)
+
+#define IOS11 (JVersion >= 11 && JVersion < 12)
 
 #define JiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define JiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -37,11 +39,11 @@
 #define JScreenMax (MAX(JScreenWidth, JScreenHeight))
 #define JScreenMin (MIN(JScreenWidth, JScreenHeight))
 
-#define JiPhone4 (JiPhone && JScreenMax == 480.0)
-#define JiPhone5 (JiPhone && JScreenMax == 568.0)
-#define JiPhone6 (JiPhone && JScreenMax == 667.0)
-#define JiPhone6Plus (JiPhone && JScreenMax == 736.0)
-#define JiPhoneX (JiPhone && JScreenMax == 818.0)
+#define IPhone4 (JiPhone && JScreenMax == 480.0)
+#define IPhone5 (JiPhone && JScreenMax == 568.0)
+#define IPhone6 (JiPhone && JScreenMax == 667.0)
+#define IPhone6Plus (JiPhone && JScreenMax == 736.0)
+#define IPhoneX (JiPhone && JScreenMax == 818.0)
 
 #define JFont(s) ([UIFont systemFontOfSize:s])
 #define JBoldFont(s) ([UIFont boldSystemFontOfSize:s])
